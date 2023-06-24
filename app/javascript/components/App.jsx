@@ -5,6 +5,7 @@ function App() {
     return (
         <main className='flex justify-center w-full h-full'>
             <Entry />
+            <Navbar />
         </main>
     );
 };
