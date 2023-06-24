@@ -7,7 +7,12 @@ function Entry() {
                 <input className='text-3xl flex-1 outline-none' name="entryTitle" placeholder="Entry Title" />
                 <button className='text-sky-500 self-start italic'>Save entry</button>
             </div>
-                <textarea className='h-full outline-none resize-none' name="entryText" placeholder="Your entry here..." />
+            
+            <div>
+                <p className='text-gray-600'>Created on {new Date().toDateString()}</p>
+            </div>
+            
+            <textarea className='h-full outline-none resize-none' name="entryText" placeholder="Your entry here..." />
         </section>
     );
 };
