@@ -2,7 +2,7 @@ import React from "react";
 
 function Navbar() {
     return (
-        <nav>
+        <nav className='self-start h-full w-[20%] bg-gray-900'>
         </nav>
     );
 };
