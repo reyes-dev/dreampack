@@ -1,0 +1,2 @@
+module EntrysHelper
+end
