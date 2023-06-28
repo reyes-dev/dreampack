@@ -1,4 +1,9 @@
-class EntrysController < ApplicationController
+class API::EntrysController < ApplicationController
+  def index
+    entry = Entry.all.order(created_at: :desc)
+    render json: entry 
+  end
+
   def create
     entry = Entry.create(entry_params)
     

@@ -14,7 +14,7 @@ function Entry() {
         if (body.length == 0) return;
         const dataBody = { body, title }
         const token = document.querySelector("meta[name='csrf-token']").content;
-        const data = await fetch(`/entrys`, {
+        const data = await fetch(`/api/entrys`, {
             method: 'POST',
             headers: {
                 'X-CSRF-Token': token,
