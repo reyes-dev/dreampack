@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
   root 'pages#home'
-  resources :entrys 
+  
+  namespace :api do
+    resources :entrys
+  end 
+
+  get '/*path' => 'pages#home'
 end
