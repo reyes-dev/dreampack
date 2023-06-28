@@ -1,7 +1,7 @@
 import React from "react";
 import Entry from "./Entry";
 import Navbar from "./Navbar"
-import AllEntrys from "./AllEntrys";
+import EntryIndex from "./EntryIndex";
 import { Route } from "wouter";
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
                 <Entry />
             </div>
 
-            <Route path="/entry" component={AllEntrys} />
+            <Route path="/entry" component={EntryIndex} />
         </main>
     );
 };

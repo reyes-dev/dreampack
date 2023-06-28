@@ -1,6 +1,6 @@
 import React from 'react';
 
-function AllEntrys() {
+function EntryIndex() {
     return (
         <section>
             <h1>Journal Entries</h1>
@@ -8,4 +8,4 @@ function AllEntrys() {
     );
 };
 
-export default AllEntrys;
+export default EntryIndex;
