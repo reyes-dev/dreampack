@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from "wouter";
 
 function EntryIndex() {
     const [entries, setEntries] = useState([]);
@@ -8,7 +9,7 @@ function EntryIndex() {
     }, []);
 
     const getEntries = async () => {
-        const url = `/api/entrys/`
+        const url = `/api/entrys/`;
         const response = await fetch(url);
         console.log(response);
         const data = await response.json();
@@ -19,7 +20,7 @@ function EntryIndex() {
     const entryList = entries.map((entry) => {
         return ( 
             <ul key={entry.id}>
-                <li>{entry.title}</li>
+                <Link href={`/entrys/index/${entry.id}`}>{entry.title}</Link>
                 <li>{entry.body}</li>
             </ul>
         );
@@ -29,7 +30,7 @@ function EntryIndex() {
         <section className='flex flex-col bg-white px-8 py-8 gap-4 w-[35%] 
         max-w-4xl max-h-[90%] h-full shadow-2xl'>
             <h1>Journal Entries</h1>
-            <ul>{entryList}</ul>
+            {entryList}
         </section>
     );
 };

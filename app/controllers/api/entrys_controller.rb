@@ -14,6 +14,11 @@ class API::EntrysController < ApplicationController
     end
   end
 
+  def show
+    entry = Entry.find(params[:id])
+    render json: entry
+  end
+
   private
 
   def entry_params 
