@@ -20,7 +20,11 @@ function EntryIndex() {
     const entryList = entries.map((entry) => {
         return ( 
             <ul key={entry.id}>
-                <Link href={`/entrys/index/${entry.id}`}>{entry.title}</Link>
+                <div className="flex justify-between">
+                    <Link href={`/entrys/index/${entry.id}`}>{entry.title}</Link>
+                    <Link href={`/entrys/index/${entry.id}/edit`}
+                    className="text-sky-500">Edit Entry</Link>
+                </div>
                 <li>{entry.body}</li>
             </ul>
         );
