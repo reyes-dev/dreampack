@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "wouter";
 
 function EditEntry({params}) {
     const [entry, setEntry] = useState({});
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
+    const [location, setLocation] = useLocation();
     // Store state data for CRUD operations 
     useEffect(() => {
         getEntry();
@@ -42,9 +44,10 @@ function EditEntry({params}) {
             body: JSON.stringify(body_param),
             });
             await response.text();
+            setLocation(`/entrys/index/${params.id}`);
             return response.ok;
         } catch (e) {
-             console.log(e);   
+             console.log(e); 
             } 
         };
 
