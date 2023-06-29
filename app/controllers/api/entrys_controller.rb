@@ -19,6 +19,11 @@ class API::EntrysController < ApplicationController
     render json: entry
   end
 
+  def update
+    entry = Entry.find(params[:id])
+    entry.update!(entry_params)
+  end
+
   private
 
   def entry_params 
