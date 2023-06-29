@@ -17,7 +17,7 @@ function EditEntry({params}) {
     const onChange = (event, setFunction) => {
         setFunction(event.target.value);
      };
-
+ 
     const getEntry = async () => {
         const url = `/api/entrys/${params.id}`;
         const response = await fetch(url);
@@ -25,9 +25,32 @@ function EditEntry({params}) {
         setEntry(data);
     };
 
+    const updateEntry = async (event) => {
+        event.preventDefault();
+        if (title.length == 0 || body.length == 0) return;
+        const url = `/api/entrys/${params.id}`;
+        const id = params.id;
+        const body_param = { title, body, id };
+        const token = document.querySelector('meta[name="csrf-token"]').content;
+        try {
+            const response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                'X-CSRF-Token': token,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body_param),
+            });
+            await response.text();
+            return response.ok;
+        } catch (e) {
+             console.log(e);   
+            } 
+        };
+
     return (
         <form className='flex flex-col bg-white px-8 py-8 gap-4 w-[35%] 
-        max-w-4xl max-h-[90%] h-full shadow-2xl'>
+        max-w-4xl max-h-[90%] h-full shadow-2xl' onSubmit={updateEntry}>
             <div className='flex border-b pb-2'>
                 <input className='text-3xl flex-1 outline-none' name="entryTitle" 
         onChange={(event) => onChange(event, setTitle)} placeholder="Entry Title" 
