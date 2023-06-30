@@ -23,7 +23,7 @@ function Entry({params}) {
             <div className='flex justify-between'>
                 <h1>{entry.title}</h1>
                 <div className='flex gap-4'>
-                    <DeleteEntry />
+                    <DeleteEntry id={params.id} />
                     <Link href={`/entrys/index/${params.id}/edit`} 
                 className='text-sky-500 self-start italic'>Edit Entry</Link>
                 </div>
