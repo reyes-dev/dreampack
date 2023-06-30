@@ -24,6 +24,11 @@ class API::EntrysController < ApplicationController
     entry.update!(entry_params)
   end
 
+  def destroy
+    entry = Entry.find(params[id])
+    entry.destroy
+  end
+
   private
 
   def entry_params 
