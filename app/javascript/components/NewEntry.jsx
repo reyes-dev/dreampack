@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useLocation } from "wouter";
 
 function NewEntry() {
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
+    const [location, setLocation] = useLocation();
     // Store state data for CRUD operations 
     const onChange = (event, setFunction) => {
         setFunction(event.target.value);
@@ -24,6 +26,7 @@ function NewEntry() {
         });
         const response = await data.json();
         console.log(response);
+        setLocation(`/entrys/index/${response.id}`);
         return response;
     };
     return (
