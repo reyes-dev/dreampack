@@ -1,6 +1,9 @@
 import React from "react";
+import { useLocation } from "wouter";
 
 function DeleteEntry({id}) {
+    const [location, setLocation] = useLocation();
+    
     const deleteEntry = async () => {
         const url = `/api/entrys/${id}`
         const token = document.querySelector('meta[name="csrf-token"]').content;
@@ -12,6 +15,7 @@ function DeleteEntry({id}) {
                     'Content-Type': 'application/json',
                 },
             });
+            setLocation('/entrys/index/');
         } catch (e) {
             console.log(e);
         }
