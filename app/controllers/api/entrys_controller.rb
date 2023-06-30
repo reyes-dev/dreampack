@@ -25,7 +25,7 @@ class API::EntrysController < ApplicationController
   end
 
   def destroy
-    entry = Entry.find(params[id])
+    entry = Entry.find(params[:id])
     entry.destroy
   end
 
