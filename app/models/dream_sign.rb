@@ -1,0 +1,2 @@
+class DreamSign < ApplicationRecord
+end
