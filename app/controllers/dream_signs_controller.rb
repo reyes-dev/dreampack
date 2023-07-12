@@ -1,0 +1,2 @@
+class DreamSignsController < ApplicationController
+end
