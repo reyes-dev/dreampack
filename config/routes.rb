@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   
   namespace :api do
     resources :entrys
+    resources :dream_signs
   end 
 
   get '/*path' => 'pages#home'
