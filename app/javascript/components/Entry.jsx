@@ -33,7 +33,7 @@ function Entry({params}) {
             <Selection.Root>
                 <Selection.Trigger><p>{entry.body}</p></Selection.Trigger>
                 <Selection.Portal>
-                    <Selection.Content>Dream Sign</Selection.Content>
+                    <Selection.Content side='bottom'>Dream Sign</Selection.Content>
                 </Selection.Portal>
             </Selection.Root>
         </section>
