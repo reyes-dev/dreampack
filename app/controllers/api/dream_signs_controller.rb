@@ -1,4 +1,4 @@
-class DreamSignsController < ApplicationController
+class API::DreamSignsController < ApplicationController
   def create
     dream_sign = DreamSign.create(dream_sign_params)
 
