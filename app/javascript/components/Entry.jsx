@@ -3,13 +3,16 @@ import { Link } from "wouter";
 import DeleteEntry from "./DeleteEntry";
 import * as Selection from 'selection-popover';
 import DreamSign from './DreamSign';
+import Highlighter from "react-highlight-words";
 
 function Entry({params}) {
     const [entry, setEntry] = useState({});
     const [selectedText, setSelectedText] = useState();
+    const [dreamSigns, setDreamSigns] = useState([]);
 
     useEffect(() => {
         getEntry();
+        getDreamSigns();
     }, []);
 
     const getEntry = async () => {
@@ -19,6 +22,14 @@ function Entry({params}) {
         console.log(data);
         setEntry(data);
     };
+
+    const getDreamSigns = async () => {
+        const url = `/api/dream_signs`;
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data);
+        setDreamSigns(data);
+    }
 
     const handleMouseUp = () => {
         console.log(`Selected text: ${window.getSelection().toString()}`);
@@ -38,7 +49,7 @@ function Entry({params}) {
             </div>
             <p>{entry.created_at}</p>
             <Selection.Root>
-                <Selection.Trigger><p onMouseUp={handleMouseUp}>{entry.body}</p></Selection.Trigger>
+                <Selection.Trigger><p onMouseUp={handleMouseUp}><Highlighter searchWords={dreamSigns} textToHighlight={entry.body} /></p></Selection.Trigger>
                 <Selection.Portal>
                     <Selection.Content side='bottom'><DreamSign phrase={selectedText}/></Selection.Content>
                 </Selection.Portal>

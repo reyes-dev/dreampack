@@ -1,4 +1,9 @@
 class API::DreamSignsController < ApplicationController
+  def index
+    dream_signs = DreamSign.all.map { |sign| sign.phrase }
+    render json: dream_signs
+  end
+
   def create
     dream_sign = DreamSign.create(dream_sign_params)
 
