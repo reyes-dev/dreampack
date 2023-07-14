@@ -1,6 +1,6 @@
 import React from "react";
 
-function DreamSign({phrase}) {
+function DreamSign({phrase, highlightNewDreamSign}) {
     // POST entry data to Rails API
     const createDreamSign = async () => {
         if (phrase.length <= 1) return;
@@ -20,7 +20,9 @@ function DreamSign({phrase}) {
  
 
     return ( 
-        <button onClick={createDreamSign}>Dream Sign</button>
+        <button onClick={() => {createDreamSign(); highlightNewDreamSign();}}>
+            Dream Sign
+        </button>
     );
 };
 
