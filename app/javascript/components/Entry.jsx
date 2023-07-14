@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 import DeleteEntry from "./DeleteEntry";
 import * as Selection from 'selection-popover';
+import DreamSign from './DreamSign';
 
 function Entry({params}) {
     const [entry, setEntry] = useState({});
@@ -37,7 +38,7 @@ function Entry({params}) {
             <Selection.Root>
                 <Selection.Trigger><p onMouseUp={handleMouseUp}>{entry.body}</p></Selection.Trigger>
                 <Selection.Portal>
-                    <Selection.Content side='bottom'>Dream Sign</Selection.Content>
+                    <Selection.Content side='bottom'><DreamSign /></Selection.Content>
                 </Selection.Portal>
             </Selection.Root>
         </section>
