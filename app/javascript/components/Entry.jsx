@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 import DeleteEntry from "./DeleteEntry";
+import * as Selection from 'selection-popover';
 
 function Entry({params}) {
     const [entry, setEntry] = useState({});
@@ -29,7 +30,12 @@ function Entry({params}) {
                 </div>
             </div>
             <p>{entry.created_at}</p>
-            <p>{entry.body}</p>
+            <Selection.Root>
+                <Selection.Trigger><p>{entry.body}</p></Selection.Trigger>
+                <Selection.Portal>
+                    <Selection.Content>Dream Sign</Selection.Content>
+                </Selection.Portal>
+            </Selection.Root>
         </section>
     );
 };
