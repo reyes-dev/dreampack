@@ -6,6 +6,7 @@ import DreamSign from './DreamSign';
 
 function Entry({params}) {
     const [entry, setEntry] = useState({});
+    const [selectedText, setSelectedText] = useState();
 
     useEffect(() => {
         getEntry();
@@ -21,6 +22,7 @@ function Entry({params}) {
 
     const handleMouseUp = () => {
         console.log(`Selected text: ${window.getSelection().toString()}`);
+        setSelectedText(window.getSelection().toString());
     }
 
     return (
@@ -38,7 +40,7 @@ function Entry({params}) {
             <Selection.Root>
                 <Selection.Trigger><p onMouseUp={handleMouseUp}>{entry.body}</p></Selection.Trigger>
                 <Selection.Portal>
-                    <Selection.Content side='bottom'><DreamSign /></Selection.Content>
+                    <Selection.Content side='bottom'><DreamSign phrase={selectedText}/></Selection.Content>
                 </Selection.Portal>
             </Selection.Root>
         </section>
