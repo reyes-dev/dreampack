@@ -18,6 +18,10 @@ function Entry({params}) {
         setEntry(data);
     };
 
+    const handleMouseUp = () => {
+        console.log(`Selected text: ${window.getSelection().toString()}`);
+    }
+
     return (
         <section className='flex flex-col bg-white px-8 py-8 gap-4 w-[35%] 
         max-w-4xl max-h-[90%] h-full shadow-2xl'>
@@ -31,7 +35,7 @@ function Entry({params}) {
             </div>
             <p>{entry.created_at}</p>
             <Selection.Root>
-                <Selection.Trigger><p>{entry.body}</p></Selection.Trigger>
+                <Selection.Trigger><p onMouseUp={handleMouseUp}>{entry.body}</p></Selection.Trigger>
                 <Selection.Portal>
                     <Selection.Content side='bottom'>Dream Sign</Selection.Content>
                 </Selection.Portal>
