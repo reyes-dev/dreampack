@@ -1,0 +1,2 @@
+class Interpretation < ApplicationRecord
+end
