@@ -5,7 +5,7 @@ function DeleteEntry({id}) {
     const [location, setLocation] = useLocation();
     
     const deleteEntry = async () => {
-        const url = `/api/entrys/${id}`
+        const url = `/api/entries/${id}`
         const token = document.querySelector('meta[name="csrf-token"]').content;
         try {
             const response = await fetch(url, {
@@ -15,7 +15,7 @@ function DeleteEntry({id}) {
                     'Content-Type': 'application/json',
                 },
             });
-            setLocation('/entrys/index/');
+            setLocation('/entries/index/');
         } catch (e) {
             console.log(e);
         }

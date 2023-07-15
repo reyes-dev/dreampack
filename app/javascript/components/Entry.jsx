@@ -16,7 +16,7 @@ function Entry({params}) {
     }, []);
 
     const getEntry = async () => {
-        const url = `/api/entrys/${params.id}`;
+        const url = `/api/entries/${params.id}`;
         const response = await fetch(url);
         const data = await response.json();
         console.log(data);
@@ -47,7 +47,7 @@ function Entry({params}) {
                 <h1>{entry.title}</h1>
                 <div className='flex gap-4'>
                     <DeleteEntry id={params.id} />
-                    <Link href={`/entrys/index/${params.id}/edit`} 
+                    <Link href={`/entries/index/${params.id}/edit`} 
                 className='text-sky-500 self-start italic'>Edit Entry</Link>
                 </div>
             </div>

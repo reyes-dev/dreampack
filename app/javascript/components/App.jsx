@@ -13,9 +13,9 @@ function App() {
             <Navbar /> 
             <div className='flex flex-col w-full h-full justify-center items-center'>
                 <Switch>
-                    <Route path="/entrys/index/:id/edit" component={EditEntry} />
-                    <Route path="/entrys/index/:id" component={Entry} />
-                    <Route path="/entrys/index" component={EntryIndex} />
+                    <Route path="/entries/index/:id/edit" component={EditEntry} />
+                    <Route path="/entries/index/:id" component={Entry} />
+                    <Route path="/entries/index" component={EntryIndex} />
                     <Route path='/' component={NewEntry} />
                     <Route path='/settings' component={Settings} />
                 </Switch>    

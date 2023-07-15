@@ -9,7 +9,7 @@ function EntryIndex() {
     }, []);
 
     const getEntries = async () => {
-        const url = `/api/entrys/`;
+        const url = `/api/entries/`;
         const response = await fetch(url);
         console.log(response);
         const data = await response.json();
@@ -21,8 +21,8 @@ function EntryIndex() {
         return ( 
             <ul key={entry.id}>
                 <div className="flex justify-between">
-                    <Link href={`/entrys/index/${entry.id}`}>{entry.title}</Link>
-                    <Link href={`/entrys/index/${entry.id}/edit`}
+                    <Link href={`/entries/index/${entry.id}`}>{entry.title}</Link>
+                    <Link href={`/entries/index/${entry.id}/edit`}
                     className="text-sky-500">Edit Entry</Link>
                 </div>
                 <li>{entry.body}</li>

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   
   namespace :api do
-    resources :entrys
+    resources :entries
     resources :dream_signs
   end 
 

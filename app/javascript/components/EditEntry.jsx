@@ -21,7 +21,7 @@ function EditEntry({params}) {
      };
  
     const getEntry = async () => {
-        const url = `/api/entrys/${params.id}`;
+        const url = `/api/entries/${params.id}`;
         const response = await fetch(url);
         const data = await response.json();
         setEntry(data);
@@ -30,7 +30,7 @@ function EditEntry({params}) {
     const updateEntry = async (event) => {
         event.preventDefault();
         if (title.length == 0 || body.length == 0) return;
-        const url = `/api/entrys/${params.id}`;
+        const url = `/api/entries/${params.id}`;
         const id = params.id;
         const body_param = { title, body, id };
         const token = document.querySelector('meta[name="csrf-token"]').content;
@@ -44,7 +44,7 @@ function EditEntry({params}) {
             body: JSON.stringify(body_param),
             });
             await response.text();
-            setLocation(`/entrys/index/${params.id}`);
+            setLocation(`/entries/index/${params.id}`);
             return response.ok;
         } catch (e) {
              console.log(e); 

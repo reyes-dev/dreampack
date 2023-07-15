@@ -1,4 +1,4 @@
-class API::EntrysController < ApplicationController
+class API::EntriesController < ApplicationController
   def index
     entry = Entry.all.order(created_at: :desc)
     render json: entry 
@@ -33,5 +33,5 @@ class API::EntrysController < ApplicationController
 
   def entry_params 
     params.require(:entry).permit(:title, :body)
-  end 
+  end
 end
