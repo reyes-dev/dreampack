@@ -8,21 +8,20 @@ import Settings from "./Settings";
 import { Switch, Route } from "wouter";
 
 function App() {
-    return (
-        <main className='flex w-full h-full'>
-            <Navbar /> 
-            <div className='flex flex-col w-full h-full justify-center items-center'>
-                <Switch>
-                    <Route path="/entries/index/:id/edit" component={EditEntry} />
-                    <Route path="/entries/index/:id" component={Entry} />
-                    <Route path="/entries/index" component={EntryIndex} />
-                    <Route path='/' component={NewEntry} />
-                    <Route path='/settings' component={Settings} />
-                </Switch>    
-            </div>
-
-        </main>
-    );
-};
+  return (
+    <main className="flex h-full w-full">
+      <Navbar />
+      <div className="flex h-full w-full flex-col items-center justify-center">
+        <Switch>
+          <Route path="/entries/index/:id/edit" component={EditEntry} />
+          <Route path="/entries/index/:id" component={Entry} />
+          <Route path="/entries/index" component={EntryIndex} />
+          <Route path="/" component={NewEntry} />
+          <Route path="/settings" component={Settings} />
+        </Switch>
+      </div>
+    </main>
+  );
+}
 
 export default App;
