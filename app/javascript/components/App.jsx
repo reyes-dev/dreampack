@@ -6,6 +6,7 @@ import NewEntry from "./NewEntry";
 import EditEntry from "./EditEntry";
 import Settings from "./Settings";
 import { Switch, Route } from "wouter";
+import Interpretation from "./Interpretation";
 
 function App() {
   return (
@@ -18,6 +19,10 @@ function App() {
           <Route path="/entries/index" component={EntryIndex} />
           <Route path="/" component={NewEntry} />
           <Route path="/settings" component={Settings} />
+          <Route
+            path="/entries/index/:id/interpretation"
+            component={Interpretation}
+          />
         </Switch>
       </div>
     </main>

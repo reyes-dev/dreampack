@@ -55,6 +55,9 @@ function Entry({ params }) {
           >
             Edit Entry
           </Link>
+          <Link href={`/entries/index/${params.id}/interpretation`}>
+            Interpret Dream
+          </Link>
         </div>
       </div>
       <p>{entry.created_at}</p>
