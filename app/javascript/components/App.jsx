@@ -7,6 +7,7 @@ import EditEntry from "./EditEntry";
 import Settings from "./Settings";
 import { Switch, Route } from "wouter";
 import Interpretation from "./Interpretation";
+import EditInterpretation from "./EditInterpretation";
 
 function App() {
   return (
@@ -22,6 +23,10 @@ function App() {
           <Route
             path="/entries/index/:id/interpretation"
             component={Interpretation}
+          />
+          <Route
+            path="/entries/index/:id/interpretation/edit"
+            component={EditInterpretation}
           />
         </Switch>
       </div>

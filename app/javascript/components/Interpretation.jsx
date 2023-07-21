@@ -17,13 +17,16 @@ function Interpretation({ params }) {
 
   return (
     <section
-      className="flex flex-col bg-white px-8 py-8 gap-4 w-[35%] 
-        max-w-4xl max-h-[90%] h-full shadow-2xl"
+      className="flex h-full max-h-[90%] w-[35%] max-w-4xl flex-col gap-4 
+        bg-white px-8 py-8 shadow-2xl"
     >
       <h1>Interpretation</h1>
       <div>
         <button>Interpret with AI</button>
         <Link href={`/entries/index/${params.id}`}>Back to Entry</Link>
+        <Link href={`/entries/index/${params.id}/interpretation/edit`}>
+          Edit Interpretation
+        </Link>
       </div>
       <p>{interpretationBody}</p>
     </section>
