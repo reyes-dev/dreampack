@@ -15,6 +15,11 @@ class API::InterpretationsController < ApplicationController
     end
   end
 
+  def update
+    interpretation = Entry.find(params[:entry_id]).interpretation
+    interpretation.update!(interpretation_params)
+  end
+
   private
 
   def interpretation_params
