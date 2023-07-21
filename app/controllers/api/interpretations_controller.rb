@@ -1,4 +1,10 @@
 class API::InterpretationsController < ApplicationController
+  def show
+    interpretation = Entry.find(params[:entry_id]).interpretation
+
+    render json: interpretation
+  end
+
   def create
     interpretation = Interpretation.create(interpretation_params)
 
