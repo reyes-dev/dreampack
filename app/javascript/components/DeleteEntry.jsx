@@ -15,7 +15,7 @@ function DeleteEntry({ id }) {
           "Content-Type": "application/json",
         },
       });
-      setLocation("/entries/index/");
+      setLocation("/entries");
     } catch (e) {
       console.log(e);
     }

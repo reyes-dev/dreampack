@@ -50,12 +50,12 @@ function Entry({ params }) {
         <div className="flex gap-4">
           <DeleteEntry id={params.id} />
           <Link
-            href={`/entries/index/${params.id}/edit`}
+            href={`/entries/${params.id}/edit`}
             className="self-start italic text-sky-500"
           >
             Edit Entry
           </Link>
-          <Link href={`/entries/index/${params.id}/interpretation`}>
+          <Link href={`/entries/${params.id}/interpretation`}>
             Interpret Dream
           </Link>
         </div>

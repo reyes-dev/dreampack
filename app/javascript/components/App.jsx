@@ -15,17 +15,17 @@ function App() {
       <Navbar />
       <div className="flex h-full w-full flex-col items-center justify-center">
         <Switch>
-          <Route path="/entries/index/:id/edit" component={EditEntry} />
-          <Route path="/entries/index/:id" component={Entry} />
-          <Route path="/entries/index" component={EntryIndex} />
+          <Route path="/entries/:id/edit" component={EditEntry} />
+          <Route path="/entries/:id" component={Entry} />
+          <Route path="/entries" component={EntryIndex} />
           <Route path="/" component={NewEntry} />
           <Route path="/settings" component={Settings} />
           <Route
-            path="/entries/index/:id/interpretation"
+            path="/entries/:id/interpretation"
             component={Interpretation}
           />
           <Route
-            path="/entries/index/:id/interpretation/edit"
+            path="/entries/:id/interpretation/edit"
             component={EditInterpretation}
           />
         </Switch>

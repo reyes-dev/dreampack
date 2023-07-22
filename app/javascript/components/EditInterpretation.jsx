@@ -36,7 +36,7 @@ function EditInterpretation({ params }) {
         body: JSON.stringify(body_param),
       });
       await response.text();
-      setLocation(`/entries/index/${params.id}/interpretation`);
+      setLocation(`/entries/${params.id}/interpretation`);
       return response.ok;
     } catch (e) {
       console.log(e);

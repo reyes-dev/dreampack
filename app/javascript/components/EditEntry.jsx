@@ -44,7 +44,7 @@ function EditEntry({ params }) {
         body: JSON.stringify(body_param),
       });
       await response.text();
-      setLocation(`/entries/index/${params.id}`);
+      setLocation(`/entries/${params.id}`);
       return response.ok;
     } catch (e) {
       console.log(e);

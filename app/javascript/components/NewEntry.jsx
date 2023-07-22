@@ -26,7 +26,7 @@ function NewEntry() {
     });
     const response = await data.json();
     console.log(response);
-    setLocation(`/entries/index/${response.id}`);
+    setLocation(`/entries/${response.id}`);
     return response;
   };
   return (
