@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
+import ChatGPT from "./ChatGPT";
 
 function Interpretation({ params }) {
   const [interpretationBody, setInterpretationBody] = useState("");
@@ -22,7 +23,7 @@ function Interpretation({ params }) {
     >
       <h1>Interpretation</h1>
       <div>
-        <button>Interpret with AI</button>
+        <ChatGPT entry_id={params.id} />
         <Link href={`/entries/index/${params.id}`}>Back to Entry</Link>
         <Link href={`/entries/index/${params.id}/interpretation/edit`}>
           Edit Interpretation
