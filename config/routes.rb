@@ -7,7 +7,7 @@ Rails.application.routes.draw do
         resource :chatgpt_response, only: [:create]
       end
     end
-    resources :dream_sign
+    resources :dream_signs
   end
 
   get '/*path' => 'pages#home'
