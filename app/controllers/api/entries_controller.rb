@@ -1,14 +1,14 @@
 class API::EntriesController < ApplicationController
   def index
     entry = Entry.all.order(created_at: :desc)
-    render json: entry 
+    render json: entry
   end
 
   def create
     entry = Entry.create(entry_params)
-    
+
     if entry.save
-      render json: entry 
+      render json: entry
     else
       render json: entry.errors
     end
@@ -27,11 +27,13 @@ class API::EntriesController < ApplicationController
   def destroy
     entry = Entry.find(params[:id])
     entry.destroy
+
+    render json: { message: 'Entry deleted!' }
   end
 
   private
 
-  def entry_params 
+  def entry_params
     params.require(:entry).permit(:title, :body)
   end
 end
