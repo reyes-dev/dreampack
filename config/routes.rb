@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :entries do
-      resource :interpretation
+      resource :interpretation do
+        resource :chatgpt_response, only: [:create]
+      end
     end
     resources :dream_sign
   end
