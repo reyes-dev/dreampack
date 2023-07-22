@@ -17,18 +17,38 @@ function Entry({ params }) {
 
   const getEntry = async () => {
     const url = `/api/entries/${params.id}`;
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log(data);
-    setEntry(data);
+    const token = document.querySelector('meta[name="csrf-token"]').content;
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          "X-CSRF-Token": token,
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      setEntry(data);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const getDreamSigns = async () => {
     const url = `/api/dream_signs`;
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log(data);
-    setDreamSigns(data);
+    const token = document.querySelector('meta[name="csrf-token"]').content;
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          "X-CSRF-Token": token,
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      setDreamSigns(data);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const handleMouseUp = () => {
