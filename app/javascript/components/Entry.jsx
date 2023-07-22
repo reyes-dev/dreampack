@@ -46,7 +46,6 @@ function Entry({ params }) {
   };
 
   const handleMouseUp = () => {
-    console.log(`Selected text: ${window.getSelection().toString()}`);
     setSelectedText(window.getSelection().toString());
   };
 
