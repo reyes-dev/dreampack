@@ -43,7 +43,7 @@ function Entry({ params }) {
   return (
     <section
       className="flex h-full max-h-[90%] w-[35%] max-w-4xl flex-col gap-4 
-        bg-white px-8 py-8 shadow-2xl"
+        whitespace-pre-line break-words bg-white px-8 py-8 shadow-2xl"
     >
       <div className="flex justify-between">
         <h1>{entry.title}</h1>
