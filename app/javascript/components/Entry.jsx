@@ -79,7 +79,7 @@ function Entry({ params }) {
           <p onMouseUp={handleMouseUp}>
             <Highlighter
               searchWords={dreamSigns}
-              textToHighlight={entry.body}
+              textToHighlight={String(entry.body)}
             />
           </p>
         </Selection.Trigger>
