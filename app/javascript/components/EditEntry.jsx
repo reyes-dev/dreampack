@@ -22,9 +22,14 @@ function EditEntry({ params }) {
 
   const getEntry = async () => {
     const url = `/api/entries/${params.id}`;
-    const response = await fetch(url);
-    const data = await response.json();
-    setEntry(data);
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      setEntry(data);
+      return data;
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const updateEntry = async (event) => {
@@ -47,7 +52,7 @@ function EditEntry({ params }) {
       setLocation(`/entries/${params.id}`);
       return response.ok;
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 

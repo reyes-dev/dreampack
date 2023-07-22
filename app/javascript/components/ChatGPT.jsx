@@ -16,7 +16,7 @@ function ChatGPT({ entry_id }) {
       await response.text();
       return response.ok;
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 

@@ -16,18 +16,21 @@ function NewEntry() {
     if (body.length == 0) return;
     const dataBody = { body, title };
     const token = document.querySelector("meta[name='csrf-token']").content;
-    const data = await fetch(`/api/entries`, {
-      method: "POST",
-      headers: {
-        "X-CSRF-Token": token,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(dataBody),
-    });
-    const response = await data.json();
-    console.log(response);
-    setLocation(`/entries/${response.id}`);
-    return response;
+    try {
+      const response = await fetch(`/api/entries`, {
+        method: "POST",
+        headers: {
+          "X-CSRF-Token": token,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(dataBody),
+      });
+      const data = await response.json();
+      setLocation(`/entries/${data.id}`);
+      return data;
+    } catch (e) {
+      console.error(e);
+    }
   };
   return (
     <form

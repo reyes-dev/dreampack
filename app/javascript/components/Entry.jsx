@@ -17,19 +17,13 @@ function Entry({ params }) {
 
   const getEntry = async () => {
     const url = `/api/entries/${params.id}`;
-    const token = document.querySelector('meta[name="csrf-token"]').content;
     try {
-      const response = await fetch(url, {
-        method: "GET",
-        headers: {
-          "X-CSRF-Token": token,
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(url);
       const data = await response.json();
       setEntry(data);
+      return data;
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 
@@ -47,7 +41,7 @@ function Entry({ params }) {
       const data = await response.json();
       setDreamSigns(data);
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 

@@ -10,11 +10,14 @@ function EntryIndex() {
 
   const getEntries = async () => {
     const url = `/api/entries`;
-    const response = await fetch(url);
-    console.log(response);
-    const data = await response.json();
-    console.log(data);
-    setEntries(data);
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      setEntries(data);
+      return data;
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const entryList = entries.map((entry) => {

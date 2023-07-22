@@ -15,9 +15,14 @@ function EditInterpretation({ params }) {
 
   const getInterpretation = async () => {
     const url = `/api/entries/${params.id}/interpretation`;
-    const response = await fetch(url);
-    const data = await response.json();
-    setBody(data.body);
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      setBody(data.body);
+      return data;
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const updateInterpretation = async (event) => {
@@ -39,7 +44,7 @@ function EditInterpretation({ params }) {
       setLocation(`/entries/${params.id}/interpretation`);
       return response.ok;
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 

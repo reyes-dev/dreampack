@@ -15,9 +15,13 @@ function DeleteEntry({ id }) {
           "Content-Type": "application/json",
         },
       });
-      setLocation("/entries");
+      if (response.ok) {
+        setLocation("/entries");
+        return response.json();
+      }
+      throw new Error("Network response was not ok.");
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 

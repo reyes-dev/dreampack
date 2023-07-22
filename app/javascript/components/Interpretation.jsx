@@ -11,9 +11,14 @@ function Interpretation({ params }) {
 
   const getInterpretation = async () => {
     const url = `/api/entries/${params.id}/interpretation`;
-    const response = await fetch(url);
-    const data = await response.json();
-    setInterpretationBody(data.body);
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      setInterpretationBody(data.body);
+      return data;
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
