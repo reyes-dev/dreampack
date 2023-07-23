@@ -17,6 +17,9 @@ function EditInterpretation({ params }) {
     const url = `/api/entries/${params.id}/interpretation`;
     try {
       const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
       const data = await response.json();
       setBody(data.body);
       return data;
@@ -40,6 +43,9 @@ function EditInterpretation({ params }) {
         },
         body: JSON.stringify(body_param),
       });
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
       await response.text();
       setLocation(`/entries/${params.id}/interpretation`);
       return response.ok;

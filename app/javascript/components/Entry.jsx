@@ -19,6 +19,9 @@ function Entry({ params }) {
     const url = `/api/entries/${params.id}`;
     try {
       const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
       const data = await response.json();
       setEntry(data);
       return data;
@@ -38,6 +41,9 @@ function Entry({ params }) {
           "Content-Type": "application/json",
         },
       });
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
       const data = await response.json();
       setDreamSigns(data);
     } catch (e) {

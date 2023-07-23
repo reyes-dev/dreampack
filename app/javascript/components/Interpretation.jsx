@@ -13,6 +13,9 @@ function Interpretation({ params }) {
     const url = `/api/entries/${params.id}/interpretation`;
     try {
       const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
       const data = await response.json();
       setInterpretationBody(data.body);
       return data;

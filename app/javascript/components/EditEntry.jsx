@@ -24,6 +24,9 @@ function EditEntry({ params }) {
     const url = `/api/entries/${params.id}`;
     try {
       const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
       const data = await response.json();
       setEntry(data);
       return data;
@@ -48,6 +51,9 @@ function EditEntry({ params }) {
         },
         body: JSON.stringify(body_param),
       });
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
       await response.text();
       setLocation(`/entries/${params.id}`);
       return response.ok;
