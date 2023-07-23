@@ -28,7 +28,10 @@ function Interpretation({ params }) {
     >
       <h1>Interpretation</h1>
       <div>
-        <ChatGPT entry_id={params.id} />
+        <ChatGPT
+          entry_id={params.id}
+          setInterpretationBody={setInterpretationBody}
+        />
         <Link href={`/entries/${params.id}`}>Back to Entry</Link>
         <Link href={`/entries/${params.id}/interpretation/edit`}>
           Edit Interpretation

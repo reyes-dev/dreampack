@@ -1,6 +1,6 @@
 import React from "react";
 
-function ChatGPT({ entry_id }) {
+function ChatGPT({ entry_id, setInterpretationBody }) {
   const createChatGPTResponse = async (event) => {
     event.preventDefault();
     const url = `/api/entries/${entry_id}/interpretation/chatgpt_response`;
@@ -13,8 +13,9 @@ function ChatGPT({ entry_id }) {
           "Content-Type": "application/json",
         },
       });
-      await response.text();
-      return response.ok;
+      const data = await response.json();
+      setInterpretationBody(data.body);
+      return data;
     } catch (e) {
       console.error(e);
     }

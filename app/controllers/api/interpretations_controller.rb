@@ -17,7 +17,13 @@ class API::InterpretationsController < ApplicationController
 
   def update
     interpretation = Entry.find(params[:entry_id]).interpretation
-    interpretation.update!(interpretation_params)
+
+    if interpretation
+      interpretation.update!(interpretation_params)
+      render json: interpretation
+    else
+      render json: interpretation.errors
+    end
   end
 
   private
