@@ -13,8 +13,8 @@ function ChatGPT({ entry_id, setInterpretationBody }) {
           "Content-Type": "application/json",
         },
       });
-      const data = await response.json();
-      setInterpretationBody(data.body);
+      const data = await response.text();
+      setInterpretationBody(data);
       return data;
     } catch (e) {
       console.error(e);

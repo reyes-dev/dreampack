@@ -13,7 +13,7 @@ class API::ChatGPTResponsesController < ApplicationController
         temperature: 0.7
       }
     ).dig('choices', 0, 'message', 'content')
-    render json: { body: @response }
+    render plain: @response
   end
 
   private
