@@ -4,6 +4,7 @@ ruby '3.1.2'
 gem 'bootsnap', require: false
 gem 'cssbundling-rails'
 gem 'figaro'
+gem 'image_processing', '>= 1.2'
 gem 'jbuilder'
 gem 'jsbundling-rails'
 gem 'pg', '~> 1.1'
