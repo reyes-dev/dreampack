@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     resources :dream_signs
   end
 
-  get '/*path' => 'pages#home'
+  get '*all', to: 'pages#home', constraints: lambda { |req|
+                                               req.path.exclude? 'rails/active_storage'
+                                             }
 end

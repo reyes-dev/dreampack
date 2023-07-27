@@ -16,7 +16,7 @@ class API::EntriesController < ApplicationController
 
   def show
     entry = Entry.find(params[:id])
-    render json: entry
+    render json: entry, serializer: EntrySerializer
   end
 
   def update
@@ -34,6 +34,6 @@ class API::EntriesController < ApplicationController
   private
 
   def entry_params
-    params.require(:entry).permit(:title, :body)
+    params.require(:entry).permit(:title, :body, :image)
   end
 end

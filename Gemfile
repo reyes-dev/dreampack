@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.2'
+gem 'active_model_serializers'
 gem 'bootsnap', require: false
 gem 'cssbundling-rails'
 gem 'figaro'
