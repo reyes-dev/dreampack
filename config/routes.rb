@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resource :interpretation do
         resource :chatgpt_response, only: [:create]
       end
+      resources :dalle_responses, only: [:create]
     end
     resources :dream_signs
   end
