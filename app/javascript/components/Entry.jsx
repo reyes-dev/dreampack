@@ -9,6 +9,7 @@ function Entry({ params }) {
   const [entry, setEntry] = useState({});
   const [selectedText, setSelectedText] = useState();
   const [dreamSigns, setDreamSigns] = useState([]);
+  const [dalleUrl, setDalleUrl] = useState("");
 
   useEffect(() => {
     getEntry();
@@ -51,6 +52,30 @@ function Entry({ params }) {
     }
   };
 
+  const generateImage = async () => {
+    const url = `/api/entries/${params.id}/dalle_responses`;
+    const token = document.querySelector('meta[name="csrf-token"]').content;
+    const prompt = `Create an image based on the following dream: ${entry.body}`;
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "X-CSRF-Token": token,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(prompt),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP Error! Status: ${response.status}`);
+      }
+      const data = await response.text();
+      setDalleUrl(data);
+      return data;
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   const handleMouseUp = () => {
     setSelectedText(window.getSelection().toString());
   };
@@ -77,6 +102,7 @@ function Entry({ params }) {
           <Link href={`/entries/${params.id}/interpretation`}>
             Interpret Dream
           </Link>
+          <button onClick={generateImage}>Generate Image</button>
         </div>
       </div>
       <p>{entry.created_at}</p>
@@ -98,6 +124,7 @@ function Entry({ params }) {
           </Selection.Content>
         </Selection.Portal>
       </Selection.Root>
+      <img src={dalleUrl} alt="AI generated image of user dream" />
     </section>
   );
 }
