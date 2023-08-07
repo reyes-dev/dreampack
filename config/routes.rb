@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :dalle_responses, only: [:create]
     end
     resources :dream_signs
+    resources :whisper_transcriptions, only: [:create]
   end
 
   get '*all', to: 'pages#home', constraints: lambda { |req|
