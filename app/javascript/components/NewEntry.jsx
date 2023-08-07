@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import Whisper from "./Whisper";
 import { useLocation } from "wouter";
 
 function NewEntry() {
+  const formRef = useRef(null);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [audioIsReady, setAudioIsReady] = useState(false);
   const [location, setLocation] = useLocation();
+
+  useEffect(() => {
+    if (audioIsReady) {
+      formRef.current.requestSubmit();
+    }
+  }, [audioIsReady]);
   // Store state data for CRUD operations
   const onChange = (event, setFunction) => {
     setFunction(event.target.value);
@@ -35,8 +44,15 @@ function NewEntry() {
       console.error(e);
     }
   };
+
+  const setEntryBodyHandler = (transcription) => {
+    setBody(transcription);
+    setAudioIsReady(true);
+  };
+
   return (
     <form
+      ref={formRef}
       className="flex h-full max-h-[90%] w-[35%] max-w-4xl flex-col gap-4 
         bg-white px-8 py-8 shadow-2xl"
       onSubmit={createEntry}
@@ -62,7 +78,10 @@ function NewEntry() {
         name="entryText"
         onChange={(event) => onChange(event, setBody)}
         placeholder="Your entry here..."
+        value={body}
       />
+
+      <Whisper setEntryBodyHandler={setEntryBodyHandler} />
     </form>
   );
 }
