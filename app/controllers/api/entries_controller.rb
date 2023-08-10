@@ -8,7 +8,7 @@ class API::EntriesController < ApplicationController
     entry = Entry.create(entry_params)
 
     if entry.save
-      render json: entry
+      render json: entry, status: :created
     else
       render json: entry.errors
     end
