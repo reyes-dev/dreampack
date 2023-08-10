@@ -67,6 +67,7 @@ RSpec.describe 'API::Entries', type: :request do
 
       delete api_entry_path(id: entry.id)
 
+      expect { entry.reload }.to raise_error(ActiveRecord::RecordNotFound)
       expect(response.status).to eq 200
     end
   end
