@@ -71,6 +71,8 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    addressable (2.8.5)
+      public_suffix (>= 2.0.2, < 6.0)
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
@@ -78,6 +80,8 @@ GEM
     case_transform (0.2)
       activesupport
     concurrent-ruby (1.2.2)
+    crack (0.4.5)
+      rexml
     crass (1.0.6)
     cssbundling-rails (1.1.2)
       railties (>= 6.0.0)
@@ -103,6 +107,7 @@ GEM
       thor (>= 0.14.0, < 2)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    hashdiff (1.0.1)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -145,6 +150,7 @@ GEM
     nokogiri (1.15.3-x86_64-linux)
       racc (~> 1.4)
     pg (1.5.3)
+    public_suffix (5.0.3)
     puma (5.6.5)
       nio4r (~> 2.0)
     racc (1.7.1)
@@ -183,6 +189,7 @@ GEM
     redis (4.8.1)
     reline (0.3.5)
       io-console (~> 0.5)
+    rexml (3.2.6)
     rspec-core (3.12.2)
       rspec-support (~> 3.12.0)
     rspec-expectations (3.12.3)
@@ -223,11 +230,16 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    vcr (6.2.0)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    webmock (3.18.1)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -256,7 +268,9 @@ DEPENDENCIES
   stimulus-rails
   turbo-rails
   tzinfo-data
+  vcr (~> 6.2)
   web-console
+  webmock
 
 RUBY VERSION
    ruby 3.1.2p20

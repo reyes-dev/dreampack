@@ -1,0 +1,111 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "post",
+        "uri": "https://api.openai.com/v1/chat/completions",
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"model\":\"gpt-3.5-turbo\",\"messages\":[{\"role\":\"user\",\"content\":\"Without giving a preface or introduction of yourself or your\\n              capabilities, please interpret the following dream: I dreamt of a yellow elephant.\"}],\"temperature\":0.7}"
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json"
+          ],
+          "Authorization": [
+            "Bearer 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"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ],
+          "Accept": [
+            "*/*"
+          ],
+          "User-Agent": [
+            "Ruby"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "headers": {
+          "Date": [
+            "Fri, 11 Aug 2023 18:51:35 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Access-Control-Allow-Origin": [
+            "*"
+          ],
+          "Cache-Control": [
+            "no-cache, must-revalidate"
+          ],
+          "Openai-Model": [
+            "gpt-3.5-turbo-0613"
+          ],
+          "Openai-Organization": [
+            "user-8g2okkmydlf8qxv7valbarc4"
+          ],
+          "Openai-Processing-Ms": [
+            "11644"
+          ],
+          "Openai-Version": [
+            "2020-10-01"
+          ],
+          "Strict-Transport-Security": [
+            "max-age=15724800; includeSubDomains"
+          ],
+          "X-Ratelimit-Limit-Requests": [
+            "3500"
+          ],
+          "X-Ratelimit-Limit-Tokens": [
+            "90000"
+          ],
+          "X-Ratelimit-Remaining-Requests": [
+            "3499"
+          ],
+          "X-Ratelimit-Remaining-Tokens": [
+            "89943"
+          ],
+          "X-Ratelimit-Reset-Requests": [
+            "17ms"
+          ],
+          "X-Ratelimit-Reset-Tokens": [
+            "38ms"
+          ],
+          "X-Request-Id": [
+            "41a69c5bce9549b69e32dcee32eaef07"
+          ],
+          "Cf-Cache-Status": [
+            "DYNAMIC"
+          ],
+          "Server": [
+            "cloudflare"
+          ],
+          "Cf-Ray": [
+            "7f52ab6c78419452-SJC"
+          ],
+          "Alt-Svc": [
+            "h3=\":443\"; ma=86400"
+          ]
+        },
+        "body": {
+          "encoding": "ASCII-8BIT",
+          "string": "{\n  \"id\": \"chatcmpl-7mRWGH8m05x9TMMekv0uiddyxdQlX\",\n  \"object\": \"chat.completion\",\n  \"created\": 1691779884,\n  \"model\": \"gpt-3.5-turbo-0613\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Dreaming of a yellow elephant can have various interpretations depending on the context and personal associations of the dreamer. Here are a few possible interpretations:\\n\\n1. Uniqueness and individuality: The yellow color often symbolizes uniqueness and individuality. Seeing a yellow elephant in your dream may suggest that you embrace your own distinctiveness and stand out from the crowd. It could be a reminder to celebrate your originality and not be afraid to showcase your true colors.\\n\\n2. Happiness and positivity: Elephants are often associated with strength and wisdom, and the color yellow is commonly linked to happiness and positivity. Dreaming of a yellow elephant may signify that you are in a good emotional state or that you are seeking joy and optimism in your waking life.\\n\\n3. Creativity and inspiration: Yellow is also associated with creativity and intellectual energy. This dream could be a reflection of your creative potential or a desire to tap into your imaginative side. It might be encouraging you to explore new ideas, ventures, or artistic pursuits.\\n\\n4. Symbol of memory and nostalgia: Elephants are known for their exceptional memory, and dreams involving elephants can sometimes represent nostalgia or a longing for the past. The yellow color could add a sense of warmth and fondness to these emotions, suggesting that something from your past is influencing your present emotions or choices.\\n\\n5. Caution or warning: While less common, a yellow elephant could also serve as a warning sign in your dream. It might represent an issue or situation that you need to approach with caution or carefully consider before proceeding. The vividness of the color yellow could be urging you to pay attention to potential risks or obstacles in your waking life.\\n\\nRemember, dream interpretation is subjective and can vary greatly depending on personal experiences and associations. To gain a deeper understanding of this dream, it's crucial to consider your unique circumstances, emotions, and any other symbols or details present in the dream.\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 36,\n    \"completion_tokens\": 381,\n    \"total_tokens\": 417\n  }\n}\n"
+        }
+      },
+      "recorded_at": "Fri, 11 Aug 2023 18:51:36 GMT"
+    }
+  ],
+  "recorded_with": "VCR 6.2.0"
+}
