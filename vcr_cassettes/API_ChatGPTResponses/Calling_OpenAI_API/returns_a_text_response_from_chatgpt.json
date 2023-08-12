@@ -13,7 +13,7 @@
             "application/json"
           ],
           "Authorization": [
-            "Bearer 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"
+            "Bearer <AUTH>"
           ],
           "Accept-Encoding": [
             "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
@@ -33,7 +33,7 @@
         },
         "headers": {
           "Date": [
-            "Fri, 11 Aug 2023 18:51:35 GMT"
+            "Sat, 12 Aug 2023 19:08:18 GMT"
           ],
           "Content-Type": [
             "application/json"
@@ -57,7 +57,7 @@
             "user-8g2okkmydlf8qxv7valbarc4"
           ],
           "Openai-Processing-Ms": [
-            "11644"
+            "6818"
           ],
           "Openai-Version": [
             "2020-10-01"
@@ -84,7 +84,7 @@
             "38ms"
           ],
           "X-Request-Id": [
-            "41a69c5bce9549b69e32dcee32eaef07"
+            "c22f3dd75af7fea8b0a88d293545c77b"
           ],
           "Cf-Cache-Status": [
             "DYNAMIC"
@@ -93,7 +93,7 @@
             "cloudflare"
           ],
           "Cf-Ray": [
-            "7f52ab6c78419452-SJC"
+            "7f5b016c69681758-SJC"
           ],
           "Alt-Svc": [
             "h3=\":443\"; ma=86400"
@@ -101,10 +101,10 @@
         },
         "body": {
           "encoding": "ASCII-8BIT",
-          "string": "{\n  \"id\": \"chatcmpl-7mRWGH8m05x9TMMekv0uiddyxdQlX\",\n  \"object\": \"chat.completion\",\n  \"created\": 1691779884,\n  \"model\": \"gpt-3.5-turbo-0613\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"Dreaming of a yellow elephant can have various interpretations depending on the context and personal associations of the dreamer. Here are a few possible interpretations:\\n\\n1. Uniqueness and individuality: The yellow color often symbolizes uniqueness and individuality. Seeing a yellow elephant in your dream may suggest that you embrace your own distinctiveness and stand out from the crowd. It could be a reminder to celebrate your originality and not be afraid to showcase your true colors.\\n\\n2. Happiness and positivity: Elephants are often associated with strength and wisdom, and the color yellow is commonly linked to happiness and positivity. Dreaming of a yellow elephant may signify that you are in a good emotional state or that you are seeking joy and optimism in your waking life.\\n\\n3. Creativity and inspiration: Yellow is also associated with creativity and intellectual energy. This dream could be a reflection of your creative potential or a desire to tap into your imaginative side. It might be encouraging you to explore new ideas, ventures, or artistic pursuits.\\n\\n4. Symbol of memory and nostalgia: Elephants are known for their exceptional memory, and dreams involving elephants can sometimes represent nostalgia or a longing for the past. The yellow color could add a sense of warmth and fondness to these emotions, suggesting that something from your past is influencing your present emotions or choices.\\n\\n5. Caution or warning: While less common, a yellow elephant could also serve as a warning sign in your dream. It might represent an issue or situation that you need to approach with caution or carefully consider before proceeding. The vividness of the color yellow could be urging you to pay attention to potential risks or obstacles in your waking life.\\n\\nRemember, dream interpretation is subjective and can vary greatly depending on personal experiences and associations. To gain a deeper understanding of this dream, it's crucial to consider your unique circumstances, emotions, and any other symbols or details present in the dream.\"\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 36,\n    \"completion_tokens\": 381,\n    \"total_tokens\": 417\n  }\n}\n"
+          "base64_string": "ewogICJpZCI6ICJjaGF0Y21wbC03bW9HM2l0Z0JQNU8zQUJ5VkdKWVhtdHNu\nZzFMeSIsCiAgIm9iamVjdCI6ICJjaGF0LmNvbXBsZXRpb24iLAogICJjcmVh\ndGVkIjogMTY5MTg2NzI5MSwKICAibW9kZWwiOiAiZ3B0LTMuNS10dXJiby0w\nNjEzIiwKICAiY2hvaWNlcyI6IFsKICAgIHsKICAgICAgImluZGV4IjogMCwK\nICAgICAgIm1lc3NhZ2UiOiB7CiAgICAgICAgInJvbGUiOiAiYXNzaXN0YW50\nIiwKICAgICAgICAiY29udGVudCI6ICJEcmVhbWluZyBvZiBhIHllbGxvdyBl\nbGVwaGFudCBjb3VsZCBzeW1ib2xpemUgc2V2ZXJhbCB0aGluZ3MuIFllbGxv\ndyBpcyBvZnRlbiBhc3NvY2lhdGVkIHdpdGggam95LCBoYXBwaW5lc3MsIGFu\nZCBwb3NpdGl2ZSBlbmVyZ3kuIEVsZXBoYW50cywgb24gdGhlIG90aGVyIGhh\nbmQsIGFyZSBrbm93biBmb3IgdGhlaXIgc3RyZW5ndGgsIHdpc2RvbSwgYW5k\nIGxveWFsdHkuIFxuXG5UaGlzIGRyZWFtIG1heSBzdWdnZXN0IHRoYXQgeW91\nIGFyZSBleHBlcmllbmNpbmcgYSBwZXJpb2Qgb2YgZ3JlYXQgam95IGFuZCBw\nb3NpdGl2ZSBlbmVyZ3kgaW4geW91ciBsaWZlLiBUaGUgeWVsbG93IGNvbG9y\nIGNvdWxkIHJlcHJlc2VudCBhIHNlbnNlIG9mIGhhcHBpbmVzcyBhbmQgY29u\ndGVudG1lbnQgdGhhdCBzdXJyb3VuZHMgeW91LiBUaGUgZWxlcGhhbnQgc3lt\nYm9saXplcyB5b3VyIG93biBzdHJlbmd0aCBhbmQgcG93ZXIsIGluZGljYXRp\nbmcgdGhhdCB5b3UgaGF2ZSB0aGUgYWJpbGl0eSB0byBvdmVyY29tZSBhbnkg\nY2hhbGxlbmdlcyB5b3UgbWF5IGZhY2UuXG5cbkZ1cnRoZXJtb3JlLCBlbGVw\naGFudHMgYXJlIGFsc28ga25vd24gZm9yIHRoZWlyIGludGVsbGlnZW5jZSBh\nbmQgd2lzZG9tLiBUaGlzIGRyZWFtIG1heSBiZSBhIHNpZ24gdGhhdCB5b3Ug\ncG9zc2VzcyB0aGVzZSBxdWFsaXRpZXMgYW5kIHNob3VsZCB0cnVzdCB5b3Vy\nIGluc3RpbmN0cyBhbmQgaW50dWl0aW9uIGluIG1ha2luZyBpbXBvcnRhbnQg\nZGVjaXNpb25zLlxuXG5BbHRlcm5hdGl2ZWx5LCB0aGUgeWVsbG93IGVsZXBo\nYW50IGNvdWxkIHJlcHJlc2VudCBzb21ldGhpbmcgdW5pcXVlIG9yIG91dCBv\nZiB0aGUgb3JkaW5hcnkgaW4geW91ciBsaWZlLiBJdCBtYXkgc2lnbmlmeSBh\nIHJhcmUgb3Bwb3J0dW5pdHkgb3IgYSBzcGVjaWFsIGV2ZW50IHRoYXQgYnJp\nbmdzIGV4Y2l0ZW1lbnQgYW5kIHBvc2l0aXZpdHkuXG5cbk92ZXJhbGwsIHRo\naXMgZHJlYW0gc2VlbXMgdG8gY29udmV5IGEgcG9zaXRpdmUgbWVzc2FnZSwg\nZW5jb3VyYWdpbmcgeW91IHRvIGVtYnJhY2UgeW91ciBvd24gc3RyZW5ndGgs\nIHdpc2RvbSwgYW5kIGhhcHBpbmVzcy4iCiAgICAgIH0sCiAgICAgICJmaW5p\nc2hfcmVhc29uIjogInN0b3AiCiAgICB9CiAgXSwKICAidXNhZ2UiOiB7CiAg\nICAicHJvbXB0X3Rva2VucyI6IDM2LAogICAgImNvbXBsZXRpb25fdG9rZW5z\nIjogMTk4LAogICAgInRvdGFsX3Rva2VucyI6IDIzNAogIH0KfQo=\n"
         }
       },
-      "recorded_at": "Fri, 11 Aug 2023 18:51:36 GMT"
+      "recorded_at": "Sat, 12 Aug 2023 19:08:18 GMT"
     }
   ],
   "recorded_with": "VCR 6.2.0"
