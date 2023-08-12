@@ -10,7 +10,6 @@ class API::WhisperTranscriptionsController < ApplicationController
 
       }
     )
-    puts response['text']
     render plain: response['text']
   end
 
