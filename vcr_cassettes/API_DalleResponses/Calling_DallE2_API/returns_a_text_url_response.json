@@ -1,0 +1,87 @@
+{
+  "http_interactions": [
+    {
+      "request": {
+        "method": "post",
+        "uri": "https://api.openai.com/v1/images/generations",
+        "body": {
+          "encoding": "UTF-8",
+          "string": "{\"prompt\":\"A blue backpack\",\"size\":\"256x256\"}"
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json"
+          ],
+          "Authorization": [
+            "Bearer <AUTH>"
+          ],
+          "Accept-Encoding": [
+            "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          ],
+          "Accept": [
+            "*/*"
+          ],
+          "User-Agent": [
+            "Ruby"
+          ]
+        }
+      },
+      "response": {
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "headers": {
+          "Date": [
+            "Sat, 12 Aug 2023 21:29:45 GMT"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "Transfer-Encoding": [
+            "chunked"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Openai-Version": [
+            "2020-10-01"
+          ],
+          "Openai-Organization": [
+            "user-8g2okkmydlf8qxv7valbarc4"
+          ],
+          "X-Request-Id": [
+            "e448d050a91ad6b6eeb175904a2e03d0"
+          ],
+          "Openai-Processing-Ms": [
+            "6286"
+          ],
+          "Access-Control-Allow-Origin": [
+            "*"
+          ],
+          "Strict-Transport-Security": [
+            "max-age=15724800; includeSubDomains"
+          ],
+          "Cf-Cache-Status": [
+            "DYNAMIC"
+          ],
+          "Server": [
+            "cloudflare"
+          ],
+          "Cf-Ray": [
+            "7f5bd0a41cc515ff-SJC"
+          ],
+          "Alt-Svc": [
+            "h3=\":443\"; ma=86400"
+          ]
+        },
+        "body": {
+          "encoding": "ASCII-8BIT",
+          "base64_string": "ewogICJjcmVhdGVkIjogMTY5MTg3NTc4NSwKICAiZGF0YSI6IFsKICAgIHsK\nICAgICAgInVybCI6ICJodHRwczovL29haWRhbGxlYXBpcHJvZHNjdXMuYmxv\nYi5jb3JlLndpbmRvd3MubmV0L3ByaXZhdGUvb3JnLW5zUFFXd0ZpbzV6WGl0\nVmVOTVJGTUpVTC91c2VyLThnMk9LS015ZGxGOHF4djdWQWxiQVJjNC9pbWct\nbWRwRlpGVTFmMFU0RnM4eFJxdUoxb29iLnBuZz9zdD0yMDIzLTA4LTEyVDIw\nJTNBMjklM0E0NVomc2U9MjAyMy0wOC0xMlQyMiUzQTI5JTNBNDVaJnNwPXIm\nc3Y9MjAyMS0wOC0wNiZzcj1iJnJzY2Q9aW5saW5lJnJzY3Q9aW1hZ2UvcG5n\nJnNrb2lkPTZhYWFkZWRlLTRmYjMtNDY5OC1hOGY2LTY4NGQ3Nzg2YjA2NyZz\na3RpZD1hNDhjY2E1Ni1lNmRhLTQ4NGUtYTgxNC05Yzg0OTY1MmJjYjMmc2t0\nPTIwMjMtMDgtMTJUMTclM0ExOCUzQTM5WiZza2U9MjAyMy0wOC0xM1QxNyUz\nQTE4JTNBMzlaJnNrcz1iJnNrdj0yMDIxLTA4LTA2JnNpZz0lMkIzZkk5VXox\nNmFkTWM5cU04SnZ6NVNHdVhCbnZQVlBSOEowWFE0eEJDJTJCUSUzRCIKICAg\nIH0KICBdCn0K\n"
+        }
+      },
+      "recorded_at": "Sat, 12 Aug 2023 21:29:45 GMT"
+    }
+  ],
+  "recorded_with": "VCR 6.2.0"
+}
