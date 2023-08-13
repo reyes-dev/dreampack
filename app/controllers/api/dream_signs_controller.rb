@@ -8,15 +8,15 @@ class API::DreamSignsController < ApplicationController
     dream_sign = DreamSign.create(dream_sign_params)
 
     if dream_sign.save
-      render json: dream_sign
+      render json: dream_sign, status: :created
     else
       render json: dream_sign.errors
     end
   end
- 
+
   private
 
-  def dream_sign_params 
+  def dream_sign_params
     params.require(:dream_sign).permit(:phrase, :description)
-  end 
+  end
 end
