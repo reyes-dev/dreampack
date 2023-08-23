@@ -72,6 +72,7 @@ function EditEntry({ params }) {
         <input
           className="flex-1 text-3xl outline-none"
           name="entryTitle"
+          data-cy="entryTitle"
           onChange={(event) => onChange(event, setTitle)}
           placeholder="Entry Title"
           value={title || ""}
@@ -88,6 +89,7 @@ function EditEntry({ params }) {
       <textarea
         className="h-full resize-none outline-none"
         name="entryText"
+        data-cy="entryText"
         onChange={(event) => onChange(event, setBody)}
         placeholder="Your entry here..."
         value={body || ""}

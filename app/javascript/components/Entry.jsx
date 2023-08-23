@@ -92,12 +92,13 @@ function Entry({ params }) {
         whitespace-pre-line break-words bg-white px-8 py-8 shadow-2xl"
     >
       <div className="flex justify-between">
-        <h1>{entry.title}</h1>
+        <h1 data-cy="entryTitle">{entry.title}</h1>
         <div className="flex gap-4">
           <DeleteEntry id={params.id} />
           <Link
             href={`/entries/${params.id}/edit`}
             className="self-start italic text-sky-500"
+            data-cy="editEntry"
           >
             Edit Entry
           </Link>
@@ -114,6 +115,7 @@ function Entry({ params }) {
             <Highlighter
               searchWords={dreamSigns}
               textToHighlight={String(entry.body)}
+              data-cy="entryBody"
             />
           </p>
         </Selection.Trigger>

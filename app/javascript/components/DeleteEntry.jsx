@@ -26,7 +26,11 @@ function DeleteEntry({ id }) {
   };
 
   return (
-    <button className="text-rose-700" onClick={deleteEntry}>
+    <button
+      className="text-rose-700"
+      onClick={deleteEntry}
+      data-cy="deleteEntry"
+    >
       [ - ]
     </button>
   );
