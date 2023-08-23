@@ -20,6 +20,7 @@
     "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
   },
   "devDependencies": {
+    "cypress": "^12.17.4",
     "prettier": "^3.0.0",
     "prettier-plugin-tailwindcss": "^0.4.1"
   },

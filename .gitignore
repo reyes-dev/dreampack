@@ -37,3 +37,6 @@
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore rails_examples but keep as reference
+/spec/cypress/e2e/rails_examples

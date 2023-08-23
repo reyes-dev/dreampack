@@ -19,6 +19,7 @@ gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
+  gem 'cypress-on-rails', '~> 1.0'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'vcr', '~> 6.2'

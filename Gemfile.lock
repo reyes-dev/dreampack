@@ -85,6 +85,8 @@ GEM
     crass (1.0.6)
     cssbundling-rails (1.1.2)
       railties (>= 6.0.0)
+    cypress-on-rails (1.15.1)
+      rack
     date (3.3.3)
     debug (1.8.0)
       irb (>= 1.5.0)
@@ -252,6 +254,7 @@ DEPENDENCIES
   active_model_serializers
   bootsnap
   cssbundling-rails
+  cypress-on-rails (~> 1.0)
   debug
   factory_bot_rails
   figaro
