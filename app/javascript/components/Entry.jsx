@@ -88,27 +88,46 @@ function Entry({ params }) {
 
   return (
     <section
-      className="flex h-full max-h-[90%] w-[35%] max-w-4xl flex-col gap-4 
-        whitespace-pre-line break-words bg-white px-8 py-8 shadow-2xl"
+      className="flex h-[80vh] w-1/2 flex-col gap-4
+        whitespace-pre-line break-words rounded border-2 
+        border-[hsl(133.1,66.1%,76.9%)] bg-[#08041A] p-8"
     >
-      <div className="flex justify-between">
-        <h1 data-cy="entryTitle">{entry.title}</h1>
-        <div className="flex gap-4">
+      <div className="flex items-center justify-between border-b pb-2">
+        <h1 data-cy="entryTitle" className="text-3xl">
+          {entry.title}
+        </h1>
+        <div className="flex items-center gap-4">
           <DeleteEntry id={params.id} />
           <Link
             href={`/entries/${params.id}/edit`}
-            className="self-start italic text-sky-500"
+            className="text-md min-h whitespace-nowrap rounded 
+                      border border-sky-500 p-[0.450rem_0.450rem_0.4625rem] 
+                      italic text-sky-500 hover:bg-slate-700"
             data-cy="editEntry"
           >
             Edit Entry
           </Link>
-          <Link href={`/entries/${params.id}/interpretation`}>
-            Interpret Dream
-          </Link>
-          <button onClick={generateImage}>Generate Image</button>
         </div>
       </div>
-      <p>{entry.created_at}</p>
+      <div className="flex items-center justify-between border-b pb-2">
+        <p className="text-gray-600">Created on {new Date().toDateString()}</p>
+        <div className="flex items-end gap-4 pb-2">
+          <Link
+            href={`/entries/${params.id}/interpretation`}
+            className="text-sky-500 underline"
+          >
+            Go to Interpretation
+          </Link>
+          <button
+            onClick={generateImage}
+            className="text-md min-h whitespace-nowrap rounded 
+                      border border-amber-500 p-[0.450rem_0.450rem_0.4625rem] 
+                      italic text-amber-500 hover:bg-slate-700"
+          >
+            Generate Image
+          </button>
+        </div>
+      </div>
       <Selection.Root>
         <Selection.Trigger>
           <p onMouseUp={handleMouseUp}>
