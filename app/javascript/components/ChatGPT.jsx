@@ -24,7 +24,16 @@ function ChatGPT({ entry_id, setInterpretationBody }) {
     }
   };
 
-  return <button onClick={createChatGPTResponse}>Interpret with AI</button>;
+  return (
+    <button
+      onClick={createChatGPTResponse}
+      className="text-md min-h whitespace-nowrap rounded 
+                      border border-violet-500 p-[0.450rem_0.450rem_0.4625rem] 
+                      italic text-violet-500 hover:bg-slate-700"
+    >
+      Interpret with AI
+    </button>
+  );
 }
 
 export default ChatGPT;
