@@ -3,8 +3,9 @@ import React from "react";
 function Settings() {
   return (
     <form
-      className="flex h-full max-h-[90%] w-[35%] max-w-4xl flex-col gap-4 
-        bg-white px-8 py-8 shadow-2xl"
+      className="flex h-[80vh] w-1/2 flex-col gap-4
+        whitespace-pre-line break-words rounded border-2 
+        border-[hsl(133.1,66.1%,76.9%)] bg-[#08041A] p-8"
     ></form>
   );
 }
