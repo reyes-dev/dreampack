@@ -64,20 +64,25 @@ function EditEntry({ params }) {
 
   return (
     <form
-      className="flex h-full max-h-[90%] w-[35%] max-w-4xl flex-col gap-4 
-        bg-white px-8 py-8 shadow-2xl"
+      className="flex h-[80vh] w-1/2 flex-col justify-center gap-4 rounded border-2
+        border-dashed border-[hsl(133.1,66.1%,76.9%)] bg-[#08041A] p-8"
       onSubmit={updateEntry}
     >
       <div className="flex border-b pb-2">
         <input
-          className="flex-1 text-3xl outline-none"
+          className="flex-1 bg-transparent text-3xl outline-none"
           name="entryTitle"
           data-cy="entryTitle"
           onChange={(event) => onChange(event, setTitle)}
           placeholder="Entry Title"
           value={title || ""}
         />
-        <button type="submit" className="self-start italic text-sky-500">
+        <button
+          type="submit"
+          className="text-md min-h whitespace-nowrap rounded 
+                      border border-sky-500 p-[0.450rem_0.450rem_0.4625rem] 
+                      italic text-sky-500 hover:bg-slate-700"
+        >
           Update entry
         </button>
       </div>
@@ -87,7 +92,7 @@ function EditEntry({ params }) {
       </div>
 
       <textarea
-        className="h-full resize-none outline-none"
+        className="h-full resize-none bg-transparent outline-none"
         name="entryText"
         data-cy="entryText"
         onChange={(event) => onChange(event, setBody)}
