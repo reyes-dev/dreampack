@@ -27,22 +27,34 @@ function EntryIndex() {
     return (
       <ul key={entry.id}>
         <div className="flex justify-between">
-          <Link href={`/entries/${entry.id}`}>{entry.title}</Link>
-          <Link href={`/entries/${entry.id}/edit`} className="text-sky-500">
+          <Link
+            href={`/entries/${entry.id}`}
+            className="h-min border-b text-xl"
+          >
+            {entry.title}
+          </Link>
+          <Link
+            href={`/entries/${entry.id}/edit`}
+            className="text-md rounded border border-sky-500 
+                      p-[0.450rem_0.450rem_0.4625rem] italic text-sky-500 
+                      hover:bg-slate-700"
+          >
             Edit Entry
           </Link>
         </div>
-        <li>{entry.body}</li>
+        <li className="pt text-gray-300">
+          {entry.body.split(/\s+/).slice(0, 20).join(" ").concat("...")}
+        </li>
       </ul>
     );
   });
 
   return (
     <section
-      className="flex h-full max-h-[90%] w-[35%] max-w-4xl flex-col gap-4 
-        bg-white px-8 py-8 shadow-2xl"
+      className="flex h-[80vh] w-1/2 flex-col gap-4 overflow-auto rounded 
+    border-2 border-[hsl(133.1,66.1%,76.9%)] bg-[#08041A] p-8 
+        "
     >
-      <h1>Journal Entries</h1>
       {entryList}
     </section>
   );
