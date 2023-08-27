@@ -1,18 +1,21 @@
 import React from "react";
-import { Link } from "wouter";
+import NavbarLink from "./NavbarLink";
 
 function Navbar() {
   return (
-    <nav className="flex h-full w-[15%] flex-col gap-2 self-start bg-gray-900 p-8 underline-offset-4">
-      <Link href="/entries" className="text-white hover:underline">
-        All Journal Entries
-      </Link>
-      <Link href="/" className="text-white hover:underline">
-        New Entry
-      </Link>
-      <Link href="/settings" className="text-white hover:underline">
-        Settings
-      </Link>
+    <nav className="col-start-2 flex items-center justify-end gap-8 p-8">
+      <NavbarLink
+        destination="/"
+        content="About"
+        bgColor="bg-emerald-900/20"
+        bgColorHover="hover:bg-emerald-900"
+      />
+      <NavbarLink
+        destination="/sign_in"
+        content="Sign In"
+        bgColor="bg-rose-900/20"
+        bgColorHover="hover:bg-rose-900"
+      />
     </nav>
   );
 }
