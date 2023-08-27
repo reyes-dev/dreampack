@@ -54,7 +54,7 @@ function NewEntry() {
     <form
       ref={formRef}
       className="flex h-[80vh] w-1/2 flex-col gap-4 rounded
-         border-2 border-dashed border-[hsl(133.1,66.1%,76.9%)] bg-[#08041A] p-8"
+         border-2 border-dashed border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8"
       onSubmit={createEntry}
     >
       <div className="flex justify-between gap-4 border-b pb-2">
@@ -69,7 +69,7 @@ function NewEntry() {
           type="submit"
           className="text-md min-h whitespace-nowrap rounded 
                       border border-sky-500 p-[0.450rem_0.450rem_0.4625rem] 
-                      italic text-sky-500 hover:bg-slate-700 "
+                      italic text-sky-500 hover:bg-slate-700"
         >
           Save entry
         </button>

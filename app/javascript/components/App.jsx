@@ -13,7 +13,7 @@ import EditInterpretation from "./EditInterpretation";
 
 function App() {
   return (
-    <main className="grid grid-cols-[15vw_auto] grid-rows-[10vh_auto] bg-[#060522] text-white">
+    <main className="grid grid-cols-[15vw_auto] grid-rows-[10vh_auto] bg-[hsl(237.1,25.9%,15.9%)] text-white">
       <Navbar />
       <Sidebar />
       <section className="flex flex-col items-center">

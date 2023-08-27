@@ -5,7 +5,7 @@ function Settings() {
     <form
       className="flex h-[80vh] w-1/2 flex-col gap-4
         whitespace-pre-line break-words rounded border-2 
-        border-[hsl(133.1,66.1%,76.9%)] bg-[#08041A] p-8"
+        border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8"
     ></form>
   );
 }

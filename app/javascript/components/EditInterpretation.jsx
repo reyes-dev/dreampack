@@ -57,7 +57,7 @@ function EditInterpretation({ params }) {
   return (
     <form
       className="flex h-[80vh] w-1/2 flex-col justify-center gap-4 rounded
-         border-2 border-dashed border-[hsl(133.1,66.1%,76.9%)] bg-[#08041A] p-8"
+         border-2 border-dashed border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8"
       onSubmit={updateInterpretation}
     >
       <div className="flex justify-end border-b pb-2">

@@ -3,7 +3,7 @@ import SidebarLink from "./SidebarLink";
 
 function Sidebar() {
   return (
-    <section className="col-start-1 row-span-full flex h-screen w-full flex-col justify-between gap-4 self-start border-r-2 border-[hsl(133.1,66.1%,76.9%)] bg-[#08041A] p-4 underline-offset-4">
+    <section className="col-start-1 row-span-full flex h-screen w-full flex-col justify-between gap-4 self-start border-r-2 border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-4 underline-offset-4">
       <div className="flex flex-col gap-2">
         <div className="mb-1 flex flex-row items-center gap-2">
           <SidebarLink destination="/entries/new" content="New Entry" />
