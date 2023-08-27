@@ -1,5 +1,7 @@
 import React from "react";
+import Homepage from "./Homepage";
 import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
 import Entry from "./Entry";
 import EntryIndex from "./EntryIndex";
 import NewEntry from "./NewEntry";
@@ -11,14 +13,16 @@ import EditInterpretation from "./EditInterpretation";
 
 function App() {
   return (
-    <main className="flex h-full w-full">
+    <main className="grid grid-cols-[15vw_auto] grid-rows-[10vh_auto] bg-[#060522] text-white">
       <Navbar />
-      <div className="flex h-full w-full flex-col items-center justify-center">
+      <Sidebar />
+      <section className="flex flex-col items-center">
         <Switch>
+          <Route path="/" component={Homepage} />
+          <Route path="/entries/new" component={NewEntry} />
           <Route path="/entries/:id/edit" component={EditEntry} />
           <Route path="/entries/:id" component={Entry} />
           <Route path="/entries" component={EntryIndex} />
-          <Route path="/" component={NewEntry} />
           <Route path="/settings" component={Settings} />
           <Route
             path="/entries/:id/interpretation"
@@ -29,7 +33,7 @@ function App() {
             component={EditInterpretation}
           />
         </Switch>
-      </div>
+      </section>
     </main>
   );
 }
