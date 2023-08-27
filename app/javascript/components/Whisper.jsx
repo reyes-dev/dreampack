@@ -50,11 +50,23 @@ function Whisper({ setEntryBodyHandler }) {
   };
 
   return (
-    <section>
-      <p>{status}</p>
-      <button onClick={startRecording}>Start Recording</button>
-      <button onClick={stopRecording}>Stop Recording</button>
-      <audio src={mediaBlobUrl} controls />
+    <section className="flex gap-4">
+      <button
+        onClick={startRecording}
+        className="text-md h-min whitespace-nowrap rounded 
+                      border border-lime-500 p-[0.450rem_0.450rem_0.4625rem] 
+                      italic text-lime-400  hover:bg-slate-700"
+      >
+        Start Recording
+      </button>
+      <button
+        onClick={stopRecording}
+        className="text-md h-min whitespace-nowrap rounded border border-red-500 
+                      p-[0.450rem_0.450rem_0.4625rem] italic text-red-400 
+                      hover:bg-slate-700"
+      >
+        Stop Recording
+      </button>
     </section>
   );
 }
