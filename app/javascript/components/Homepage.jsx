@@ -1,10 +1,23 @@
 import React from "react";
+import { HiOutlineInformationCircle } from "react-icons/hi";
+import { IconContext } from "react-icons";
 
 function Homepage() {
   return (
     <section className="flex max-w-5xl flex-col gap-8 px-[min(7.8vw,6.25rem)]">
       <article className="flex flex-col gap-2">
-        <h1 className="text-3xl">About</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="relative flex text-3xl leading-none text-white">
+            <IconContext.Provider
+              value={{
+                className: "right-full md:absolute mr-2 text-teal-500",
+              }}
+            >
+              <HiOutlineInformationCircle />
+            </IconContext.Provider>
+            About
+          </h1>
+        </div>
         <p className="text-lg text-gray-200">
           Dreampack is a dream journaling app that is intended to aid serious
           lucid dreamers and hobbyist dream explorers alike in achieving their
