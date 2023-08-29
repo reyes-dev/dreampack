@@ -13,27 +13,29 @@ import EditInterpretation from "./EditInterpretation";
 
 function App() {
   return (
-    <main className="grid grid-cols-[15vw_auto] grid-rows-[10vh_auto] bg-[hsl(237.1,25.9%,15.9%)] text-white">
-      <Navbar />
+    <main className="flex text-white">
       <Sidebar />
-      <section className="flex flex-col items-center">
-        <Switch>
-          <Route path="/" component={Homepage} />
-          <Route path="/entries/new" component={NewEntry} />
-          <Route path="/entries/:id/edit" component={EditEntry} />
-          <Route path="/entries/:id" component={Entry} />
-          <Route path="/entries" component={EntryIndex} />
-          <Route path="/settings" component={Settings} />
-          <Route
-            path="/entries/:id/interpretation"
-            component={Interpretation}
-          />
-          <Route
-            path="/entries/:id/interpretation/edit"
-            component={EditInterpretation}
-          />
-        </Switch>
-      </section>
+      <div className="flex w-full flex-col-reverse justify-end">
+        <section className="flex flex-col items-center">
+          <Switch>
+            <Route path="/" component={Homepage} />
+            <Route path="/entries/new" component={NewEntry} />
+            <Route path="/entries/:id/edit" component={EditEntry} />
+            <Route path="/entries/:id" component={Entry} />
+            <Route path="/entries" component={EntryIndex} />
+            <Route path="/settings" component={Settings} />
+            <Route
+              path="/entries/:id/interpretation"
+              component={Interpretation}
+            />
+            <Route
+              path="/entries/:id/interpretation/edit"
+              component={EditInterpretation}
+            />
+          </Switch>
+        </section>
+        <Navbar />
+      </div>
     </main>
   );
 }
