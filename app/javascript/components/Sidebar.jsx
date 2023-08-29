@@ -17,11 +17,13 @@ function Sidebar() {
         <SidebarVisible
           hideSidebar={hideSidebar}
           icon={<BsLayoutSidebarInsetReverse />}
+          visible={visible}
         />
       ) : (
         <SidebarHidden
           hideSidebar={hideSidebar}
           icon={<BsLayoutSidebarInset />}
+          visible={visible}
         />
       )}
     </nav>

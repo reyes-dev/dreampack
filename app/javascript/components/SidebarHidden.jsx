@@ -1,10 +1,10 @@
 import React from "react";
-import ToggleSidebar from "./ToggleSidebar";
+import SidebarToggle from "./SidebarToggle";
 
-function SidebarHidden({ hideSidebar, icon }) {
+function SidebarHidden({ hideSidebar, icon, visible }) {
   return (
     <section className="flex h-screen flex-col gap-4  p-4 underline-offset-4">
-      <ToggleSidebar hideSidebar={hideSidebar} icon={icon} />
+      <SidebarToggle hideSidebar={hideSidebar} icon={icon} visible={visible} />
     </section>
   );
 }
