@@ -7,9 +7,9 @@ import { FaCog } from "react-icons/fa";
 
 function SidebarVisible({ hideSidebar, icon, visible }) {
   return (
-    <section className="flex h-screen  flex-col justify-between gap-4 self-start border-r-2 border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-4 underline-offset-4">
-      <div className="flex flex-col gap-2">
-        <div className="mb-1 flex flex-row items-center gap-2">
+    <section className="flex h-full flex-col justify-between gap-4   p-4 underline-offset-4 ">
+      <div className="flex flex-col items-center gap-2 2xl:items-stretch">
+        <div className="mb-1 flex flex-col-reverse items-center gap-2 lg:flex-row">
           <SidebarLink
             destination="/entries/new"
             content="New Entry"

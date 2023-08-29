@@ -12,7 +12,13 @@ function Sidebar() {
   };
 
   return (
-    <nav className={visible ? "w-[15vw]" : "absolute w-[5vw]"}>
+    <nav
+      className={
+        visible
+          ? "w-fit border-r-2 border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] 2xl:w-[15vw]"
+          : "absolute w-[5vw]"
+      }
+    >
       {visible ? (
         <SidebarVisible
           hideSidebar={hideSidebar}

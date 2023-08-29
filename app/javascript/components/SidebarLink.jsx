@@ -5,10 +5,10 @@ function SidebarLink({ destination, content, icon }) {
   return (
     <Link
       href={destination}
-      className="flex w-full items-center gap-2 rounded border border-white/20 p-3 hover:bg-slate-700"
+      className="flex w-min items-center gap-2 whitespace-nowrap rounded border border-white/20 p-3 hover:bg-slate-700 lg:w-full"
     >
       {icon}
-      <span className="text-lg">{content}</span>
+      <span className="hidden lg:block lg:text-sm 2xl:text-lg">{content}</span>
     </Link>
   );
 }
