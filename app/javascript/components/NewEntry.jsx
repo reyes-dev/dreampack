@@ -53,13 +53,13 @@ function NewEntry() {
   return (
     <form
       ref={formRef}
-      className="flex h-[80vh] w-1/2 flex-col gap-4 rounded
-         border-2 border-dashed border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8"
+      className="flex h-full w-fit flex-col gap-4 rounded
+         border-2 border-dashed border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 max-[1440px]:w-fit lg:h-[80vh] xl:w-1/2"
       onSubmit={createEntry}
     >
       <div className="flex justify-between gap-4 border-b pb-2">
         <input
-          className="w-full bg-transparent text-3xl outline-none"
+          className="w-full bg-transparent text-sm outline-none lg:text-3xl"
           name="entryTitle"
           data-cy="entryTitle"
           onChange={(event) => onChange(event, setTitle)}
@@ -67,16 +67,18 @@ function NewEntry() {
         />
         <button
           type="submit"
-          className="text-md min-h whitespace-nowrap rounded 
-                      border border-sky-500 p-[0.450rem_0.450rem_0.4625rem] 
-                      italic text-sky-500 hover:bg-slate-700"
+          className="min-h whitespace-nowrap rounded border border-sky-500 
+                      p-[0.450rem_0.450rem_0.4625rem] text-xs italic 
+                      text-sky-500 hover:bg-slate-700 lg:text-lg"
         >
           Save entry
         </button>
       </div>
 
       <div className="flex items-center justify-between border-b pb-2">
-        <p className=" text-gray-600">Created on {new Date().toDateString()}</p>
+        <p className="lg:text-md text-sm text-gray-600">
+          Created on {new Date().toDateString()}
+        </p>
         <div className="flex gap-4 pb-2">
           <Whisper setEntryBodyHandler={setEntryBodyHandler} />
         </div>

@@ -55,9 +55,9 @@ function Whisper({ setEntryBodyHandler }) {
         onClick={startRecording}
         className={`${
           status === "recording" ? "hidden" : ""
-        } text-md h-min whitespace-nowrap rounded 
-                      border border-lime-500 p-[0.450rem_0.450rem_0.4625rem] 
-                      italic text-lime-400  hover:bg-slate-700`}
+        } h-min whitespace-nowrap rounded border border-lime-500 
+                      p-[0.450rem_0.450rem_0.4625rem] text-xs italic 
+                      text-lime-400 hover:bg-slate-700  lg:text-lg`}
       >
         Start Recording
       </button>
@@ -65,9 +65,9 @@ function Whisper({ setEntryBodyHandler }) {
         onClick={stopRecording}
         className={`${
           status === "recording" ? "" : "hidden"
-        } text-md h-min whitespace-nowrap rounded border border-red-500 
-                      p-[0.450rem_0.450rem_0.4625rem] italic text-red-400 
-                      hover:bg-slate-700`}
+        } h-min whitespace-nowrap rounded border border-red-500 p-[0.450rem_0.450rem_0.4625rem] text-xs 
+                      italic text-red-400 hover:bg-slate-700 
+                      lg:text-lg`}
       >
         Stop Recording
       </button>
