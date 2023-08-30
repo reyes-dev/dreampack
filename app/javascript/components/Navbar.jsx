@@ -3,7 +3,7 @@ import NavbarLink from "./NavbarLink";
 
 function Navbar() {
   return (
-    <nav className="col-start-2 flex h-fit items-center justify-end gap-8 p-8">
+    <nav className="flex h-fit items-center justify-end gap-8 p-4 xl:p-8">
       <NavbarLink
         destination="/"
         content="About"
