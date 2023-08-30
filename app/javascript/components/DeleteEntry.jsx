@@ -27,7 +27,7 @@ function DeleteEntry({ id }) {
 
   return (
     <button
-      className="text-rose-700"
+      className="whitespace-nowrap text-xs text-rose-700 lg:text-lg"
       onClick={deleteEntry}
       data-cy="deleteEntry"
     >

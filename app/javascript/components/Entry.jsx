@@ -88,21 +88,21 @@ function Entry({ params }) {
 
   return (
     <section
-      className="flex h-[80vh] w-1/2 flex-col gap-4
+      className="flex h-full w-fit flex-col gap-4
         whitespace-pre-line break-words rounded border-2 
-        border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8"
+        border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 max-[1440px]:w-fit lg:h-[80vh] xl:w-1/2"
     >
       <div className="flex items-center justify-between border-b pb-2">
-        <h1 data-cy="entryTitle" className="text-3xl">
+        <h1 data-cy="entryTitle" className="text-sm lg:text-3xl">
           {entry.title}
         </h1>
         <div className="flex items-center gap-4">
           <DeleteEntry id={params.id} />
           <Link
             href={`/entries/${params.id}/edit`}
-            className="text-md min-h whitespace-nowrap rounded 
-                      border border-sky-500 p-[0.450rem_0.450rem_0.4625rem] 
-                      italic text-sky-500 hover:bg-slate-700"
+            className="min-h whitespace-nowrap rounded border border-sky-500 
+                      p-[0.450rem_0.450rem_0.4625rem] text-xs italic 
+                      text-sky-500 hover:bg-slate-700 lg:text-lg"
             data-cy="editEntry"
           >
             Edit Entry
@@ -114,22 +114,22 @@ function Entry({ params }) {
         <div className="flex items-end gap-4 pb-2">
           <Link
             href={`/entries/${params.id}/interpretation`}
-            className="text-sky-500 underline"
+            className="text-xs text-sky-500 underline lg:text-lg"
           >
             Go to Interpretation
           </Link>
           <button
             onClick={generateImage}
-            className="text-md min-h whitespace-nowrap rounded 
-                      border border-amber-500 p-[0.450rem_0.450rem_0.4625rem] 
-                      italic text-amber-500 hover:bg-slate-700"
+            className="min-h whitespace-nowrap rounded border border-amber-500 
+                      p-[0.450rem_0.450rem_0.4625rem] text-sm italic 
+                      text-amber-500 hover:bg-slate-700 lg:text-lg"
           >
             Generate Image
           </button>
         </div>
       </div>
       <Selection.Root>
-        <Selection.Trigger>
+        <Selection.Trigger className="h-fit overflow-auto">
           <p onMouseUp={handleMouseUp}>
             <Highlighter
               searchWords={dreamSigns}
