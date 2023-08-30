@@ -13,10 +13,10 @@ import EditInterpretation from "./EditInterpretation";
 
 function App() {
   return (
-    <main className="flex text-white">
+    <main className="flex h-screen text-white">
       <Sidebar />
       <div className="flex w-full flex-col-reverse justify-end">
-        <section className="flex flex-col items-center">
+        <section className="flex h-full flex-col items-center overflow-hidden pb-8 pl-8 pr-8">
           <Switch>
             <Route path="/" component={Homepage} />
             <Route path="/entries/new" component={NewEntry} />
