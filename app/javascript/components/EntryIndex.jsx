@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
+import { FaEdit } from "react-icons/fa";
 
 function EntryIndex() {
   const [entries, setEntries] = useState([]);
@@ -26,20 +27,21 @@ function EntryIndex() {
   const entryList = entries.map((entry) => {
     return (
       <ul key={entry.id}>
-        <div className="flex justify-between">
+        <div className="flex justify-between pb-1">
           <Link
             href={`/entries/${entry.id}`}
-            className="h-min whitespace-nowrap   border-b text-sm xl:text-xl"
+            className="whitespace-nowrap border-b pl-2 pr-2 pt-2 text-sm hover:rounded hover:bg-gray-600 xl:text-xl"
           >
             {entry.title}
           </Link>
           <Link
             href={`/entries/${entry.id}/edit`}
-            className="lg:text-md h-min whitespace-nowrap rounded border border-sky-500 p-[0.450rem_0.450rem_0.4625rem] 
+            className="lg:text-md flex h-min items-center gap-2 whitespace-nowrap rounded border border-sky-500 p-[0.450rem_0.450rem_0.4625rem] 
                       text-sm italic text-sky-500 
                       hover:bg-slate-700"
           >
             Edit Entry
+            <FaEdit />
           </Link>
         </div>
         <li className="pt text-gray-300">
