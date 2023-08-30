@@ -64,13 +64,13 @@ function EditEntry({ params }) {
 
   return (
     <form
-      className="flex h-[80vh] w-1/2 flex-col justify-center gap-4 rounded border-2
-        border-dashed border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8"
+      className="flex h-full w-full flex-col gap-4 rounded border-2
+        border-dashed border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 max-[1440px]:w-fit lg:h-[80vh] xl:w-1/2"
       onSubmit={updateEntry}
     >
-      <div className="flex border-b pb-2">
+      <div className="flex justify-between gap-4 border-b pb-2">
         <input
-          className="flex-1 bg-transparent text-3xl outline-none"
+          className="flex-1 bg-transparent outline-none lg:text-3xl"
           name="entryTitle"
           data-cy="entryTitle"
           onChange={(event) => onChange(event, setTitle)}
@@ -79,16 +79,18 @@ function EditEntry({ params }) {
         />
         <button
           type="submit"
-          className="text-md min-h whitespace-nowrap rounded 
-                      border border-sky-500 p-[0.450rem_0.450rem_0.4625rem] 
-                      italic text-sky-500 hover:bg-slate-700"
+          className="min-h whitespace-nowrap rounded border border-sky-500 
+                      p-[0.450rem_0.450rem_0.4625rem] text-xs italic 
+                      text-sky-500 hover:bg-slate-700 lg:text-lg"
         >
           Update entry
         </button>
       </div>
 
       <div className="border-b pb-2">
-        <p className="text-gray-600">Created on {entry.created_at}</p>
+        <p className="lg:text-md text-sm text-gray-600">
+          Created on {entry.created_at}
+        </p>
       </div>
 
       <textarea

@@ -53,13 +53,13 @@ function NewEntry() {
   return (
     <form
       ref={formRef}
-      className="flex h-full w-fit flex-col gap-4 rounded
-         border-2 border-dashed border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 max-[1440px]:w-fit lg:h-[80vh] xl:w-1/2"
+      className="flex h-full w-full flex-col gap-4 rounded
+         border-2 border-dashed border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2"
       onSubmit={createEntry}
     >
       <div className="flex justify-between gap-4 border-b pb-2">
         <input
-          className="w-full bg-transparent text-sm outline-none lg:text-3xl"
+          className="sm:text-md w-full bg-transparent text-sm  outline-none md:text-2xl lg:text-3xl"
           name="entryTitle"
           data-cy="entryTitle"
           onChange={(event) => onChange(event, setTitle)}
