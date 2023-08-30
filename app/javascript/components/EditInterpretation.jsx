@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "wouter";
+import { FaRegPaperPlane } from "react-icons/fa";
 
 function EditInterpretation({ params }) {
   const [body, setBody] = useState("");
@@ -63,11 +64,12 @@ function EditInterpretation({ params }) {
       <div className="flex justify-end border-b pb-2">
         <button
           type="submit"
-          className="min-h whitespace-nowrap rounded border border-sky-500 
+          className="min-h flex items-center gap-2 whitespace-nowrap rounded border border-sky-500 
                       p-[0.450rem_0.450rem_0.4625rem] text-sm italic 
                       text-sky-500 hover:bg-slate-700 lg:text-lg"
         >
           Update interpretation
+          <FaRegPaperPlane />
         </button>
       </div>
 

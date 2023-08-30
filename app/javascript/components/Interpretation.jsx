@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
 import ChatGPT from "./ChatGPT";
+import { FaEdit } from "react-icons/fa";
 
 function Interpretation({ params }) {
   const [interpretationBody, setInterpretationBody] = useState("");
@@ -40,11 +41,12 @@ function Interpretation({ params }) {
           </Link>
           <Link
             href={`/entries/${params.id}/interpretation/edit`}
-            className="min-h hidden whitespace-nowrap rounded border border-sky-500 p-[0.450rem_0.450rem_0.4625rem] 
-                      text-xs italic text-sky-500 
-                      hover:bg-slate-700 lg:block lg:text-lg"
+            className="min-h hidden items-center gap-2 whitespace-nowrap rounded border border-sky-500 p-[0.450rem_0.450rem_0.4625rem] text-xs 
+                      italic text-sky-500 hover:bg-slate-700 
+                      lg:flex lg:text-lg"
           >
             Edit Interpretation
+            <FaEdit />
           </Link>
         </div>
       </div>

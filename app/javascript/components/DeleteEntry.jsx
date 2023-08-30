@@ -1,5 +1,6 @@
 import React from "react";
 import { useLocation } from "wouter";
+import { FaTrashAlt } from "react-icons/fa";
 
 function DeleteEntry({ id }) {
   const [location, setLocation] = useLocation();
@@ -27,11 +28,11 @@ function DeleteEntry({ id }) {
 
   return (
     <button
-      className="whitespace-nowrap text-xs text-rose-700 lg:text-lg"
+      className="rounded border border-rose-700 p-[0.450rem_0.450rem_0.4625rem] text-xs text-rose-700 hover:bg-slate-700 lg:text-lg"
       onClick={deleteEntry}
       data-cy="deleteEntry"
     >
-      [ - ]
+      <FaTrashAlt />
     </button>
   );
 }

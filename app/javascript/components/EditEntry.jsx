@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "wouter";
+import { FaRegPaperPlane } from "react-icons/fa";
 
 function EditEntry({ params }) {
   const [entry, setEntry] = useState({});
@@ -79,11 +80,12 @@ function EditEntry({ params }) {
         />
         <button
           type="submit"
-          className="min-h whitespace-nowrap rounded border border-sky-500 
+          className="min-h flex items-center gap-2 whitespace-nowrap rounded border border-sky-500 
                       p-[0.450rem_0.450rem_0.4625rem] text-xs italic 
                       text-sky-500 hover:bg-slate-700 lg:text-lg"
         >
           Update entry
+          <FaRegPaperPlane />
         </button>
       </div>
 

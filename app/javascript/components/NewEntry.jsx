@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Whisper from "./Whisper";
 import { useLocation } from "wouter";
+import { FaRegPaperPlane } from "react-icons/fa";
 
 function NewEntry() {
   const formRef = useRef(null);
@@ -67,11 +68,12 @@ function NewEntry() {
         />
         <button
           type="submit"
-          className="min-h whitespace-nowrap rounded border border-sky-500 
+          className="min-h flex items-center gap-2 whitespace-nowrap rounded border border-sky-500 
                       p-[0.450rem_0.450rem_0.4625rem] text-xs italic 
                       text-sky-500 hover:bg-slate-700 lg:text-lg"
         >
           Save entry
+          <FaRegPaperPlane />
         </button>
       </div>
 

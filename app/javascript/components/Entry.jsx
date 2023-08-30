@@ -4,6 +4,7 @@ import DeleteEntry from "./DeleteEntry";
 import * as Selection from "selection-popover";
 import DreamSign from "./DreamSign";
 import Highlighter from "react-highlight-words";
+import { FaEdit, FaPalette } from "react-icons/fa";
 
 function Entry({ params }) {
   const [entry, setEntry] = useState({});
@@ -100,12 +101,13 @@ function Entry({ params }) {
           <DeleteEntry id={params.id} />
           <Link
             href={`/entries/${params.id}/edit`}
-            className="min-h whitespace-nowrap rounded border border-sky-500 
+            className="min-h flex items-center gap-2 whitespace-nowrap rounded border border-sky-500 
                       p-[0.450rem_0.450rem_0.4625rem] text-xs italic 
                       text-sky-500 hover:bg-slate-700 lg:text-lg"
             data-cy="editEntry"
           >
             Edit Entry
+            <FaEdit />
           </Link>
         </div>
       </div>
@@ -120,11 +122,12 @@ function Entry({ params }) {
           </Link>
           <button
             onClick={generateImage}
-            className="min-h whitespace-nowrap rounded border border-amber-500 
+            className="min-h flex items-center gap-2 whitespace-nowrap rounded border border-amber-500 
                       p-[0.450rem_0.450rem_0.4625rem] text-sm italic 
                       text-amber-500 hover:bg-slate-700 lg:text-lg"
           >
             Generate Image
+            <FaPalette />
           </button>
         </div>
       </div>
