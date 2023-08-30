@@ -26,31 +26,32 @@ function Interpretation({ params }) {
 
   return (
     <section
-      className="flex h-[80vh] w-1/2 flex-col gap-4
-        whitespace-pre-line break-words rounded border-2 
-        border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8"
+      className="flex h-full w-full flex-col gap-4 overflow-auto rounded
+         border-2 border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2"
     >
       <div className="flex justify-between gap-4 border-b pb-2">
-        <h1 className="text-3xl">Interpretation</h1>
+        <h1 className="text-xs lg:text-3xl">Interpretation</h1>
         <div className="flex items-end gap-4">
           <Link
             href={`/entries/${params.id}`}
-            className="text-sky-500 underline"
+            className="whitespace-nowrap text-xs text-sky-500 underline lg:text-lg"
           >
             Back to Entry
           </Link>
           <Link
             href={`/entries/${params.id}/interpretation/edit`}
-            className="text-md min-h whitespace-nowrap rounded 
-                      border border-sky-500 p-[0.450rem_0.450rem_0.4625rem] 
-                      italic text-sky-500 hover:bg-slate-700"
+            className="min-h hidden whitespace-nowrap rounded border border-sky-500 p-[0.450rem_0.450rem_0.4625rem] 
+                      text-xs italic text-sky-500 
+                      hover:bg-slate-700 lg:block lg:text-lg"
           >
             Edit Interpretation
           </Link>
         </div>
       </div>
       <div className="flex items-center justify-between border-b pb-2">
-        <p className="text-gray-600">Created on {new Date().toDateString()}</p>
+        <p className="lg:text-md text-sm text-gray-600">
+          Created on {new Date().toDateString()}
+        </p>
         <div className="flex gap-4 pb-2">
           <ChatGPT
             entry_id={params.id}
@@ -59,7 +60,7 @@ function Interpretation({ params }) {
         </div>
       </div>
 
-      <p>{interpretationBody}</p>
+      <p className="h-fit resize-none">{interpretationBody}</p>
     </section>
   );
 }

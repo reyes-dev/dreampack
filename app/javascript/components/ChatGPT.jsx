@@ -27,9 +27,9 @@ function ChatGPT({ entry_id, setInterpretationBody }) {
   return (
     <button
       onClick={createChatGPTResponse}
-      className="text-md min-h whitespace-nowrap rounded 
-                      border border-violet-500 p-[0.450rem_0.450rem_0.4625rem] 
-                      italic text-violet-500 hover:bg-slate-700"
+      className="min-h hidden whitespace-nowrap rounded border border-violet-500 p-[0.450rem_0.450rem_0.4625rem] 
+                      text-xs italic text-violet-500 
+                      hover:bg-slate-700 lg:block lg:text-lg"
     >
       Interpret with AI
     </button>
