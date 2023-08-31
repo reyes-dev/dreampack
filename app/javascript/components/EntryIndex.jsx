@@ -26,16 +26,16 @@ function EntryIndex() {
 
   const entryList = entries.map((entry) => {
     return (
-      <ul key={entry.id}>
+      <ul key={entry[0]}>
         <div className="flex justify-between pb-1">
           <Link
-            href={`/entries/${entry.id}`}
+            href={`/entries/${entry[0]}`}
             className="whitespace-nowrap border-b pl-2 pr-2 pt-2 text-sm hover:rounded hover:bg-gray-600 xl:text-xl"
           >
-            {entry.title}
+            {entry[1]}
           </Link>
           <Link
-            href={`/entries/${entry.id}/edit`}
+            href={`/entries/${entry[0]}/edit`}
             className="lg:text-md flex h-min items-center gap-2 whitespace-nowrap rounded border border-sky-500 p-[0.450rem_0.450rem_0.4625rem] 
                       text-sm italic text-sky-500 
                       hover:bg-slate-700"
@@ -46,9 +46,7 @@ function EntryIndex() {
             <FaEdit />
           </Link>
         </div>
-        <li className="pt text-gray-300">
-          {entry.body.split(/\s+/).slice(0, 20).join(" ").concat("...")}
-        </li>
+        <li className="pt text-gray-300">{entry[2]}</li>
       </ul>
     );
   });

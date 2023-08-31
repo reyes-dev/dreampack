@@ -1,7 +1,7 @@
 class API::EntriesController < ApplicationController
   def index
-    entry = Entry.all.order(created_at: :desc)
-    render json: entry
+    entry = Entry.truncated_entries
+    render json: entry.to_json
   end
 
   def create

@@ -6,6 +6,12 @@ class Entry < ApplicationRecord
   validates :title, presence: true, length: { in: 1..250 }
   validates :body, presence: true
 
+  def self.truncated_entries
+    Entry.order(created_at: :desc).pluck(:id, :title, :body).map do |id, title, body|
+      [id, title, body.split[0..20].join(' ').concat('...')]
+    end
+  end
+
   private
 
   def add_interpretation
