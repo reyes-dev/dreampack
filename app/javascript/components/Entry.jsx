@@ -8,6 +8,7 @@ import { FaEdit, FaPalette } from "react-icons/fa";
 
 function Entry({ params }) {
   const [entry, setEntry] = useState({});
+  const [body, setBody] = useState("");
   const [selectedText, setSelectedText] = useState();
   const [dreamSigns, setDreamSigns] = useState([]);
   const [dalleUrl, setDalleUrl] = useState("");
@@ -26,6 +27,7 @@ function Entry({ params }) {
       }
       const data = await response.json();
       setEntry(data);
+      setBody(String(data.body));
       setDalleUrl(data.image.url);
       console.log(data);
       return data;
@@ -140,7 +142,7 @@ function Entry({ params }) {
           <p onMouseUp={handleMouseUp}>
             <Highlighter
               searchWords={dreamSigns}
-              textToHighlight={String(entry.body)}
+              textToHighlight={body}
               data-cy="entryBody"
             />
           </p>
