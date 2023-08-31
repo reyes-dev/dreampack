@@ -28,8 +28,9 @@ function Entry({ params }) {
       const data = await response.json();
       setEntry(data);
       setBody(String(data.body));
-      setDalleUrl(data.image.url);
-      console.log(data);
+      if (data.image != null) {
+        setDalleUrl(data.image.url);
+      }
       return data;
     } catch (e) {
       console.error(e);
