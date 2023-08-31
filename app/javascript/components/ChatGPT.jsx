@@ -28,11 +28,13 @@ function ChatGPT({ entry_id, setInterpretationBody }) {
   return (
     <button
       onClick={createChatGPTResponse}
-      className="min-h hidden items-center gap-2 whitespace-nowrap rounded border border-violet-500 p-[0.450rem_0.450rem_0.4625rem] 
-                      text-xs italic text-violet-500 
-                      hover:bg-slate-700 lg:flex lg:text-lg"
+      className="min-h gap-2 whitespace-nowrap rounded border border-violet-500 p-[0.450rem_0.450rem_0.4625rem] text-xs 
+                      italic text-violet-500 hover:bg-slate-700 
+                      lg:flex lg:items-center lg:text-lg"
     >
-      Interpret with AI
+      <span className="lg:text-md hidden lg:block xl:text-lg">
+        Interpret with AI
+      </span>
       <FaRobot />
     </button>
   );

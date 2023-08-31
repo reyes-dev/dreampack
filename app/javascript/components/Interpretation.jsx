@@ -32,7 +32,7 @@ function Interpretation({ params }) {
     >
       <div className="flex justify-between gap-4 border-b pb-2">
         <h1 className="text-xs lg:text-3xl">Interpretation</h1>
-        <div className="flex items-end gap-4">
+        <div className="flex flex-col-reverse items-end gap-4 lg:flex-row">
           <Link
             href={`/entries/${params.id}`}
             className="whitespace-nowrap text-xs text-sky-500 underline lg:text-lg"
@@ -41,11 +41,13 @@ function Interpretation({ params }) {
           </Link>
           <Link
             href={`/entries/${params.id}/interpretation/edit`}
-            className="min-h hidden items-center gap-2 whitespace-nowrap rounded border border-sky-500 p-[0.450rem_0.450rem_0.4625rem] text-xs 
-                      italic text-sky-500 hover:bg-slate-700 
-                      lg:flex lg:text-lg"
+            className="min-h gap-2 whitespace-nowrap rounded border border-sky-500 p-[0.450rem_0.450rem_0.4625rem] text-xs italic 
+                      text-sky-500 hover:bg-slate-700 lg:flex 
+                      lg:items-center lg:text-lg"
           >
-            Edit Interpretation
+            <span className="lg:text-md hidden lg:block xl:text-lg">
+              Edit Interpretation
+            </span>
             <FaEdit />
           </Link>
         </div>

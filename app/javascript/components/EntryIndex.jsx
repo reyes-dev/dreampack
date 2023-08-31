@@ -40,7 +40,9 @@ function EntryIndex() {
                       text-sm italic text-sky-500 
                       hover:bg-slate-700"
           >
-            Edit Entry
+            <span className="lg:text-md hidden lg:block xl:text-lg">
+              Edit Entry
+            </span>
             <FaEdit />
           </Link>
         </div>

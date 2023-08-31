@@ -91,7 +91,7 @@ function Entry({ params }) {
     <section
       className="flex h-full w-full flex-col gap-4
         whitespace-pre-line break-words rounded border-2 
-        border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 max-[1440px]:w-fit lg:h-[80vh] xl:w-1/2"
+        border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2"
     >
       <div className="flex items-center justify-between border-b pb-2">
         <h1 data-cy="entryTitle" className="text-sm lg:text-3xl">
@@ -106,7 +106,9 @@ function Entry({ params }) {
                       text-sky-500 hover:bg-slate-700 lg:text-lg"
             data-cy="editEntry"
           >
-            Edit Entry
+            <span className="lg:text-md hidden lg:block xl:text-lg">
+              Edit Entry
+            </span>
             <FaEdit />
           </Link>
         </div>
@@ -126,7 +128,9 @@ function Entry({ params }) {
                       p-[0.450rem_0.450rem_0.4625rem] text-sm italic 
                       text-amber-500 hover:bg-slate-700 lg:text-lg"
           >
-            Generate Image
+            <span className="lg:text-md hidden lg:block xl:text-lg">
+              Generate Image
+            </span>
             <FaPalette />
           </button>
         </div>

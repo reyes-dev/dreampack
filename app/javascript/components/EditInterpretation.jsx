@@ -57,8 +57,7 @@ function EditInterpretation({ params }) {
 
   return (
     <form
-      className="flex h-full w-full flex-col gap-4 rounded
-         border-2 border-dashed border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2"
+      className="flex h-full w-full flex-col gap-4 rounded border-2 border-dashed border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2"
       onSubmit={updateInterpretation}
     >
       <div className="flex justify-end border-b pb-2">
@@ -66,9 +65,11 @@ function EditInterpretation({ params }) {
           type="submit"
           className="min-h flex items-center gap-2 whitespace-nowrap rounded border border-sky-500 
                       p-[0.450rem_0.450rem_0.4625rem] text-sm italic 
-                      text-sky-500 hover:bg-slate-700 lg:text-lg"
+                      text-sky-500 hover:bg-slate-700"
         >
-          Update interpretation
+          <span className="lg:text-md hidden lg:block xl:text-lg">
+            Update interpretation
+          </span>
           <FaRegPaperPlane />
         </button>
       </div>

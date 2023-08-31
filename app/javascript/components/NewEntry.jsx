@@ -72,7 +72,9 @@ function NewEntry() {
                       p-[0.450rem_0.450rem_0.4625rem] text-xs italic 
                       text-sky-500 hover:bg-slate-700 lg:text-lg"
         >
-          Save entry
+          <span className="lg:text-md hidden lg:block xl:text-lg">
+            Save entry
+          </span>
           <FaRegPaperPlane />
         </button>
       </div>

@@ -66,12 +66,12 @@ function EditEntry({ params }) {
   return (
     <form
       className="flex h-full w-full flex-col gap-4 rounded border-2
-        border-dashed border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 max-[1440px]:w-fit lg:h-[80vh] xl:w-1/2"
+        border-dashed border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2"
       onSubmit={updateEntry}
     >
       <div className="flex justify-between gap-4 border-b pb-2">
         <input
-          className="flex-1 bg-transparent outline-none lg:text-3xl"
+          className="flex-1 bg-transparent text-sm outline-none lg:text-3xl"
           name="entryTitle"
           data-cy="entryTitle"
           onChange={(event) => onChange(event, setTitle)}
@@ -84,7 +84,9 @@ function EditEntry({ params }) {
                       p-[0.450rem_0.450rem_0.4625rem] text-xs italic 
                       text-sky-500 hover:bg-slate-700 lg:text-lg"
         >
-          Update entry
+          <span className="lg:text-md hidden lg:block xl:text-lg">
+            Update entry
+          </span>
           <FaRegPaperPlane />
         </button>
       </div>
