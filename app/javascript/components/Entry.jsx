@@ -157,7 +157,11 @@ function Entry({ params }) {
           </Selection.Content>
         </Selection.Portal>
       </Selection.Root>
-      <img src={dalleUrl} alt="AI generated image of user dream" />
+      <img
+        src={dalleUrl}
+        alt="AI generated image of user dream"
+        className="h-20 w-20 rounded border-2 border-sky-100"
+      />
     </section>
   );
 }
