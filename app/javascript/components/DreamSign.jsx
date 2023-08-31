@@ -30,6 +30,7 @@ function DreamSign({ phrase, highlightNewDreamSign }) {
         createDreamSign();
         highlightNewDreamSign();
       }}
+      className="p-2 text-[#FFBABB]"
     >
       Dream Sign
     </button>

@@ -149,7 +149,10 @@ function Entry({ params }) {
           </p>
         </Selection.Trigger>
         <Selection.Portal>
-          <Selection.Content side="bottom">
+          <Selection.Content
+            side="bottom"
+            className="flex w-full min-w-max items-center gap-2 rounded-md bg-[hsl(237.1,25.9%,15.9%)] px-2.5 shadow-xl hover:bg-[hsl(237.1,25.9%,12.9%)]"
+          >
             <DreamSign
               phrase={selectedText}
               highlightNewDreamSign={highlightNewDreamSign}
