@@ -7,8 +7,8 @@ class Entry < ApplicationRecord
   validates :body, presence: true
 
   def self.truncated_entries
-    Entry.order(created_at: :desc).pluck(:id, :title, :body).map do |id, title, body|
-      [id, title, body.split[0..20].join(' ').concat('...')]
+    Entry.order(created_at: :desc).pluck(:id, :title, :body, :created_at).map do |id, title, body, created_at|
+      [id, title, body.split[0..20].join(' ').concat('...'), created_at.strftime('%B %d, %Y')]
     end
   end
 
