@@ -28,10 +28,10 @@ function EntryIndex() {
     return (
       <ul key={entry[0]}>
         <div className="flex justify-between pb-1">
-          <div className="flex items-baseline gap-2">
+          <div className="flex-col items-baseline gap-2 lg:flex">
             <Link
               href={`/entries/${entry[0]}`}
-              className="whitespace-nowrap border-b pl-2 pr-2 pt-2 text-sm hover:rounded hover:bg-gray-600 xl:text-xl"
+              className="sm:text-md whitespace-pre-line border-b pt-2 text-sm hover:rounded hover:bg-gray-600 md:text-lg lg:pr-2 lg:text-xl"
             >
               {entry[1]}
             </Link>
@@ -51,7 +51,9 @@ function EntryIndex() {
             <FaEdit />
           </Link>
         </div>
-        <li className="pt text-gray-300">{entry[2]}</li>
+        <li className="pt md:text-md text-sm text-gray-200 lg:text-lg">
+          {entry[2]}
+        </li>
       </ul>
     );
   });
@@ -59,7 +61,7 @@ function EntryIndex() {
   return (
     <section
       className="flex h-full w-full flex-col gap-4 overflow-auto rounded 
-    border-2 border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 max-[1440px]:w-fit lg:h-[80vh] xl:w-1/2"
+    border-2 border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2"
     >
       {entryList}
     </section>
