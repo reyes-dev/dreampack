@@ -140,23 +140,38 @@ function Entry({ params }) {
       </div>
       <Selection.Root>
         <Selection.Trigger className="h-fit overflow-auto">
-          <p onMouseUp={handleMouseUp}>
+          <p onMouseUp={handleMouseUp} className="text-xl">
             <Highlighter
+              highlightClassName="text-[#FFBABB] rounded bg-transparent"
               searchWords={dreamSigns}
               textToHighlight={body}
               data-cy="entryBody"
+              highlightStyle={{ textShadow: "0 0 5px #FFBABB" }}
             />
           </p>
         </Selection.Trigger>
         <Selection.Portal>
           <Selection.Content
-            side="bottom"
-            className="flex w-full min-w-max items-center gap-2 rounded-md bg-[hsl(237.1,25.9%,15.9%)] px-2.5 shadow-xl hover:bg-[hsl(237.1,25.9%,12.9%)]"
+            side="top"
+            className="flex w-full flex-col items-center rounded-md bg-[hsl(237.1,25.9%,15.9%)] px-2.5 shadow-xl"
           >
-            <DreamSign
-              phrase={selectedText}
-              highlightNewDreamSign={highlightNewDreamSign}
-            />
+            <div className="flex">
+              <DreamSign
+                phrase={selectedText}
+                highlightNewDreamSign={highlightNewDreamSign}
+              />
+            </div>
+            <span className="h-0">
+              <svg
+                className="fill-[hsl(237.1,25.9%,15.9%)]"
+                width="10"
+                height="5"
+                viewBox="0 0 30 10"
+                preserveAspectRatio="none"
+              >
+                <polygon points="0,0 30,0 15,10"></polygon>
+              </svg>
+            </span>
           </Selection.Content>
         </Selection.Portal>
       </Selection.Root>

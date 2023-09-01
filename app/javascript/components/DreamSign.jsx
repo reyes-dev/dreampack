@@ -30,7 +30,7 @@ function DreamSign({ phrase, highlightNewDreamSign }) {
         createDreamSign();
         highlightNewDreamSign();
       }}
-      className="p-2 text-[#FFBABB]"
+      className="p-2 text-[#FFBABB] hover:bg-[hsl(237.1,25.9%,12.9%)]"
     >
       Dream Sign
     </button>
