@@ -52,7 +52,11 @@ function Entry({ params }) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-      setDreamSigns(data);
+      const joinedDreamSigns = data.join("|");
+      dreamSignsRegexPattern = [
+        new RegExp(`\\b(?:${joinedDreamSigns})\\b`, "g"),
+      ];
+      setDreamSigns(dreamSignsRegexPattern);
     } catch (e) {
       console.error(e);
     }
