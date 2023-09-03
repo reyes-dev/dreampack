@@ -1,15 +1,15 @@
 import React from "react";
-import Homepage from "./Homepage";
-import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
-import Entry from "./Entry";
-import EntryIndex from "./EntryIndex";
-import NewEntry from "./NewEntry";
-import EditEntry from "./EditEntry";
-import Settings from "./Settings";
+import Homepage from "./About/Homepage";
+import Navbar from "./Navbar/Navbar";
+import Sidebar from "./Sidebar/Sidebar";
+import Entry from "./Entry/ShowEntry/Entry";
+import EntryIndex from "./Entry/EntryIndex/EntryIndex";
+import NewEntry from "./Entry/NewEntry/NewEntry";
+import EditEntry from "./Entry/EditEntry/EditEntry";
+import Settings from "./Settings/Settings";
 import { Switch, Route } from "wouter";
-import Interpretation from "./Interpretation";
-import EditInterpretation from "./EditInterpretation";
+import Interpretation from "./Interpretation/ShowInterpretation/Interpretation";
+import EditInterpretation from "./Interpretation/EditInterpretation/EditInterpretation";
 
 function App() {
   return (
