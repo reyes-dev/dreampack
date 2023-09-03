@@ -30,10 +30,16 @@ function DeleteEntryModal({ id, toggleModalActivation }) {
       <h1 className="mb-4 text-lg lg:text-2xl">Delete entry</h1>
       <p className="mb-8 text-gray-200">Delete your entry permanently?</p>
       <div className="flex justify-end gap-6">
-        <button onClick={toggleModalActivation} className="text-sky-500">
+        <button
+          onClick={toggleModalActivation}
+          className="pointer-events-auto text-sky-500"
+        >
           Cancel
         </button>
-        <button className="text-sky-500" onClick={deleteEntry}>
+        <button
+          className="pointer-events-auto text-sky-500"
+          onClick={deleteEntry}
+        >
           Delete
         </button>
       </div>
