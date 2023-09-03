@@ -1,8 +1,7 @@
 import React from "react";
 import { useLocation } from "wouter";
-import { FaTrashAlt } from "react-icons/fa";
 
-function DeleteEntry({ id }) {
+function DeleteEntryModal({ id, toggleModalActivation }) {
   const [location, setLocation] = useLocation();
 
   const deleteEntry = async () => {
@@ -27,14 +26,19 @@ function DeleteEntry({ id }) {
   };
 
   return (
-    <button
-      className="rounded border border-rose-700 p-[0.450rem_0.450rem_0.4625rem] text-xs text-rose-700 hover:bg-slate-700 lg:text-lg"
-      onClick={deleteEntry}
-      data-cy="deleteEntry"
-    >
-      <FaTrashAlt />
-    </button>
+    <section className="absolute left-1/2 top-1/2 w-max -translate-x-1/2 -translate-y-1/2 rounded-xl bg-gray-900 p-8  shadow-xl">
+      <h1 className="mb-4 text-lg lg:text-2xl">Delete entry</h1>
+      <p className="mb-8 text-gray-200">Delete your entry permanently?</p>
+      <div className="flex justify-end gap-6">
+        <button onClick={toggleModalActivation} className="text-sky-500">
+          Cancel
+        </button>
+        <button className="text-sky-500" onClick={deleteEntry}>
+          Delete
+        </button>
+      </div>
+    </section>
   );
 }
 
-export default DeleteEntry;
+export default DeleteEntryModal;

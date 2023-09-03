@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "wouter";
-import DeleteEntry from "./DeleteEntry";
+import DeleteEntryButton from "./DeleteEntryButton";
 import * as Selection from "selection-popover";
 import DreamSign from "./DreamSign";
 import Highlighter from "react-highlight-words";
 import { FaEdit, FaPalette } from "react-icons/fa";
+import DeleteEntryModal from "./DeleteEntryModal";
 
 function Entry({ params }) {
   const [entry, setEntry] = useState({});
@@ -12,6 +13,7 @@ function Entry({ params }) {
   const [selectedText, setSelectedText] = useState();
   const [dreamSigns, setDreamSigns] = useState([]);
   const [dalleUrl, setDalleUrl] = useState("");
+  const [modalActivated, setModalActivated] = useState(false);
 
   useEffect(() => {
     getEntry();
@@ -94,18 +96,28 @@ function Entry({ params }) {
     setDreamSigns((dreamSigns) => [...dreamSigns, selectedText]);
   };
 
+  const toggleModalActivation = () => {
+    setModalActivated((currentBooleanState) => !currentBooleanState);
+  };
+
   return (
     <section
       className="flex h-full w-full flex-col gap-4
         whitespace-pre-line break-words rounded border-2 
         border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2"
     >
+      {modalActivated && (
+        <DeleteEntryModal
+          id={params.id}
+          toggleModalActivation={toggleModalActivation}
+        />
+      )}
       <div className="flex items-center justify-between border-b pb-2">
         <h1 data-cy="entryTitle" className="text-sm lg:text-3xl">
           {entry.title}
         </h1>
         <div className="flex items-center gap-4">
-          <DeleteEntry id={params.id} />
+          <DeleteEntryButton toggleModalActivation={toggleModalActivation} />
           <Link
             href={`/entries/${params.id}/edit`}
             className="min-h flex items-center gap-2 whitespace-nowrap rounded border border-sky-500 
