@@ -1,13 +1,16 @@
 class API::EntriesController < ApplicationController
+  skip_before_action :verify_authenticity_token
+  before_action :authenticate_user!
+
   def index
-    entry = Entry.truncated_entries
+    entry = current_user.entries.truncated_entries
     render json: entry.to_json
   end
 
   def create
-    entry = Entry.create(entry_params)
+    entry = current_user.entries.create!(entry_params)
 
-    if entry.save
+    if entry.save!
       render json: entry, status: :created
     else
       render json: entry.errors
