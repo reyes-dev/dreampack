@@ -10,6 +10,8 @@ import Settings from "./Settings/Settings";
 import { Switch, Route } from "wouter";
 import Interpretation from "./Interpretation/ShowInterpretation/Interpretation";
 import EditInterpretation from "./Interpretation/EditInterpretation/EditInterpretation";
+import SignUp from "./Registrations/SignUp";
+import SignIn from "./Sessions/SignIn";
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
               path="/entries/:id/interpretation/edit"
               component={EditInterpretation}
             />
+            <Route path="/sign_up" component={SignUp} />
+            <Route path="/sign_in" component={SignIn} />
           </Switch>
         </section>
         <Navbar />
