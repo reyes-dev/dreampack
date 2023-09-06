@@ -1,4 +1,5 @@
 class Entry < ApplicationRecord
+  belongs_to :user
   after_create :add_interpretation
   has_one :interpretation, dependent: :destroy
   has_one_attached :image
