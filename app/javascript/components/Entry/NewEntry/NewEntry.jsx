@@ -25,13 +25,12 @@ function NewEntry() {
     // Validate body
     if (body.length == 0) return;
     const dataBody = { body, title };
-    const token = document.querySelector("meta[name='csrf-token']").content;
     try {
       const response = await fetch(`/api/entries`, {
         method: "POST",
         headers: {
-          "X-CSRF-Token": token,
           "Content-Type": "application/json",
+          Authorization: localStorage.getItem("token"),
         },
         body: JSON.stringify(dataBody),
       });
