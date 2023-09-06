@@ -1,9 +1,11 @@
 import React from "react";
 import SidebarLink from "./SidebarLink";
 import SidebarToggle from "./SidebarToggle";
+import SignOut from "../Sessions/SignOut";
 import { FaPlus } from "react-icons/fa";
 import { FaBook } from "react-icons/fa";
 import { FaCog } from "react-icons/fa";
+import { FaSignOutAlt } from "react-icons/fa";
 
 function SidebarVisible({ hideSidebar, icon, visible }) {
   return (
@@ -28,11 +30,14 @@ function SidebarVisible({ hideSidebar, icon, visible }) {
           icon={<FaBook />}
         />
       </div>
-      <SidebarLink
-        destination="/settings"
-        content="Settings"
-        icon={<FaCog />}
-      />
+      <div className="mb-1 flex flex-col items-center gap-4">
+        <SidebarLink
+          destination="/settings"
+          content="Settings"
+          icon={<FaCog />}
+        />
+        <SignOut />
+      </div>
     </section>
   );
 }
