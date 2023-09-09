@@ -1,11 +1,10 @@
 import React from "react";
 import SidebarLink from "./SidebarLink";
 import SidebarToggle from "./SidebarToggle";
-import SignOut from "../Sessions/SignOut";
+import LogOutButton from "./LogOutButton";
 import { FaPlus } from "react-icons/fa";
 import { FaBook } from "react-icons/fa";
 import { FaCog } from "react-icons/fa";
-import { FaSignOutAlt } from "react-icons/fa";
 
 function SidebarVisible({ hideSidebar, icon, visible }) {
   return (
@@ -36,7 +35,7 @@ function SidebarVisible({ hideSidebar, icon, visible }) {
           content="Settings"
           icon={<FaCog />}
         />
-        <SignOut />
+        <LogOutButton />
       </div>
     </section>
   );
