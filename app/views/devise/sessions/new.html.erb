@@ -1,30 +1,34 @@
 <main class="flex h-screen items-center text-white justify-center">
-<section class="flex h-fit flex-col items-center overflow-hidden pb-8 pl-8 pr-8">
-<h2>Log in to Dreampack</h2>
+  <section class="flex w-fit flex-col gap-4 whitespace-pre-line break-words rounded-xl 
+   shadow-xl bg-[hsla(0,0%,0%,0.15)] p-8">
+  <h2 class="self-center text-3xl">Log in to Dreampack</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "text-black" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="flex flex-col gap-1">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "text-black p-2 border border-black rounded" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password", class: "text-black" %>
-  </div>
+      <div class="flex flex-col gap-1">
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "text-black p-2 border-2 border-black rounded" %>
+      </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
+      <div class="flex gap-4 justify-between items-end">
+      <% if devise_mapping.rememberable? %>
+        <div class="flex flex-row-reverse w-fit gap-4">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me, class: "text-lg" %>
+        </div>
+      <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+        <%= f.submit "Log in", class: "text-lg flex w-fit justify-center items-center bg-blue-500 rounded h-min p-2 cursor-pointer" %>
+      </div>
+        
+      <div class="flex justify-between">
+        <%= render "devise/shared/links" %>
+      </div>
+    <% end %>
 
-<%= render "devise/shared/links" %>
-</section>
+  </section>
 </main>
