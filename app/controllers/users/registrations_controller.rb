@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  skip_before_action :verify_authenticity_token
-  include RackSessionsFix
-  respond_to :json
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -63,17 +60,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
   private
 
-  def respond_with(current_user, _opts = {})
-    if resource.persisted?
-      render json: {
-        status: { code: 200, message: 'Signed up successfully.' },
-        data: UserSerializer.new(current_user).serializable_hash[:data][:attributes]
-      }
-    else
-      render json: {
-               status: { message: "User signup failed. #{resource.errors.full_messages.to_sentence}" }
-             },
-             status: :unprocessable_entity
-    end
+  def after_sign_up_path_for(_resource)
+    '/entries'
   end
 end
