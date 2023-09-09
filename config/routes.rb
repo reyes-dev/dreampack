@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  get 'private/test'
-  get '/current_user', to: 'current_user#index'
   root 'pages#home'
+
+  get '/current_user', to: 'current_user#index'
+
   devise_for :users, path: '', path_names: {
                                  sign_in: 'login',
                                  sign_out: 'logout',
-                                 registration: 'signup'
+                                 registration: ''
                                },
                      controllers: {
                        sessions: 'users/sessions',
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
     resources :dream_signs
     resources :whisper_transcriptions, only: [:create]
   end
+
   get '*all', to: 'pages#home', constraints: lambda { |req|
                                                req.path.exclude? 'rails/active_storage'
                                              }
