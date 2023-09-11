@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  encrypts :openai_token
   include Devise::JWT::RevocationStrategies::JTIMatcher
 
   devise :database_authenticatable, :registerable,
