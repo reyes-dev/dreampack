@@ -1,16 +1,24 @@
-<h2>Forgot your password?</h2>
+<main class="flex h-screen items-center text-white justify-center">
+  <section class="flex w-96 flex-col gap-8 whitespace-pre-line break-words rounded-xl 
+   shadow-xl bg-[hsla(0,0%,0%,0.15)] p-8">
+<h2 class="self-center text-3xl">Forgot your password?</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "flex flex-col gap-16" }) do |f| %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-2">
+          <%= f.label :email %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "text-black p-2 border border-black rounded" %>
+        </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+        <div>
+          <%= f.submit "Send reset password email ", class: "text-lg flex w-fit justify-center items-center bg-blue-500 hover:bg-blue-600 rounded h-min p-2 cursor-pointer" %>
+        </div>
+      </div>
+    <% end %>
+    <div class="flex justify-between">
+      <%= render "devise/shared/links" %>
+    </div>
+  </section>
+</main>
