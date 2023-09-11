@@ -3,7 +3,7 @@ class CurrentUserController < ApplicationController
     if current_user
       render json: current_user, status: :ok
     else
-      head :no_content
+      render json: {}, status: :no_content
     end
   end
 end
