@@ -1,5 +1,5 @@
 <main class="flex h-screen items-center text-white justify-center">
-  <section class="flex w-fit flex-col gap-4 whitespace-pre-line break-words rounded-xl 
+  <section class="flex w-96 flex-col gap-4 whitespace-pre-line break-words rounded-xl 
    shadow-xl bg-[hsla(0,0%,0%,0.15)] p-8">
   <h2 class="self-center text-3xl">Log in to Dreampack</h2>
 
@@ -22,10 +22,10 @@
         </div>
       <% end %>
 
-        <%= f.submit "Log in", class: "text-lg flex w-fit justify-center items-center bg-blue-500 rounded h-min p-2 cursor-pointer" %>
+        <%= f.submit "Log in", class: "text-lg flex w-fit justify-center items-center bg-blue-500 hover:bg-blue-600 rounded h-min p-2 cursor-pointer" %>
       </div>
         
-      <div class="flex justify-between">
+      <div class="flex flex-col gap-8">
         <%= render "devise/shared/links" %>
       </div>
     <% end %>
