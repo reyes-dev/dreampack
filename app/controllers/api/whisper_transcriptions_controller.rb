@@ -1,4 +1,6 @@
 class API::WhisperTranscriptionsController < ApplicationController
+  before_action :authenticate_user!
+
   before_action :open_client
 
   def create

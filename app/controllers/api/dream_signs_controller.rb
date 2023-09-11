@@ -1,4 +1,6 @@
 class API::DreamSignsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     dream_signs = DreamSign.phrases
     render json: dream_signs.to_json

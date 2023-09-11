@@ -1,6 +1,7 @@
 require 'open-uri'
 
 class API::DalleResponsesController < ApplicationController
+  before_action :authenticate_user!
   before_action :open_client
   after_action :grab_image
 

@@ -1,4 +1,6 @@
 class API::InterpretationsController < ApplicationController
+  before_action :authenticate_user!
+
   def show
     interpretation = Entry.find(params[:entry_id]).interpretation
 

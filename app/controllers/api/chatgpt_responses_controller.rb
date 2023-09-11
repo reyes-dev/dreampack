@@ -1,4 +1,5 @@
 class API::ChatGPTResponsesController < ApplicationController
+  before_action :authenticate_user!
   before_action :open_client
   after_action :update_interpretation
 
