@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :authenticate_user!, only: [:update]
+  before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   # def new
@@ -19,9 +20,27 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  # Override update action in order to prevent client redirect
+  # and send desired HTTP status code
+  def update
+    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+    prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
+
+    resource_updated = update_resource(resource, account_update_params)
+    if resource_updated
+      key = if update_needs_confirmation?(resource, prev_unconfirmed_email)
+              :update_needs_confirmation
+            elsif sign_in_after_change_password?
+              :updated
+            else
+              :updated_but_not_signed_in
+            end
+      bypass_sign_in resource, scope: resource_name if sign_in_after_change_password?
+      render json: find_message(key).to_json
+    else
+      render json: resource.errors.full_messages.to_json, status: :bad_request
+    end
+  end
 
   # DELETE /resource
   # def destroy
@@ -37,7 +56,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -45,9 +64,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:openai_token])
+  end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
@@ -61,6 +80,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def after_sign_up_path_for(_resource)
-    '/entries'
+    '/entries/new'
   end
 end
