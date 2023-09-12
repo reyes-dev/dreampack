@@ -5,7 +5,7 @@ import { UserContext } from "../../context/UserContext";
 
 function LogOutButton() {
   const [location, setLocation] = useLocation();
-  const { toggleLoggedIn } = useContext(UserContext);
+  const { setIsLoggedIn } = useContext(UserContext);
 
   const logoutUser = async () => {
     const token = document.querySelector('meta[name="csrf-token"]').content;
@@ -21,7 +21,7 @@ function LogOutButton() {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       await response.text();
-      toggleLoggedIn();
+      setIsLoggedIn(false);
       setLocation(`/`);
       return response.ok;
     } catch (e) {
