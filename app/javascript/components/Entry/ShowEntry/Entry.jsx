@@ -81,6 +81,11 @@ function Entry({ params }) {
         throw new Error(`HTTP Error! Status: ${response.status}`);
       }
       const data = await response.text();
+      if (data === null || data.trim() === "") {
+        return console.log(
+          "You received an empty response, meaning something is wrong. Please check to see if you entered the correct API key.",
+        );
+      }
       setDalleUrl(data);
       return data;
     } catch (e) {

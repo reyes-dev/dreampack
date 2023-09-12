@@ -43,8 +43,12 @@ function Whisper({ setEntryBodyHandler }) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.text();
-      setTranscription(data);
-      return;
+      if (data === null || data.trim() === "") {
+        return console.log(
+          "You received an empty response, meaning something is wrong. Please check to see if you entered the correct API key.",
+        );
+      }
+      return setTranscription(data);
     } catch (e) {
       console.error(e);
     }
