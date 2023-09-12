@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaRobot } from "react-icons/fa";
+import { ErrorModalContext } from "../../../context/ErrorModalContext";
 
 function ChatGPT({ entry_id, setInterpretationBody }) {
+  const { setErrorExists } = useContext(ErrorModalContext);
+
   const createChatGPTResponse = async (event) => {
     event.preventDefault();
     const url = `/api/entries/${entry_id}/interpretation/chatgpt_response`;
@@ -19,6 +22,7 @@ function ChatGPT({ entry_id, setInterpretationBody }) {
       }
       const data = await response.text();
       if (data === null || data.trim() === "") {
+        setErrorExists(true);
         return console.log(
           "You received an empty response, meaning something is wrong. Please check to see if you entered the correct API key.",
         );

@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "wouter";
 import ChatGPT from "./ChatGPT";
 import { FaEdit } from "react-icons/fa";
+import ErrorModal from "../../Shared/ErrorModal";
+import { ErrorModalContext } from "../../../context/ErrorModalContext";
 
 function Interpretation({ params }) {
   const [interpretationBody, setInterpretationBody] = useState("");
+  const { errorExists } = useContext(ErrorModalContext);
 
   useEffect(() => {
     getInterpretation();
@@ -30,6 +33,13 @@ function Interpretation({ params }) {
       className="flex h-full w-full flex-col gap-4 overflow-auto rounded
          border-2 border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2"
     >
+      {errorExists && (
+        <ErrorModal
+          content={
+            "You received an empty response, meaning something is wrong. Please check to see if you entered the correct API key."
+          }
+        />
+      )}
       <div className="flex justify-between gap-4 border-b pb-2">
         <h1 className="text-xs lg:text-3xl">Interpretation</h1>
         <div className="flex flex-col-reverse items-end gap-4 lg:flex-row">
