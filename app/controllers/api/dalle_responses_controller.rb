@@ -20,7 +20,7 @@ class API::DalleResponsesController < ApplicationController
   private
 
   def open_client
-    @client = OpenAI::Client.new
+    @client = OpenAI::Client.new(access_token: current_user.openai_token)
   end
 
   def grab_image

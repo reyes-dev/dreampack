@@ -1,6 +1,5 @@
 class API::WhisperTranscriptionsController < ApplicationController
   before_action :authenticate_user!
-
   before_action :open_client
 
   def create
@@ -18,6 +17,6 @@ class API::WhisperTranscriptionsController < ApplicationController
   private
 
   def open_client
-    @client = OpenAI::Client.new
+    @client = OpenAI::Client.new(access_token: current_user.openai_token)
   end
 end
