@@ -1,12 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Settings() {
+  const [openai_token, setOpenAIToken] = useState("");
+
+  const onChange = (event, setFunction) => {
+    setFunction(event.target.value);
+  };
+
+  const updateSettings = async (event) => {
+    event.preventDefault();
+    const url = `/registration`;
+    const body_param = {
+      user: {
+        email: "user_4200@example.com",
+        password: "",
+        password_confirmation: "",
+        current_password: "password",
+        openai_token,
+      },
+    };
+    const token = document.querySelector('meta[name="csrf-token"]').content;
+    try {
+      const response = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "X-CSRF-Token": token,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body_param),
+      });
+      if (!response.ok) {
+        errors = await response.json();
+        console.log(errors[0]);
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      data = await response.json();
+      console.log(data);
+      return;
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return (
     <form
       className="flex h-[80vh] w-1/2 flex-col gap-4
         whitespace-pre-line break-words rounded border-2 
         border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8"
-    ></form>
+      onSubmit={updateSettings}
+    >
+      <input
+        onChange={(event) => onChange(event, setOpenAIToken)}
+        placeholder="Enter your OpenAI API Key"
+        value={openai_token || ""}
+      />
+      <button type="submit">Save settings</button>
+    </form>
   );
 }
 
