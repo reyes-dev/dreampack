@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
+import { ErrorModalContext } from "../../context/ErrorModalContext";
 
 function ErrorModal({ content }) {
+  const { setErrorExists } = useContext(ErrorModalContext);
+
+  useEffect(() => {
+    const timeId = setTimeout(() => {
+      setErrorExists(false);
+    }, 3000);
+
+    return () => {
+      clearTimeout(timeId);
+    };
+  }, []);
+
   return (
-    <section className="absolute left-1/2 top-1/2 w-max -translate-x-1/2 -translate-y-1/2 rounded-xl bg-gray-900 p-8  shadow-xl">
+    <section className="border-bg-white rounded border p-4 text-red-500 shadow-xl">
       {content}
     </section>
   );
