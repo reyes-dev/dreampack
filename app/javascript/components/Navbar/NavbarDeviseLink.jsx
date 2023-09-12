@@ -1,9 +1,8 @@
 import React from "react";
-import { Link } from "wouter";
 
-function NavbarLink({ destination, content, bgColor, bgColorHover }) {
+function NavbarDeviseLink({ destination, content, bgColor, bgColorHover }) {
   return (
-    <Link
+    <a
       href={destination}
       className={`hover:.!text-[#09073a] hover:.bg-white hover:.outline-white 
     .outline hover:.outline-offset-4 active:.outline-offset-2 flex w-fit 
@@ -14,8 +13,8 @@ function NavbarLink({ destination, content, bgColor, bgColorHover }) {
     md:text-base`}
     >
       {content}
-    </Link>
+    </a>
   );
 }
 
-export default NavbarLink;
+export default NavbarDeviseLink;
