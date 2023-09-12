@@ -7,13 +7,14 @@ import EntryIndex from "./Entry/EntryIndex/EntryIndex";
 import NewEntry from "./Entry/NewEntry/NewEntry";
 import EditEntry from "./Entry/EditEntry/EditEntry";
 import Settings from "./Settings/Settings";
-import { Switch, Route } from "wouter";
+import { Switch, Route, Redirect, useLocation } from "wouter";
 import Interpretation from "./Interpretation/ShowInterpretation/Interpretation";
 import EditInterpretation from "./Interpretation/EditInterpretation/EditInterpretation";
 import { UserContext } from "../context/UserContext";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [, navigate] = useLocation();
   // Check logged in status to conditionally render components
   // Look into protected routes
   useEffect(() => {
@@ -24,21 +25,19 @@ function App() {
     const url = `/current_user`;
     try {
       const response = await fetch(url);
-      if (response.status === 204) return;
+      if (response.status === 204) {
+        return navigate("/");
+      }
       const data = await response.json();
-      toggleLoggedIn();
+      setIsLoggedIn(true);
       return data;
     } catch (e) {
       console.error(e);
     }
   };
 
-  const toggleLoggedIn = () => {
-    setIsLoggedIn(!isLoggedIn);
-  };
-
   return (
-    <UserContext.Provider value={{ isLoggedIn, toggleLoggedIn }}>
+    <UserContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
       <main className="flex h-screen text-white">
         {isLoggedIn ? <Sidebar /> : isLoggedIn}
         <div className="flex w-full flex-col-reverse justify-end">
@@ -58,6 +57,9 @@ function App() {
                 path="/entries/:id/interpretation/edit"
                 component={EditInterpretation}
               />
+              <Route>
+                <Redirect to="/" />
+              </Route>
             </Switch>
           </section>
           <Navbar />
