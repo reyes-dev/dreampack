@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { FaRobot } from "react-icons/fa";
-import { ErrorModalContext } from "../../../context/ErrorModalContext";
+import { PopupMessageContext } from "../../../context/PopupMessageContext";
 
 function ChatGPT({ entry_id, setInterpretationBody }) {
-  const { setErrorExists } = useContext(ErrorModalContext);
+  const { setErrorExists } = useContext(PopupMessageContext);
 
   const createChatGPTResponse = async (event) => {
     event.preventDefault();

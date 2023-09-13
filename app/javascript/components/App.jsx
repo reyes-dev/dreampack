@@ -11,7 +11,7 @@ import { Switch, Route, Redirect, useLocation } from "wouter";
 import Interpretation from "./Interpretation/ShowInterpretation/Interpretation";
 import EditInterpretation from "./Interpretation/EditInterpretation/EditInterpretation";
 import { UserContext } from "../context/UserContext";
-import { ErrorModalContext } from "../context/ErrorModalContext";
+import { PopupMessageContext } from "../context/PopupMessageContext";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -44,7 +44,9 @@ function App() {
         {isLoggedIn ? <Sidebar /> : isLoggedIn}
         <div className="flex w-full flex-col-reverse justify-end">
           <section className="flex h-full flex-col items-center overflow-hidden pb-8 pl-8 pr-8">
-            <ErrorModalContext.Provider value={{ errorExists, setErrorExists }}>
+            <PopupMessageContext.Provider
+              value={{ errorExists, setErrorExists }}
+            >
               <Switch>
                 <Route path="/" component={Homepage} />
                 <Route path="/entries/new" component={NewEntry} />
@@ -64,7 +66,7 @@ function App() {
                   <Redirect to="/" />
                 </Route>
               </Switch>
-            </ErrorModalContext.Provider>
+            </PopupMessageContext.Provider>
           </section>
           <Navbar />
         </div>

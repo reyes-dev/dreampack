@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import Whisper from "./Whisper";
 import { useLocation } from "wouter";
 import { FaRegPaperPlane } from "react-icons/fa";
-import ErrorModal from "../../Shared/ErrorModal";
-import { ErrorModalContext } from "../../../context/ErrorModalContext";
+import PopupMessage from "../../Shared/PopupMessage";
+import { PopupMessageContext } from "../../../context/PopupMessageContext";
 
 function NewEntry() {
   const formRef = useRef(null);
@@ -11,7 +11,7 @@ function NewEntry() {
   const [body, setBody] = useState("");
   const [audioIsReady, setAudioIsReady] = useState(false);
   const [location, setLocation] = useLocation();
-  const { errorExists } = useContext(ErrorModalContext);
+  const { errorExists } = useContext(PopupMessageContext);
 
   useEffect(() => {
     if (audioIsReady) {
@@ -61,7 +61,7 @@ function NewEntry() {
       onSubmit={createEntry}
     >
       {errorExists && (
-        <ErrorModal
+        <PopupMessage
           content={
             "You received an empty response, meaning something is wrong. Please check to see if you entered the correct API key."
           }

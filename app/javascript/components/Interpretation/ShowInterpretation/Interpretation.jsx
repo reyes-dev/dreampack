@@ -2,12 +2,12 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "wouter";
 import ChatGPT from "./ChatGPT";
 import { FaEdit } from "react-icons/fa";
-import ErrorModal from "../../Shared/ErrorModal";
-import { ErrorModalContext } from "../../../context/ErrorModalContext";
+import PopupMessage from "../../Shared/PopupMessage";
+import { PopupMessageContext } from "../../../context/PopupMessageContext";
 
 function Interpretation({ params }) {
   const [interpretationBody, setInterpretationBody] = useState("");
-  const { errorExists } = useContext(ErrorModalContext);
+  const { errorExists } = useContext(PopupMessageContext);
 
   useEffect(() => {
     getInterpretation();
@@ -34,7 +34,7 @@ function Interpretation({ params }) {
          border-2 border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2"
     >
       {errorExists && (
-        <ErrorModal
+        <PopupMessage
           content={
             "You received an empty response, meaning something is wrong. Please check to see if you entered the correct API key."
           }

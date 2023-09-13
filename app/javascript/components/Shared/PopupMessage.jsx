@@ -1,8 +1,8 @@
 import React, { useEffect, useContext } from "react";
-import { ErrorModalContext } from "../../context/ErrorModalContext";
+import { PopupMessageContext } from "../../context/PopupMessageContext";
 
-function ErrorModal({ content }) {
-  const { setErrorExists } = useContext(ErrorModalContext);
+function PopupMessage({ content }) {
+  const { setErrorExists } = useContext(PopupMessageContext);
 
   useEffect(() => {
     const timeId = setTimeout(() => {
@@ -21,4 +21,4 @@ function ErrorModal({ content }) {
   );
 }
 
-export default ErrorModal;
+export default PopupMessage;

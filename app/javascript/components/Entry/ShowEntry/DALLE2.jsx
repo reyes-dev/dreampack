@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { FaPalette } from "react-icons/fa";
-import { ErrorModalContext } from "../../../context/ErrorModalContext";
+import { PopupMessageContext } from "../../../context/PopupMessageContext";
 
 function DALLE2({ entry_id, setDalleUrl, entry_body_text }) {
-  const { setErrorExists } = useContext(ErrorModalContext);
+  const { setErrorExists } = useContext(PopupMessageContext);
 
   const generateImage = async () => {
     const url = `/api/entries/${entry_id}/dalle_responses`;

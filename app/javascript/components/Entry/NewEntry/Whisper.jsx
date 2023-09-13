@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useReactMediaRecorder } from "react-media-recorder";
 import { FaMicrophone, FaStopCircle } from "react-icons/fa";
-import { ErrorModalContext } from "../../../context/ErrorModalContext";
+import { PopupMessageContext } from "../../../context/PopupMessageContext";
 
 function Whisper({ setEntryBodyHandler }) {
   const { status, startRecording, stopRecording, mediaBlobUrl } =
     useReactMediaRecorder({ audio: true });
   const [transcription, setTranscription] = useState("");
-  const { setErrorExists } = useContext(ErrorModalContext);
+  const { setErrorExists } = useContext(PopupMessageContext);
 
   useEffect(() => {
     if (mediaBlobUrl === undefined) return;
@@ -61,8 +61,9 @@ function Whisper({ setEntryBodyHandler }) {
     <section className="flex gap-4">
       <button
         onClick={startRecording}
-        className={`${status === "recording" ? "hidden" : ""
-          } flex h-min items-center gap-2  whitespace-nowrap rounded border border-lime-500 
+        className={`${
+          status === "recording" ? "hidden" : ""
+        } flex h-min items-center gap-2  whitespace-nowrap rounded border border-lime-500 
                       p-[0.450rem_0.450rem_0.4625rem] text-xs italic 
                       text-lime-400 hover:bg-slate-700  lg:text-lg`}
       >
@@ -73,8 +74,9 @@ function Whisper({ setEntryBodyHandler }) {
       </button>
       <button
         onClick={stopRecording}
-        className={`${status === "recording" ? "" : "hidden"
-          } flex h-min items-center gap-2 whitespace-nowrap rounded border border-red-500 p-[0.450rem_0.450rem_0.4625rem] text-xs 
+        className={`${
+          status === "recording" ? "" : "hidden"
+        } flex h-min items-center gap-2 whitespace-nowrap rounded border border-red-500 p-[0.450rem_0.450rem_0.4625rem] text-xs 
                       italic text-red-400 hover:bg-slate-700 
                       lg:text-lg`}
       >
