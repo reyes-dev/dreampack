@@ -1,7 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import Whisper from "./Whisper";
 import { useLocation } from "wouter";
 import { FaRegPaperPlane } from "react-icons/fa";
+import ErrorModal from "../../Shared/ErrorModal";
+import { ErrorModalContext } from "../../../context/ErrorModalContext";
 
 function NewEntry() {
   const formRef = useRef(null);
@@ -9,6 +11,7 @@ function NewEntry() {
   const [body, setBody] = useState("");
   const [audioIsReady, setAudioIsReady] = useState(false);
   const [location, setLocation] = useLocation();
+  const { errorExists } = useContext(ErrorModalContext);
 
   useEffect(() => {
     if (audioIsReady) {
@@ -57,6 +60,13 @@ function NewEntry() {
          border-2 border-dashed border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2"
       onSubmit={createEntry}
     >
+      {errorExists && (
+        <ErrorModal
+          content={
+            "You received an empty response, meaning something is wrong. Please check to see if you entered the correct API key."
+          }
+        />
+      )}
       <div className="flex justify-between gap-4 border-b pb-2">
         <input
           className="sm:text-md w-full bg-transparent text-sm  outline-none md:text-2xl lg:text-3xl"
