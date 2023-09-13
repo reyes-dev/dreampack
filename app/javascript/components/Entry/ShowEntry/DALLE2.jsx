@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaPalette } from "react-icons/fa";
+import { ErrorModalContext } from "../../../context/ErrorModalContext";
 
 function DALLE2({ entry_id, setDalleUrl, entry_body_text }) {
+  const { setErrorExists } = useContext(ErrorModalContext);
+
   const generateImage = async () => {
     const url = `/api/entries/${entry_id}/dalle_responses`;
     const token = document.querySelector('meta[name="csrf-token"]').content;
@@ -20,6 +23,7 @@ function DALLE2({ entry_id, setDalleUrl, entry_body_text }) {
       }
       const data = await response.text();
       if (data === null || data.trim() === "") {
+        setErrorExists(true);
         return console.log(
           "You received an empty response, meaning something is wrong. Please check to see if you entered the correct API key.",
         );

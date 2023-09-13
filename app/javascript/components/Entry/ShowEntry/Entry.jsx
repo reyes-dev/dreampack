@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "wouter";
 import DeleteEntryButton from "./DeleteEntryButton";
 import * as Selection from "selection-popover";
@@ -6,6 +6,8 @@ import DreamSign from "./DreamSign";
 import Highlighter from "react-highlight-words";
 import { FaEdit } from "react-icons/fa";
 import DeleteEntryModal from "./DeleteEntryModal";
+import ErrorModal from "../../Shared/ErrorModal";
+import { ErrorModalContext } from "../../../context/ErrorModalContext";
 import DALLE2 from "./DALLE2";
 
 function Entry({ params }) {
@@ -15,6 +17,7 @@ function Entry({ params }) {
   const [dreamSigns, setDreamSigns] = useState([]);
   const [dalleUrl, setDalleUrl] = useState("");
   const [modalActivated, setModalActivated] = useState(false);
+  const { errorExists } = useContext(ErrorModalContext);
 
   useEffect(() => {
     getEntry();
@@ -83,6 +86,13 @@ function Entry({ params }) {
         modalActivated ? "pointer-events-none" : " "
       } flex h-full w-full flex-col gap-4 whitespace-pre-line break-words rounded border-2 border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2`}
     >
+      {errorExists && (
+        <ErrorModal
+          content={
+            "You received an empty response, meaning something is wrong. Please check to see if you entered the correct API key."
+          }
+        />
+      )}
       {modalActivated && (
         <DeleteEntryModal
           id={params.id}
