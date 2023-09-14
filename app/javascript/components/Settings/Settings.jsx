@@ -16,10 +16,6 @@ function Settings() {
     const url = `/registration`;
     const body_param = {
       user: {
-        email: "user_4200@example.com",
-        password: "",
-        password_confirmation: "asd",
-        current_password: "password",
         openai_token,
       },
     };
@@ -36,7 +32,6 @@ function Settings() {
       if (!response.ok) {
         errors = await response.json();
         setErrorExists(true);
-        console.log(errors);
         setErrorContent(errors);
         throw new Error(`HTTP error! Status: ${response.status}`);
       }

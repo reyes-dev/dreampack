@@ -68,6 +68,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:account_update, keys: [:openai_token])
   end
 
+  def update_resource(resource, params)
+    return super if params['password']&.present?
+
+    resource.update_without_password(params.except('current_password', 'email'))
+  end
+
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
   #   super(resource)
