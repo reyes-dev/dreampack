@@ -10,6 +10,12 @@ function Whisper({ setEntryBodyHandler }) {
   const { setErrorExists } = useContext(PopupMessageContext);
 
   useEffect(() => {
+    return () => {
+      stopRecording();
+    };
+  }, []);
+
+  useEffect(() => {
     if (mediaBlobUrl === undefined) return;
     createTranscription();
   }, [mediaBlobUrl]);
