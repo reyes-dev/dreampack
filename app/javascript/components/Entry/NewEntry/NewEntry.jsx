@@ -27,7 +27,15 @@ function NewEntry() {
     event.preventDefault();
     // Validate body
     if (body.length == 0) return;
-    const dataBody = { body, title };
+    let dataBody;
+    if (title.length === 0) {
+      dataBody = {
+        body,
+        title: body.split(" ").slice(0, 5).join(" ").slice(0, 249),
+      };
+    } else {
+      dataBody = { body, title };
+    }
     try {
       const response = await fetch(`/api/entries`, {
         method: "POST",
