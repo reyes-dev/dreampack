@@ -38,8 +38,8 @@ function Settings() {
       }
       data = await response.json();
       console.log(data);
-      setErrorExists(true);
       setSuccess(true);
+      setErrorExists(true);
       setErrorContent([data]);
       return;
     } catch (e) {

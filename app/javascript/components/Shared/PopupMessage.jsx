@@ -18,7 +18,7 @@ function PopupMessage({ content, success = false }) {
     <section
       className={
         (success ? `text-green-500` : `text-red-500`) +
-        " border-bg-white rounded border p-4 text-red-500 shadow-xl"
+        " border-bg-white rounded border p-4 shadow-xl"
       }
     >
       {content}
