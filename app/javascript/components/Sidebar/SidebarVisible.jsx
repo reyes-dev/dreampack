@@ -1,12 +1,41 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import SidebarLink from "./SidebarLink";
 import SidebarToggle from "./SidebarToggle";
 import LogOutButton from "./LogOutButton";
-import { FaPlus } from "react-icons/fa";
-import { FaBook } from "react-icons/fa";
-import { FaCog } from "react-icons/fa";
+import { FaPlus, FaBook, FaCog, FaRegCommentAlt } from "react-icons/fa";
 
 function SidebarVisible({ hideSidebar, icon, visible }) {
+  const [sidebarEntries, setSidebarEntries] = useState([]);
+
+  useEffect(() => {
+    getSidebarEntries();
+  }, []);
+
+  const getSidebarEntries = async () => {
+    const url = `/api/sidebar_entry_links`;
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const data = await response.json();
+      return setSidebarEntries(data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const sidebarEntriesList = sidebarEntries.map((entrySidebarLink) => {
+    return (
+      <SidebarLink
+        destination={`/entries/${entrySidebarLink[0]}`}
+        key={entrySidebarLink[0]}
+        content={entrySidebarLink[1]}
+        icon={<FaRegCommentAlt />}
+      />
+    );
+  });
+
   return (
     <section className="flex h-full flex-col justify-between gap-4   p-4 underline-offset-4 ">
       <div className="flex flex-col items-center gap-2 2xl:items-stretch">
@@ -28,6 +57,10 @@ function SidebarVisible({ hideSidebar, icon, visible }) {
           content="All Entries"
           icon={<FaBook />}
         />
+        <div className="flex flex-col gap-4  pt-8">
+          <h1 className="border-b border-b-white font-bold">Recent Entries</h1>
+          {sidebarEntriesList}
+        </div>
       </div>
       <div className="mb-1 flex flex-col items-center gap-4">
         <SidebarLink

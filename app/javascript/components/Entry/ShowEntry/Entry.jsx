@@ -22,7 +22,7 @@ function Entry({ params }) {
   useEffect(() => {
     getEntry();
     getDreamSigns();
-  }, []);
+  }, [params.id]);
 
   const getEntry = async () => {
     const url = `/api/entries/${params.id}`;
