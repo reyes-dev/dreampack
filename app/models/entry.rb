@@ -13,6 +13,12 @@ class Entry < ApplicationRecord
     end
   end
 
+  def self.sidebar_links
+    order(created_at: :desc).pluck(:id, :title)[0...5].map do |id, title|
+      [id, title]
+    end
+  end
+
   private
 
   def add_interpretation
