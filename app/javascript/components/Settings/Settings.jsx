@@ -5,6 +5,7 @@ import { PopupMessageContext } from "../../context/PopupMessageContext";
 function Settings() {
   const [openai_token, setOpenAIToken] = useState("");
   const [errorContent, setErrorContent] = useState([]);
+  const [success, setSuccess] = useState(false);
   const { errorExists, setErrorExists } = useContext(PopupMessageContext);
 
   const onChange = (event, setFunction) => {
@@ -37,6 +38,9 @@ function Settings() {
       }
       data = await response.json();
       console.log(data);
+      setErrorExists(true);
+      setSuccess(true);
+      setErrorContent([data]);
       return;
     } catch (e) {
       console.error(e);
@@ -54,7 +58,7 @@ function Settings() {
         border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8"
       onSubmit={updateSettings}
     >
-      {errorExists && <PopupMessage content={errorList} />}
+      {errorExists && <PopupMessage content={errorList} success={success} />}
       <input
         onChange={(event) => onChange(event, setOpenAIToken)}
         placeholder="Enter your OpenAI API Key"
