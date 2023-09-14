@@ -68,6 +68,7 @@ function Whisper({ setEntryBodyHandler, setIsLoading }) {
   return (
     <section className="flex gap-4">
       <button
+        type="button"
         onClick={startRecording}
         className={`${
           status === "recording" ? "hidden" : ""
@@ -81,6 +82,7 @@ function Whisper({ setEntryBodyHandler, setIsLoading }) {
         <FaMicrophone />
       </button>
       <button
+        type="button"
         onClick={stopRecording}
         className={`${
           status === "recording" ? "" : "hidden"

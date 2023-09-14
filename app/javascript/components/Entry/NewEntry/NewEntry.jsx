@@ -66,7 +66,7 @@ function NewEntry() {
     <form
       ref={formRef}
       className="flex h-full w-full flex-col gap-4 rounded
-         border-2 border-dashed border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2"
+        border-2 border-dashed border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2"
       onSubmit={createEntry}
     >
       {errorExists && (
@@ -87,8 +87,8 @@ function NewEntry() {
         <button
           type="submit"
           className="min-h flex items-center gap-2 whitespace-nowrap rounded border border-sky-500 
-                      p-[0.450rem_0.450rem_0.4625rem] text-xs italic 
-                      text-sky-500 hover:bg-slate-700 lg:text-lg"
+                    p-[0.450rem_0.450rem_0.4625rem] text-xs italic 
+                    text-sky-500 hover:bg-slate-700 lg:text-lg"
         >
           <span className="lg:text-md hidden lg:block xl:text-lg">
             Save entry
