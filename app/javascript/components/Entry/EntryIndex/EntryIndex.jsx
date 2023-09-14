@@ -32,35 +32,25 @@ function EntryIndex() {
 
   const entryList = entries.map((entry) => {
     return (
-      <ul key={entry[0]}>
-        <div className="flex justify-between pb-1">
-          <div className="flex-col items-baseline gap-2 lg:flex">
-            <Link
-              href={`/entries/${entry[0]}`}
-              className="sm:text-md whitespace-pre-line border-b pt-2 text-sm hover:rounded hover:bg-gray-600 md:text-lg lg:pr-2 lg:text-xl"
-            >
-              {entry[1]}
-            </Link>
-            <p className="text-xs text-gray-400 lg:text-lg">
-              Created on {entry[3]}
-            </p>
+      <Link href={`/entries/${entry[0]}`}>
+        <ul
+          key={entry[0]}
+          className="sm:text-md cursor-pointer  whitespace-pre-line pt-2 text-sm hover:rounded hover:bg-gray-600 md:text-lg lg:pr-2 lg:text-xl"
+        >
+          <div className="flex justify-between pb-1">
+            <div className="flex-col items-baseline gap-2  lg:flex">
+              <h1 className="border-b">{entry[1]}</h1>
+
+              <p className="text-xs text-gray-400 lg:text-lg">
+                Created on {entry[3]}
+              </p>
+            </div>
           </div>
-          <Link
-            href={`/entries/${entry[0]}/edit`}
-            className="lg:text-md flex h-min items-center gap-2 whitespace-nowrap rounded border border-sky-500 p-[0.450rem_0.450rem_0.4625rem] 
-                      text-sm italic text-sky-500 
-                      hover:bg-slate-700"
-          >
-            <span className="lg:text-md hidden lg:block xl:text-lg">
-              Edit Entry
-            </span>
-            <FaEdit />
-          </Link>
-        </div>
-        <li className="pt md:text-md text-sm text-gray-200 lg:text-lg">
-          {entry[2]}
-        </li>
-      </ul>
+          <li className="pt md:text-md text-sm text-gray-200 lg:text-lg">
+            {entry[2]}
+          </li>
+        </ul>
+      </Link>
     );
   });
 
