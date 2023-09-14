@@ -3,7 +3,7 @@ import { useReactMediaRecorder } from "react-media-recorder";
 import { FaMicrophone, FaStopCircle } from "react-icons/fa";
 import { PopupMessageContext } from "../../../context/PopupMessageContext";
 
-function Whisper({ setEntryBodyHandler }) {
+function Whisper({ setEntryBodyHandler, setIsLoading }) {
   const { status, startRecording, stopRecording, mediaBlobUrl } =
     useReactMediaRecorder({ audio: true });
   const [transcription, setTranscription] = useState("");
@@ -40,6 +40,7 @@ function Whisper({ setEntryBodyHandler }) {
     const formData = await buildFormData();
     const token = document.querySelector("meta[name='csrf-token']").content;
     try {
+      setIsLoading(true);
       const response = await fetch(`/api/whisper_transcriptions`, {
         method: "POST",
         headers: {
@@ -51,6 +52,7 @@ function Whisper({ setEntryBodyHandler }) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.text();
+      setIsLoading(false);
       if (data === null || data.trim() === "") {
         setErrorExists(true);
         return console.log(

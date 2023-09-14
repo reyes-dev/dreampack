@@ -12,6 +12,7 @@ function NewEntry() {
   const [audioIsReady, setAudioIsReady] = useState(false);
   const [location, setLocation] = useLocation();
   const { errorExists } = useContext(PopupMessageContext);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (audioIsReady) {
@@ -101,18 +102,33 @@ function NewEntry() {
           Created on {new Date().toDateString()}
         </p>
         <div className="flex gap-4 pb-2">
-          <Whisper setEntryBodyHandler={setEntryBodyHandler} />
+          <Whisper
+            setEntryBodyHandler={setEntryBodyHandler}
+            setIsLoading={setIsLoading}
+          />
         </div>
       </div>
 
-      <textarea
-        className="h-full resize-none bg-transparent outline-none"
-        name="entryText"
-        data-cy="entryText"
-        onChange={(event) => onChange(event, setBody)}
-        placeholder="Your entry here..."
-        value={body}
-      />
+      <div
+        className={
+          isLoading
+            ? "flex h-full flex-col items-center justify-center"
+            : "flex h-full flex-col"
+        }
+      >
+        {isLoading ? (
+          <div className="h-36 w-36 flex-[0_0_auto] animate-spin self-center rounded-full border-4 border-[rgba(255,255,255,.3)] border-t-[hsl(133.1,66.1%,76.9%)]"></div>
+        ) : (
+          <textarea
+            className="h-full resize-none bg-transparent outline-none"
+            name="entryText"
+            data-cy="entryText"
+            onChange={(event) => onChange(event, setBody)}
+            placeholder="Your entry here..."
+            value={body}
+          />
+        )}
+      </div>
     </form>
   );
 }
