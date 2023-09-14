@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "wouter";
 import { FaEdit } from "react-icons/fa";
+import ZeroEntriesMessage from "./ZeroEntriesMessage";
 
 function EntryIndex() {
-  const [entries, setEntries] = useState([]);
+  const [entries, setEntries] = useState();
+  const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
     getEntries();
@@ -23,6 +25,10 @@ function EntryIndex() {
       console.error(e);
     }
   };
+
+  if (entries === undefined) {
+    return <></>;
+  }
 
   const entryList = entries.map((entry) => {
     return (
@@ -63,7 +69,7 @@ function EntryIndex() {
       className="flex h-full w-full flex-col gap-4 overflow-auto rounded 
     border-2 border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2"
     >
-      {entryList}
+      {entries.length ? entryList : <ZeroEntriesMessage />}
     </section>
   );
 }
