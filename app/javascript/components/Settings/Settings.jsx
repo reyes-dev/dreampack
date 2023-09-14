@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import PopupMessage from "../Shared/PopupMessage";
+import { PopupMessageContext } from "../../context/PopupMessageContext";
 
 function Settings() {
   const [openai_token, setOpenAIToken] = useState("");
+  const [errorContent, setErrorContent] = useState([]);
+  const { errorExists, setErrorExists } = useContext(PopupMessageContext);
 
   const onChange = (event, setFunction) => {
     setFunction(event.target.value);
@@ -14,7 +18,7 @@ function Settings() {
       user: {
         email: "user_4200@example.com",
         password: "",
-        password_confirmation: "",
+        password_confirmation: "asd",
         current_password: "password",
         openai_token,
       },
@@ -31,7 +35,9 @@ function Settings() {
       });
       if (!response.ok) {
         errors = await response.json();
-        console.log(errors[0]);
+        setErrorExists(true);
+        console.log(errors);
+        setErrorContent(errors);
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       data = await response.json();
@@ -42,6 +48,10 @@ function Settings() {
     }
   };
 
+  const errorList = errorContent.map((error, index) => {
+    return <li key={index}>{error}</li>;
+  });
+
   return (
     <form
       className="flex h-[80vh] w-1/2 flex-col gap-4
@@ -49,6 +59,7 @@ function Settings() {
         border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8"
       onSubmit={updateSettings}
     >
+      {errorExists && <PopupMessage content={errorList} />}
       <input
         onChange={(event) => onChange(event, setOpenAIToken)}
         placeholder="Enter your OpenAI API Key"
