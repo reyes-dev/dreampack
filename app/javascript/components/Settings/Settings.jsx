@@ -53,18 +53,34 @@ function Settings() {
 
   return (
     <form
-      className="flex h-[80vh] w-1/2 flex-col gap-4
+      className="flex h-[80vh] w-1/2 flex-col justify-between gap-4
         whitespace-pre-line break-words rounded border-2 
         border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8"
       onSubmit={updateSettings}
     >
-      {errorExists && <PopupMessage content={errorList} success={success} />}
-      <input
-        onChange={(event) => onChange(event, setOpenAIToken)}
-        placeholder="Enter your OpenAI API Key"
-        value={openai_token || ""}
-      />
-      <button type="submit">Save settings</button>
+      <section className="flex flex-col gap-8">
+        <h1 className="sm:text-md w-full border-b bg-transparent pb-2 text-sm outline-none md:text-lg lg:text-2xl">
+          Your settings
+        </h1>
+        {errorExists && <PopupMessage content={errorList} success={success} />}
+        <label className="flex flex-col gap-1">
+          OpenAI API Key
+          <input
+            type="password"
+            className="rounded border border-black p-2 text-black"
+            onChange={(event) => onChange(event, setOpenAIToken)}
+            placeholder="Enter your OpenAI API Key"
+            value={openai_token || ""}
+          />
+        </label>
+      </section>
+
+      <button
+        className="flex w-min items-center justify-center gap-2 whitespace-nowrap rounded border border-white/20 p-3 hover:bg-slate-800 active:bg-slate-900 lg:w-full"
+        type="submit"
+      >
+        Save settings
+      </button>
     </form>
   );
 }
