@@ -5,7 +5,6 @@ gem 'active_model_serializers'
 gem 'bootsnap', require: false
 gem 'cssbundling-rails'
 gem 'devise'
-gem 'devise-jwt'
 gem 'figaro'
 gem 'image_processing', '>= 1.2'
 gem 'jbuilder'
