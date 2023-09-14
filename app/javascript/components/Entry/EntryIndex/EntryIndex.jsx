@@ -1,11 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "wouter";
-import { FaEdit } from "react-icons/fa";
 import ZeroEntriesMessage from "./ZeroEntriesMessage";
 
 function EntryIndex() {
   const [entries, setEntries] = useState();
-  const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
     getEntries();
@@ -32,11 +30,8 @@ function EntryIndex() {
 
   const entryList = entries.map((entry) => {
     return (
-      <Link href={`/entries/${entry[0]}`}>
-        <ul
-          key={entry[0]}
-          className="sm:text-md cursor-pointer  whitespace-pre-line pt-2 text-sm hover:rounded hover:bg-gray-600 md:text-lg lg:pr-2 lg:text-xl"
-        >
+      <Link href={`/entries/${entry[0]}`} key={entry[0]}>
+        <ul className="sm:text-md cursor-pointer  whitespace-pre-line pt-2 text-sm hover:rounded hover:bg-gray-600 md:text-lg lg:pr-2 lg:text-xl">
           <div className="flex justify-between pb-1">
             <div className="flex-col items-baseline gap-2  lg:flex">
               <h1 className="border-b">{entry[1]}</h1>
