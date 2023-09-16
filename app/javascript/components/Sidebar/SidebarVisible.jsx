@@ -37,9 +37,9 @@ function SidebarVisible({ hideSidebar, icon, visible }) {
   });
 
   return (
-    <section className="flex h-full flex-col justify-between gap-4   p-4 underline-offset-4 ">
-      <div className="flex flex-col items-center gap-2 2xl:items-stretch">
-        <div className="mb-1 flex flex-col-reverse items-center gap-2 lg:flex-row">
+    <section className="flex h-full w-full justify-between gap-4 p-2 underline-offset-4 md:flex-col md:p-4">
+      <div className="flex items-center gap-2 md:flex-col 2xl:items-stretch">
+        <div className="flex items-center gap-2 md:flex-col-reverse lg:flex-row">
           <SidebarLink
             destination="/entries/new"
             content="New Entry"
@@ -57,12 +57,12 @@ function SidebarVisible({ hideSidebar, icon, visible }) {
           content="All Entries"
           icon={<FaBook />}
         />
-        <div className="flex flex-col gap-4  pt-8">
+        <div className="hidden flex-col gap-4 pt-8 md:flex">
           <h1 className="border-b border-b-white font-bold">Recent Entries</h1>
           {sidebarEntriesList}
         </div>
       </div>
-      <div className="mb-1 flex flex-col items-center gap-4">
+      <div className="flex items-center gap-2 md:flex-col">
         <SidebarLink
           destination="/settings"
           content="Settings"
