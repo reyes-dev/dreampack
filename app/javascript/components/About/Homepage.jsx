@@ -4,7 +4,7 @@ import { IconContext } from "react-icons";
 
 function Homepage() {
   return (
-    <section className="flex max-w-5xl flex-col gap-8 px-[min(7.8vw,6.25rem)]">
+    <section className="lex max-w-5xl flex-col gap-8 overflow-auto px-[min(7.8vw,6.25rem)]">
       <article className="flex flex-col gap-2">
         <div className="flex items-center gap-2">
           <h1 className="relative flex text-3xl leading-none text-white">
@@ -48,9 +48,7 @@ function Homepage() {
           </a>
           is, read up on those wikipedia articles!
         </p>
-      </article>
 
-      <article className="flex flex-col gap-2">
         <h1 className="text-3xl">Features</h1>
         <ul className="list-disc">
           <li>Write journal entries</li>
