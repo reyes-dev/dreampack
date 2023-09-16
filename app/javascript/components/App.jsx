@@ -43,7 +43,7 @@ function App() {
       <main className="flex h-screen text-white">
         {isLoggedIn ? <Sidebar /> : isLoggedIn}
         <div className="flex w-full flex-col-reverse justify-end">
-          <section className="flex h-full flex-col items-center overflow-hidden pb-8 pl-8 pr-8">
+          <section className="flex h-full flex-col items-center pb-8 pl-8 pr-8">
             <PopupMessageContext.Provider
               value={{ errorExists, setErrorExists }}
             >
