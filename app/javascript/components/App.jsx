@@ -40,9 +40,9 @@ function App() {
 
   return (
     <UserContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
-      <main className="flex h-screen flex-col-reverse text-white md:flex-row">
+      <main className="flex h-screen flex-col-reverse justify-between text-white md:flex-row">
         {isLoggedIn ? <Sidebar /> : isLoggedIn}
-        <div className="flex w-full flex-col-reverse justify-end">
+        <div className="flex h-full w-full flex-col-reverse justify-end">
           <section className="flex h-full flex-col items-center pb-8 pl-8 pr-8">
             <PopupMessageContext.Provider
               value={{ errorExists, setErrorExists }}
