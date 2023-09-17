@@ -43,6 +43,10 @@ function Entry({ params }) {
     }
   };
 
+  function regExpEscape(string) {
+    return string.replace(/[^A-Za-z0-9_]/g, "\\$&");
+  }
+
   const getDreamSigns = async () => {
     const url = `/api/dream_signs`;
     const token = document.querySelector('meta[name="csrf-token"]').content;
@@ -58,9 +62,11 @@ function Entry({ params }) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-      const joinedDreamSigns = data.join("|");
+      console.log(data);
+      const joinedDreamSigns = data.map(regExpEscape).join("|");
+      console.log(joinedDreamSigns);
       dreamSignsRegexPattern = [
-        new RegExp(`\\b(?:${joinedDreamSigns})\\b`, "g"),
+        new RegExp("\\b" + joinedDreamSigns + " \\b", "g"),
       ];
       setDreamSigns(dreamSignsRegexPattern);
     } catch (e) {
@@ -73,6 +79,7 @@ function Entry({ params }) {
   };
 
   const highlightNewDreamSign = () => {
+    console.log("highlighting...");
     setDreamSigns((dreamSigns) => [...dreamSigns, selectedText]);
   };
 
