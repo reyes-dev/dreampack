@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useLocation } from "wouter";
+import { SidebarEntryContext } from "../../../context/SidebarEntryContext";
 
 function DeleteEntryModal({ id, toggleModalActivation }) {
   const [location, setLocation] = useLocation();
+  const { setSidebarEntriesUpdateTrigger } = useContext(SidebarEntryContext);
 
   const deleteEntry = async () => {
     const url = `/api/entries/${id}`;
@@ -18,6 +20,7 @@ function DeleteEntryModal({ id, toggleModalActivation }) {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
+      setSidebarEntriesUpdateTrigger((v) => !v);
       setLocation("/entries");
       return response.json();
     } catch (e) {
