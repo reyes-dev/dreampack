@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useLocation } from "wouter";
 import { FaRegPaperPlane } from "react-icons/fa";
+import { SidebarEntryContext } from "../../../context/SidebarEntryContext";
 
 function EditEntry({ params }) {
   const [entry, setEntry] = useState({});
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [location, setLocation] = useLocation();
+  const { setSidebarEntriesUpdateTrigger } = useContext(SidebarEntryContext);
   // Store state data for CRUD operations
   useEffect(() => {
     getEntry();
@@ -56,6 +58,7 @@ function EditEntry({ params }) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       await response.text();
+      setSidebarEntriesUpdateTrigger((v) => !v);
       setLocation(`/entries/${params.id}`);
       return response.ok;
     } catch (e) {
