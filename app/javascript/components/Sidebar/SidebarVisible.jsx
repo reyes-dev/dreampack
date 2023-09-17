@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import SidebarLink from "./SidebarLink";
 import SidebarToggle from "./SidebarToggle";
 import LogOutButton from "./LogOutButton";
 import { FaPlus, FaBook, FaCog, FaRegCommentAlt } from "react-icons/fa";
+import { SidebarEntryContext } from "../../context/SidebarEntryContext";
 
 function SidebarVisible({ hideSidebar, icon, visible }) {
   const [sidebarEntries, setSidebarEntries] = useState([]);
+  const { sidebarEntriesUpdateTrigger } = useContext(SidebarEntryContext);
 
   useEffect(() => {
     getSidebarEntries();
-  }, []);
+  }, [sidebarEntriesUpdateTrigger]);
 
   const getSidebarEntries = async () => {
     const url = `/api/sidebar_entry_links`;

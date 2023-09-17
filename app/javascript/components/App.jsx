@@ -12,10 +12,13 @@ import Interpretation from "./Interpretation/ShowInterpretation/Interpretation";
 import EditInterpretation from "./Interpretation/EditInterpretation/EditInterpretation";
 import { UserContext } from "../context/UserContext";
 import { PopupMessageContext } from "../context/PopupMessageContext";
+import { SidebarEntryContext } from "../context/SidebarEntryContext";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [errorExists, setErrorExists] = useState(false);
+  const [sidebarEntriesUpdateTrigger, setSidebarEntriesUpdateTrigger] =
+    useState(false);
   const [, navigate] = useLocation();
   // Check logged in status to conditionally render components
   // Look into protected routes
@@ -41,35 +44,42 @@ function App() {
   return (
     <UserContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
       <main className="flex h-screen flex-col-reverse justify-between text-white md:flex-row">
-        {isLoggedIn ? <Sidebar /> : isLoggedIn}
-        <div className="flex h-full w-full flex-col-reverse justify-end">
-          <section className="contents h-full flex-col items-center pb-8 pl-8 pr-8 md:flex">
-            <PopupMessageContext.Provider
-              value={{ errorExists, setErrorExists }}
-            >
-              <Switch>
-                <Route path="/" component={Homepage} />
-                <Route path="/entries/new" component={NewEntry} />
-                <Route path="/entries/:id/edit" component={EditEntry} />
-                <Route path="/entries/:id" component={Entry} />
-                <Route path="/entries" component={EntryIndex} />
-                <Route path="/settings" component={Settings} />
-                <Route
-                  path="/entries/:id/interpretation"
-                  component={Interpretation}
-                />
-                <Route
-                  path="/entries/:id/interpretation/edit"
-                  component={EditInterpretation}
-                />
-                <Route>
-                  <Redirect to="/" />
-                </Route>
-              </Switch>
-            </PopupMessageContext.Provider>
-          </section>
-          <Navbar />
-        </div>
+        <SidebarEntryContext.Provider
+          value={{
+            sidebarEntriesUpdateTrigger,
+            setSidebarEntriesUpdateTrigger,
+          }}
+        >
+          {isLoggedIn ? <Sidebar /> : isLoggedIn}
+          <div className="flex h-full w-full flex-col-reverse justify-end">
+            <section className="contents h-full flex-col items-center pb-8 pl-8 pr-8 md:flex">
+              <PopupMessageContext.Provider
+                value={{ errorExists, setErrorExists }}
+              >
+                <Switch>
+                  <Route path="/" component={Homepage} />
+                  <Route path="/entries/new" component={NewEntry} />
+                  <Route path="/entries/:id/edit" component={EditEntry} />
+                  <Route path="/entries/:id" component={Entry} />
+                  <Route path="/entries" component={EntryIndex} />
+                  <Route path="/settings" component={Settings} />
+                  <Route
+                    path="/entries/:id/interpretation"
+                    component={Interpretation}
+                  />
+                  <Route
+                    path="/entries/:id/interpretation/edit"
+                    component={EditInterpretation}
+                  />
+                  <Route>
+                    <Redirect to="/" />
+                  </Route>
+                </Switch>
+              </PopupMessageContext.Provider>
+            </section>
+            <Navbar />
+          </div>
+        </SidebarEntryContext.Provider>
       </main>
     </UserContext.Provider>
   );

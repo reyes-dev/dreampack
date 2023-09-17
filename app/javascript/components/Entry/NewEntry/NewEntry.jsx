@@ -4,6 +4,7 @@ import { useLocation } from "wouter";
 import { FaRegPaperPlane } from "react-icons/fa";
 import PopupMessage from "../../Shared/PopupMessage";
 import { PopupMessageContext } from "../../../context/PopupMessageContext";
+import { SidebarEntryContext } from "../../../context/SidebarEntryContext";
 
 function NewEntry() {
   const formRef = useRef(null);
@@ -13,6 +14,7 @@ function NewEntry() {
   const [location, setLocation] = useLocation();
   const { errorExists } = useContext(PopupMessageContext);
   const [isLoading, setIsLoading] = useState(false);
+  const { setSidebarEntriesUpdateTrigger } = useContext(SidebarEntryContext);
 
   useEffect(() => {
     if (audioIsReady) {
@@ -51,6 +53,7 @@ function NewEntry() {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
+      setSidebarEntriesUpdateTrigger((v) => !v);
       setLocation(`/entries/${data.id}`);
       return data;
     } catch (e) {
