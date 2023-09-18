@@ -29,18 +29,19 @@ function SidebarVisible({ hideSidebar, icon, visible }) {
 
   const sidebarEntriesList = sidebarEntries.map((entrySidebarLink) => {
     return (
-      <SidebarLink
-        destination={`/entries/${entrySidebarLink[0]}`}
-        key={entrySidebarLink[0]}
-        content={entrySidebarLink[1]}
-        icon={<FaRegCommentAlt />}
-      />
+      <li key={entrySidebarLink[0]}>
+        <SidebarLink
+          destination={`/entries/${entrySidebarLink[0]}`}
+          content={entrySidebarLink[1]}
+          icon={<FaRegCommentAlt />}
+        />
+      </li>
     );
   });
 
   return (
-    <section className="flex h-full w-full justify-between gap-4 p-2 underline-offset-4 md:flex-col md:p-4">
-      <div className="flex items-center gap-2 md:flex-col 2xl:items-stretch">
+    <nav className="flex h-full w-full justify-between gap-4 p-2 underline-offset-4 md:flex-col md:p-4">
+      <section className="flex items-center gap-2 md:flex-col 2xl:items-stretch">
         <div className="flex items-center gap-2 md:flex-col-reverse lg:flex-row">
           <SidebarLink
             destination="/entries/new"
@@ -59,20 +60,22 @@ function SidebarVisible({ hideSidebar, icon, visible }) {
           content="All Entries"
           icon={<FaBook />}
         />
-        <div className="hidden flex-col gap-4 pt-8 md:flex">
+        <section className="hidden flex-col pt-8 md:flex">
           <h1 className="border-b border-b-white font-bold">Recent Entries</h1>
-          {sidebarEntriesList}
-        </div>
-      </div>
-      <div className="flex items-center gap-2 md:flex-col">
+          <ul className="hidden flex-col gap-2 pt-4 md:flex">
+            {sidebarEntriesList}
+          </ul>
+        </section>
+      </section>
+      <section className="flex items-center gap-2 md:flex-col">
         <SidebarLink
           destination="/settings"
           content="Settings"
           icon={<FaCog />}
         />
         <LogOutButton />
-      </div>
-    </section>
+      </section>
+    </nav>
   );
 }
 
