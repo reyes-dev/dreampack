@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Homepage from "./About/Homepage";
-import Navbar from "./Navbar/Navbar";
+import SiteHeader from "./Header/SiteHeader";
 import Sidebar from "./Sidebar/Sidebar";
 import Entry from "./Entry/ShowEntry/Entry";
 import EntryIndex from "./Entry/EntryIndex/EntryIndex";
@@ -43,7 +43,7 @@ function App() {
 
   return (
     <UserContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
-      <main className="flex h-screen flex-col-reverse justify-between text-white md:flex-row">
+      <div className="flex h-screen flex-col-reverse justify-between text-white md:flex-row">
         <SidebarEntryContext.Provider
           value={{
             sidebarEntriesUpdateTrigger,
@@ -51,8 +51,9 @@ function App() {
           }}
         >
           {isLoggedIn ? <Sidebar /> : isLoggedIn}
-          <div className="flex h-full w-full flex-col-reverse justify-end">
-            <section className="contents h-full flex-col items-center pb-8 pl-8 pr-8 md:flex">
+          <section className="flex h-full w-full flex-col justify-end">
+            <SiteHeader />
+            <main className="contents h-full flex-col items-center pb-8 pl-8 pr-8 md:flex">
               <PopupMessageContext.Provider
                 value={{ errorExists, setErrorExists }}
               >
@@ -76,11 +77,10 @@ function App() {
                   </Route>
                 </Switch>
               </PopupMessageContext.Provider>
-            </section>
-            <Navbar />
-          </div>
+            </main>
+          </section>
         </SidebarEntryContext.Provider>
-      </main>
+      </div>
     </UserContext.Provider>
   );
 }
