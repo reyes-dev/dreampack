@@ -106,7 +106,7 @@ function Entry({ params }) {
           toggleModalActivation={toggleModalActivation}
         />
       )}
-      <div className="flex items-center justify-between border-b pb-2">
+      <section className="flex items-center justify-between border-b pb-2">
         <h1 data-cy="entryTitle" className="text-sm lg:text-3xl">
           {entry.title}
         </h1>
@@ -125,8 +125,8 @@ function Entry({ params }) {
             <FaEdit />
           </Link>
         </div>
-      </div>
-      <div className="flex items-center justify-between border-b pb-2">
+      </section>
+      <section className="flex items-center justify-between border-b pb-2">
         <p className="text-gray-600">Created on {new Date().toDateString()}</p>
         <div className="flex items-end gap-4 pb-2">
           <Link
@@ -141,10 +141,10 @@ function Entry({ params }) {
             entry_body_text={entry.body}
           />
         </div>
-      </div>
+      </section>
       <Selection.Root>
         <Selection.Trigger className="h-fit overflow-auto">
-          <p onMouseUp={handleMouseUp} className="text-xl">
+          <article onMouseUp={handleMouseUp} className="text-xl">
             <Highlighter
               highlightClassName="text-[#FFBABB] rounded bg-transparent"
               searchWords={dreamSigns}
@@ -152,7 +152,7 @@ function Entry({ params }) {
               data-cy="entryBody"
               highlightStyle={{ textShadow: "0 0 5px #FFBABB" }}
             />
-          </p>
+          </article>
         </Selection.Trigger>
         <Selection.Portal>
           <Selection.Content
