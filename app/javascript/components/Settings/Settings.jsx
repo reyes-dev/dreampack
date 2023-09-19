@@ -69,6 +69,7 @@ function Settings() {
               onChange={(event) => onChange(event, setOpenAIToken)}
               placeholder="Enter your OpenAI API Key"
               value={openai_token || ""}
+              autoFocus
             />
           </label>
         </section>
