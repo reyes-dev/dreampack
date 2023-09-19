@@ -1,13 +1,20 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import ZeroEntriesMessage from "./ZeroEntriesMessage";
 
 function EntryIndex() {
   const [entries, setEntries] = useState();
+  const linkRef = useRef(null);
 
   useEffect(() => {
     getEntries();
   }, []);
+
+  useEffect(() => {
+    if (entries && entries.length > 0) {
+      linkRef.current.focus();
+    }
+  }, [entries]);
 
   const getEntries = async () => {
     const url = `/api/entries`;
@@ -28,13 +35,17 @@ function EntryIndex() {
     return <></>;
   }
 
-  const entryList = entries.map((entry) => {
+  const entryList = entries.map((entry, index) => {
     return (
       <li
         className="flex cursor-pointer flex-col justify-between gap-2 hover:rounded hover:bg-gray-600"
         key={entry[0]}
       >
-        <Link href={`/entries/${entry[0]}`} className="flex flex-col gap-2">
+        <Link
+          href={`/entries/${entry[0]}`}
+          className="flex flex-col gap-2"
+          ref={index === 0 ? linkRef : null}
+        >
           <h1 className="border-b">{entry[1]}</h1>
           <p className="text-xs text-gray-400 lg:text-lg">
             Created on <time>{entry[3]}</time>
