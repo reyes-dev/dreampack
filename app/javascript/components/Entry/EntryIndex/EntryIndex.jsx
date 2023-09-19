@@ -53,7 +53,10 @@ function EntryIndex() {
     border-2 border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2"
     >
       {entries.length ? (
-        <ul className="sm:text-md flex flex-col gap-4  whitespace-pre-line pt-2 text-sm  md:text-lg lg:pr-2 lg:text-xl">
+        <ul
+          className="sm:text-md flex flex-col gap-4  whitespace-pre-line pt-2 text-sm  md:text-lg lg:pr-2 lg:text-xl"
+          role="list"
+        >
           {entryList}
         </ul>
       ) : (

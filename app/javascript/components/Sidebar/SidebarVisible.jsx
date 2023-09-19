@@ -62,7 +62,7 @@ function SidebarVisible({ hideSidebar, icon, visible }) {
         />
         <section className="hidden flex-col pt-8 md:flex">
           <h1 className="border-b border-b-white font-bold">Recent Entries</h1>
-          <ul className="hidden flex-col gap-2 pt-4 md:flex">
+          <ul className="hidden flex-col gap-2 pt-4 md:flex" role="list">
             {sidebarEntriesList}
           </ul>
         </section>

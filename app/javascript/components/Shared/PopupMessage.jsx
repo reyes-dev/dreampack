@@ -24,6 +24,7 @@ function PopupMessage({ content, success = false }) {
         (success ? `text-green-500` : `text-red-500`) +
         " border-bg-white rounded border p-4 shadow-xl"
       }
+      role="list"
     >
       {errorList}
     </ul>
