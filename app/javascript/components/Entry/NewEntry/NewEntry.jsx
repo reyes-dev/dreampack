@@ -75,9 +75,9 @@ function NewEntry() {
     >
       {errorExists && (
         <PopupMessage
-          content={
-            "You received an empty response, meaning something is wrong. Please check to see if you entered the correct API key."
-          }
+          content={[
+            "You received an empty response, meaning something is wrong. Please check to see if you entered the correct API key.",
+          ]}
         />
       )}
       <div className="flex justify-between gap-4 border-b pb-2">

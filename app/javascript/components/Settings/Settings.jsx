@@ -47,10 +47,6 @@ function Settings() {
     }
   };
 
-  const errorList = errorContent.map((error, index) => {
-    return <li key={index}>{error}</li>;
-  });
-
   return (
     <form
       className="flex h-full w-full flex-col justify-between gap-4 whitespace-pre-line break-words
@@ -64,7 +60,7 @@ function Settings() {
         </h1>
         <section className="flex flex-col gap-8">
           {errorExists && (
-            <PopupMessage content={errorList} success={success} />
+            <PopupMessage content={errorContent} success={success} />
           )}
           <label className="flex flex-col gap-1">
             OpenAI API Key

@@ -14,15 +14,19 @@ function PopupMessage({ content, success = false }) {
     };
   }, []);
 
+  const errorList = content.map((error, index) => {
+    return <li key={index}>{error}</li>;
+  });
+
   return (
-    <section
+    <ul
       className={
         (success ? `text-green-500` : `text-red-500`) +
         " border-bg-white rounded border p-4 shadow-xl"
       }
     >
-      {content}
-    </section>
+      {errorList}
+    </ul>
   );
 }
 

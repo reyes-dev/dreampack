@@ -95,9 +95,9 @@ function Entry({ params }) {
     >
       {errorExists && (
         <PopupMessage
-          content={
-            "You received an empty response, meaning something is wrong. Please check to see if you entered the correct API key."
-          }
+          content={[
+            "You received an empty response, meaning something is wrong. Please check to see if you entered the correct API key.",
+          ]}
         />
       )}
       {modalActivated && (
