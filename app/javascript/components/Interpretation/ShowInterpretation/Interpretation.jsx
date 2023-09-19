@@ -64,7 +64,7 @@ function Interpretation({ params }) {
       </div>
       <div className="flex items-center justify-between border-b pb-2">
         <p className="lg:text-md text-sm text-gray-600">
-          Created on {new Date().toDateString()}
+          Created on <time>{new Date().toDateString()}</time>
         </p>
         <div className="flex gap-4 pb-2">
           <ChatGPT
@@ -74,7 +74,7 @@ function Interpretation({ params }) {
         </div>
       </div>
 
-      <p className="h-fit resize-none">{interpretationBody}</p>
+      <article className="h-fit resize-none">{interpretationBody}</article>
     </section>
   );
 }

@@ -36,6 +36,7 @@ function ChatGPT({ entry_id, setInterpretationBody }) {
 
   return (
     <button
+      type="button"
       onClick={createChatGPTResponse}
       className="min-h gap-2 whitespace-nowrap rounded border border-violet-500 p-[0.450rem_0.450rem_0.4625rem] text-xs 
                       italic text-violet-500 hover:bg-slate-700 

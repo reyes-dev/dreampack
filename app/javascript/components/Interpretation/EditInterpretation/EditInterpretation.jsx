@@ -73,10 +73,16 @@ function EditInterpretation({ params }) {
           <FaRegPaperPlane />
         </button>
       </div>
-
+      <label
+        for="interpretationBody"
+        className="absolute m-[-1px] h-[1px] w-[1px] overflow-hidden"
+      >
+        Write or Edit Your Dream Interpration:
+      </label>
       <textarea
         className="h-full resize-none bg-transparent outline-none"
-        name="interpretText"
+        name="interpretationBody"
+        id="interpretationBody"
         onChange={(event) => onChange(event, setBody)}
         placeholder="Interpret the meaning of your dream here..."
         value={body || ""}
