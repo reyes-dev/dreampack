@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from "react";
 import { PopupMessageContext } from "../../context/PopupMessageContext";
 
 function PopupMessage({ content, success = false }) {
-  const { setErrorExists } = useContext(PopupMessageContext);
+  const { errorExists, setErrorExists } = useContext(PopupMessageContext);
 
   useEffect(() => {
     const timeId = setTimeout(() => {
@@ -11,8 +11,13 @@ function PopupMessage({ content, success = false }) {
 
     return () => {
       clearTimeout(timeId);
+      setErrorExists(false);
     };
   }, []);
+
+  if (errorExists === false) {
+    return <></>;
+  }
 
   const errorList = content.map((error, index) => {
     return <li key={index}>{error}</li>;
