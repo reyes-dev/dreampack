@@ -36,6 +36,7 @@ function DeleteEntryModal({ id, toggleModalActivation }) {
         <button
           onClick={toggleModalActivation}
           className="pointer-events-auto text-sky-500"
+          autoFocus
         >
           Cancel
         </button>
