@@ -72,10 +72,9 @@ function Whisper({ setEntryBodyHandler, setIsLoading }) {
         } flex h-min items-center gap-2  whitespace-nowrap rounded border border-lime-500 
                       p-[0.450rem_0.450rem_0.4625rem] text-xs italic 
                       text-lime-400 hover:bg-slate-700  lg:text-lg`}
+        autoFocus
       >
-        <span className="lg:text-md hidden lg:block xl:text-lg">
-          Start Recording
-        </span>
+        <span className="lg:text-md lg:block xl:text-lg">Start Recording</span>
         <FaMicrophone />
       </button>
       <button
@@ -87,9 +86,7 @@ function Whisper({ setEntryBodyHandler, setIsLoading }) {
                       italic text-red-400 hover:bg-slate-700 
                       lg:text-lg`}
       >
-        <span className="lg:text-md hidden lg:block xl:text-lg">
-          Stop Recording
-        </span>
+        <span className="lg:text-md lg:block xl:text-lg">Stop Recording</span>
         <FaStopCircle />
       </button>
     </section>

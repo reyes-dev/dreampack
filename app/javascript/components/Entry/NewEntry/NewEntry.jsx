@@ -80,7 +80,11 @@ function NewEntry() {
           ]}
         />
       )}
-      <div className="flex justify-between gap-4 border-b pb-2">
+      <div className="flex flex-row-reverse justify-between gap-4 border-b pb-2">
+        <Whisper
+          setEntryBodyHandler={setEntryBodyHandler}
+          setIsLoading={setIsLoading}
+        />
         <label
           htmlFor="entryTitle"
           className="absolute m-[-1px] h-[1px] w-[1px] overflow-hidden"
@@ -95,29 +99,13 @@ function NewEntry() {
           onChange={(event) => onChange(event, setTitle)}
           placeholder="Entry Title"
         />
-        <button
-          type="submit"
-          className="min-h flex items-center gap-2 whitespace-nowrap rounded border border-sky-500 
-                    p-[0.450rem_0.450rem_0.4625rem] text-xs italic 
-                    text-sky-500 hover:bg-slate-700 lg:text-lg"
-        >
-          <span className="lg:text-md hidden lg:block xl:text-lg">
-            Save entry
-          </span>
-          <FaRegPaperPlane />
-        </button>
       </div>
 
       <div className="flex items-center justify-between border-b pb-2">
         <p className="lg:text-md text-sm text-gray-600">
           Created on {new Date().toDateString()}
         </p>
-        <div className="flex gap-4 pb-2">
-          <Whisper
-            setEntryBodyHandler={setEntryBodyHandler}
-            setIsLoading={setIsLoading}
-          />
-        </div>
+        <div className="flex gap-4 pb-2"></div>
       </div>
 
       <div
@@ -140,6 +128,15 @@ function NewEntry() {
           />
         )}
       </div>
+      <button
+        type="submit"
+        className="min-h flex items-center gap-2 self-end whitespace-nowrap rounded border border-sky-500 
+                    p-[0.450rem_0.450rem_0.4625rem] text-xs italic 
+                    text-sky-500 hover:bg-slate-700 lg:text-lg"
+      >
+        <span className="lg:text-md lg:block xl:text-lg">Save entry</span>
+        <FaRegPaperPlane />
+      </button>
     </form>
   );
 }
