@@ -81,7 +81,12 @@ function NewEntry() {
         />
       )}
       <div className="flex justify-between gap-4 border-b pb-2">
-        <label for="entryTitle"></label>
+        <label
+          for="entryTitle"
+          className="absolute m-[-1px] h-[1px] w-[1px] overflow-hidden"
+        >
+          Entry Title:
+        </label>
         <input
           className="sm:text-md w-full bg-transparent text-sm  outline-none md:text-2xl lg:text-3xl"
           name="entryTitle"
