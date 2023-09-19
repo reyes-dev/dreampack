@@ -53,28 +53,31 @@ function Settings() {
 
   return (
     <form
-      className="flex h-full w-full  flex-col justify-between gap-4 whitespace-pre-line break-words
+      className="flex h-full w-full flex-col justify-between gap-4 whitespace-pre-line break-words
         rounded border-2 border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] 
         p-8 md:h-[80vh] md:w-1/2"
       onSubmit={updateSettings}
     >
-      <section className="flex flex-col gap-8">
+      <div className="flex flex-col gap-4">
         <h1 className="sm:text-md w-full border-b bg-transparent pb-2 text-sm outline-none md:text-lg lg:text-2xl">
           Your settings
         </h1>
-        {errorExists && <PopupMessage content={errorList} success={success} />}
-        <label className="flex flex-col gap-1">
-          OpenAI API Key
-          <input
-            type="password"
-            className="rounded border border-black p-2 text-black"
-            onChange={(event) => onChange(event, setOpenAIToken)}
-            placeholder="Enter your OpenAI API Key"
-            value={openai_token || ""}
-          />
-        </label>
-      </section>
-
+        <section className="flex flex-col gap-8">
+          {errorExists && (
+            <PopupMessage content={errorList} success={success} />
+          )}
+          <label className="flex flex-col gap-1">
+            OpenAI API Key
+            <input
+              type="password"
+              className="rounded border border-black p-2 text-black"
+              onChange={(event) => onChange(event, setOpenAIToken)}
+              placeholder="Enter your OpenAI API Key"
+              value={openai_token || ""}
+            />
+          </label>
+        </section>
+      </div>
       <button
         className="flex w-min items-center justify-center gap-2 whitespace-nowrap rounded border border-white/20 p-3 hover:bg-slate-800 active:bg-slate-900 lg:w-full"
         type="submit"
