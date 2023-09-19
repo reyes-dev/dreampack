@@ -60,19 +60,7 @@ function EditInterpretation({ params }) {
       className="flex h-full w-full flex-col gap-4 rounded border-2 border-dashed border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2"
       onSubmit={updateInterpretation}
     >
-      <div className="flex justify-end border-b pb-2">
-        <button
-          type="submit"
-          className="min-h flex items-center gap-2 whitespace-nowrap rounded border border-sky-500 
-                      p-[0.450rem_0.450rem_0.4625rem] text-sm italic 
-                      text-sky-500 hover:bg-slate-700"
-        >
-          <span className="lg:text-md hidden lg:block xl:text-lg">
-            Update interpretation
-          </span>
-          <FaRegPaperPlane />
-        </button>
-      </div>
+      <h1 className="border-b">Dream Interpretation</h1>
       <label
         htmlFor="interpretationBody"
         className="absolute m-[-1px] h-[1px] w-[1px] overflow-hidden"
@@ -87,6 +75,19 @@ function EditInterpretation({ params }) {
         placeholder="Interpret the meaning of your dream here..."
         value={body || ""}
       />
+      <div className="flex justify-end pb-2">
+        <button
+          type="submit"
+          className="min-h flex items-center gap-2 whitespace-nowrap rounded border border-sky-500 
+                      p-[0.450rem_0.450rem_0.4625rem] text-sm italic 
+                      text-sky-500 hover:bg-slate-700"
+        >
+          <span className="lg:text-md lg:block xl:text-lg">
+            Update interpretation
+          </span>
+          <FaRegPaperPlane />
+        </button>
+      </div>
     </form>
   );
 }
