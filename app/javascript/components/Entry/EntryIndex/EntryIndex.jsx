@@ -51,8 +51,8 @@ function EntryIndex() {
 
   return (
     <section
-      className="flex h-[75vh] w-full flex-col gap-4 overflow-auto rounded border-2 
-    border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 md:h-full lg:h-[80vh] xl:w-1/2"
+      className="flex h-full w-full flex-col gap-4 overflow-auto rounded 
+    border-2 border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2"
     >
       {entries.length ? entryList : <ZeroEntriesMessage />}
     </section>
