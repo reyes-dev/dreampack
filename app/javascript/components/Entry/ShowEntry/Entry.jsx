@@ -62,9 +62,7 @@ function Entry({ params }) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-      console.log(data);
       const joinedDreamSigns = data.map(regExpEscape).join("|");
-      console.log(joinedDreamSigns);
       dreamSignsRegexPattern = [
         new RegExp("\\b" + joinedDreamSigns + " \\b", "g"),
       ];
@@ -79,7 +77,6 @@ function Entry({ params }) {
   };
 
   const highlightNewDreamSign = () => {
-    console.log("highlighting...");
     setDreamSigns((dreamSigns) => [...dreamSigns, selectedText]);
   };
 

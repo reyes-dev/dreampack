@@ -55,9 +55,6 @@ function Whisper({ setEntryBodyHandler, setIsLoading }) {
       setIsLoading(false);
       if (data === null || data.trim() === "") {
         setErrorExists(true);
-        return console.log(
-          "You received an empty response, meaning something is wrong. Please check to see if you entered the correct API key.",
-        );
       }
       return setTranscription(data);
     } catch (e) {

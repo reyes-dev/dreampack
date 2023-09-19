@@ -25,7 +25,7 @@ function LogOutButton() {
       setLocation(`/`);
       return response.ok;
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 

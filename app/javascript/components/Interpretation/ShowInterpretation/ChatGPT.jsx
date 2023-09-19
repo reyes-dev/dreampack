@@ -23,9 +23,6 @@ function ChatGPT({ entry_id, setInterpretationBody }) {
       const data = await response.text();
       if (data === null || data.trim() === "") {
         setErrorExists(true);
-        return console.log(
-          "You received an empty response, meaning something is wrong. Please check to see if you entered the correct API key.",
-        );
       }
       setInterpretationBody(data);
       return data;

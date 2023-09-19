@@ -18,7 +18,6 @@ function DreamSign({ phrase, highlightNewDreamSign }) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-      console.log(data);
       return data;
     } catch (e) {
       console.error(e);

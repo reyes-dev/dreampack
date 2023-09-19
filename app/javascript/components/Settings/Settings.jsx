@@ -37,7 +37,6 @@ function Settings() {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       data = await response.json();
-      console.log(data);
       setSuccess(true);
       setErrorExists(true);
       setErrorContent([data]);

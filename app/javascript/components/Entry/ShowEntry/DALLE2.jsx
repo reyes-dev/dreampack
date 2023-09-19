@@ -24,9 +24,6 @@ function DALLE2({ entry_id, setDalleUrl, entry_body_text }) {
       const data = await response.text();
       if (data === null || data.trim() === "") {
         setErrorExists(true);
-        return console.log(
-          "You received an empty response, meaning something is wrong. Please check to see if you entered the correct API key.",
-        );
       }
       setDalleUrl(data);
       return data;
