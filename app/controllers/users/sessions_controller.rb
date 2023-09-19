@@ -27,11 +27,7 @@ class Users::SessionsController < Devise::SessionsController
   private
 
   def after_sign_in_path_for(_resource)
-    if current_user.entries.any?
-      '/entries'
-    else
-      '/entries/new'
-    end
+    '/entries/new'
   end
 
   def respond_to_on_destroy
