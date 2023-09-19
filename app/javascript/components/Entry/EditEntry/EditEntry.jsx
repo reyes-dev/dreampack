@@ -95,7 +95,12 @@ function EditEntry({ params }) {
           Created on {entry.created_at}
         </p>
       </div>
-
+      <label
+        htmlFor="entryText"
+        className="absolute m-[-1px] h-[1px] w-[1px] overflow-hidden"
+      >
+        Edit Your Dream Journal Entry:
+      </label>
       <textarea
         className="h-full resize-none bg-transparent outline-none"
         name="entryText"

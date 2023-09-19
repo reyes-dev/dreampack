@@ -115,12 +115,19 @@ function NewEntry() {
             : "flex h-full flex-col"
         }
       >
+        <label
+          htmlFor="entryText"
+          className="absolute m-[-1px] h-[1px] w-[1px] overflow-hidden"
+        >
+          Record Your Dream Journal Entry:
+        </label>
         {isLoading ? (
           <div className="h-36 w-36 flex-[0_0_auto] animate-spin self-center rounded-full border-4 border-[rgba(255,255,255,.3)] border-t-[hsl(133.1,66.1%,76.9%)]"></div>
         ) : (
           <textarea
             className="h-full resize-none bg-transparent outline-none"
             name="entryText"
+            id="entryText"
             data-cy="entryText"
             onChange={(event) => onChange(event, setBody)}
             placeholder="Your entry here..."
