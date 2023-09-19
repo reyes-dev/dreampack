@@ -108,7 +108,6 @@ function Entry({ params }) {
           {entry.title}
         </h1>
         <div className="flex items-center gap-4">
-          <DeleteEntryButton toggleModalActivation={toggleModalActivation} />
           <Link
             href={`/entries/${params.id}/edit`}
             className="min-h flex items-center gap-2 whitespace-nowrap rounded border border-sky-500 
@@ -121,6 +120,7 @@ function Entry({ params }) {
             </span>
             <FaEdit />
           </Link>
+          <DeleteEntryButton toggleModalActivation={toggleModalActivation} />
         </div>
       </section>
       <section className="flex items-center justify-between border-b pb-2">

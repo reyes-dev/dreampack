@@ -88,17 +88,6 @@ function EditEntry({ params }) {
           placeholder="Entry Title"
           value={title || ""}
         />
-        <button
-          type="submit"
-          className="min-h flex items-center gap-2 whitespace-nowrap rounded border border-sky-500 
-                      p-[0.450rem_0.450rem_0.4625rem] text-xs italic 
-                      text-sky-500 hover:bg-slate-700 lg:text-lg"
-        >
-          <span className="lg:text-md hidden lg:block xl:text-lg">
-            Update entry
-          </span>
-          <FaRegPaperPlane />
-        </button>
       </div>
 
       <div className="border-b pb-2">
@@ -115,6 +104,16 @@ function EditEntry({ params }) {
         placeholder="Your entry here..."
         value={body || ""}
       />
+
+      <button
+        type="submit"
+        className="min-h flex items-center gap-2 self-end whitespace-nowrap rounded border border-sky-500 
+                      p-[0.450rem_0.450rem_0.4625rem] text-xs italic 
+                      text-sky-500 hover:bg-slate-700 lg:text-lg"
+      >
+        <span className="lg:text-md  lg:block xl:text-lg">Update entry</span>
+        <FaRegPaperPlane />
+      </button>
     </form>
   );
 }
