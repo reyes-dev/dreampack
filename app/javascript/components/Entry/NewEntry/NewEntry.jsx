@@ -82,7 +82,7 @@ function NewEntry() {
       )}
       <div className="flex justify-between gap-4 border-b pb-2">
         <label
-          for="entryTitle"
+          htmlFor="entryTitle"
           className="absolute m-[-1px] h-[1px] w-[1px] overflow-hidden"
         >
           Entry Title:

@@ -74,7 +74,7 @@ function EditInterpretation({ params }) {
         </button>
       </div>
       <label
-        for="interpretationBody"
+        htmlFor="interpretationBody"
         className="absolute m-[-1px] h-[1px] w-[1px] overflow-hidden"
       >
         Write or Edit Your Dream Interpration:

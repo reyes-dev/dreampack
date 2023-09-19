@@ -30,12 +30,11 @@ function EntryIndex() {
 
   const entryList = entries.map((entry) => {
     return (
-      <li className="flex cursor-pointer flex-col justify-between gap-2 hover:rounded hover:bg-gray-600">
-        <Link
-          href={`/entries/${entry[0]}`}
-          key={entry[0]}
-          className="flex flex-col gap-2"
-        >
+      <li
+        className="flex cursor-pointer flex-col justify-between gap-2 hover:rounded hover:bg-gray-600"
+        key={entry[0]}
+      >
+        <Link href={`/entries/${entry[0]}`} className="flex flex-col gap-2">
           <h1 className="border-b">{entry[1]}</h1>
           <p className="text-xs text-gray-400 lg:text-lg">
             Created on <time>{entry[3]}</time>
