@@ -81,9 +81,11 @@ function NewEntry() {
         />
       )}
       <div className="flex justify-between gap-4 border-b pb-2">
+        <label for="entryTitle"></label>
         <input
           className="sm:text-md w-full bg-transparent text-sm  outline-none md:text-2xl lg:text-3xl"
           name="entryTitle"
+          id="entryTitle"
           data-cy="entryTitle"
           onChange={(event) => onChange(event, setTitle)}
           placeholder="Entry Title"

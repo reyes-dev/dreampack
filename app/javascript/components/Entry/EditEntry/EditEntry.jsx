@@ -73,9 +73,11 @@ function EditEntry({ params }) {
       onSubmit={updateEntry}
     >
       <div className="flex justify-between gap-4 border-b pb-2">
+        <label for="entryTitle"></label>
         <input
           className="flex-1 bg-transparent text-sm outline-none lg:text-3xl"
           name="entryTitle"
+          id="entryTitle"
           data-cy="entryTitle"
           onChange={(event) => onChange(event, setTitle)}
           placeholder="Entry Title"
