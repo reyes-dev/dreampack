@@ -4,7 +4,7 @@ import { FaRegPaperPlane } from "react-icons/fa";
 
 function EditInterpretation({ params }) {
   const [body, setBody] = useState("");
-  const [location, setLocation] = useLocation();
+  const [, navigate] = useLocation();
   // Store state data for CRUD operations
   useEffect(() => {
     getInterpretation();
@@ -48,7 +48,7 @@ function EditInterpretation({ params }) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       await response.text();
-      setLocation(`/entries/${params.id}/interpretation`);
+      navigate(`/entries/${params.id}/interpretation`);
       return response.ok;
     } catch (e) {
       console.error(e);

@@ -7,7 +7,7 @@ function EditEntry({ params }) {
   const [entry, setEntry] = useState({});
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const [location, setLocation] = useLocation();
+  const [, navigate] = useLocation();
   const { setSidebarEntriesUpdateTrigger } = useContext(SidebarEntryContext);
   // Store state data for CRUD operations
   useEffect(() => {
@@ -59,7 +59,7 @@ function EditEntry({ params }) {
       }
       await response.text();
       setSidebarEntriesUpdateTrigger((v) => !v);
-      setLocation(`/entries/${params.id}`);
+      navigate(`/entries/${params.id}`);
       return response.ok;
     } catch (e) {
       console.error(e);

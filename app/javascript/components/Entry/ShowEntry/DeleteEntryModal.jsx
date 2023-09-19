@@ -3,7 +3,7 @@ import { useLocation } from "wouter";
 import { SidebarEntryContext } from "../../../context/SidebarEntryContext";
 
 function DeleteEntryModal({ id, toggleModalActivation }) {
-  const [location, setLocation] = useLocation();
+  const [, navigate] = useLocation();
   const { setSidebarEntriesUpdateTrigger } = useContext(SidebarEntryContext);
 
   const deleteEntry = async () => {
@@ -21,7 +21,7 @@ function DeleteEntryModal({ id, toggleModalActivation }) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       setSidebarEntriesUpdateTrigger((v) => !v);
-      setLocation("/entries");
+      navigate("/entries");
       return response.json();
     } catch (e) {
       console.error(e);

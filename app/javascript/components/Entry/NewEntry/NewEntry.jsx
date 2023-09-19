@@ -11,7 +11,7 @@ function NewEntry() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [audioIsReady, setAudioIsReady] = useState(false);
-  const [location, setLocation] = useLocation();
+  const [, navigate] = useLocation();
   const { errorExists } = useContext(PopupMessageContext);
   const [isLoading, setIsLoading] = useState(false);
   const { setSidebarEntriesUpdateTrigger } = useContext(SidebarEntryContext);
@@ -54,7 +54,7 @@ function NewEntry() {
       }
       const data = await response.json();
       setSidebarEntriesUpdateTrigger((v) => !v);
-      setLocation(`/entries/${data.id}`);
+      navigate(`/entries/${data.id}`);
       return data;
     } catch (e) {
       console.error(e);

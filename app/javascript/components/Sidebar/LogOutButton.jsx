@@ -4,7 +4,7 @@ import { FaSignOutAlt } from "react-icons/fa";
 import { UserContext } from "../../context/UserContext";
 
 function LogOutButton() {
-  const [location, setLocation] = useLocation();
+  const [, navigate] = useLocation();
   const { setIsLoggedIn } = useContext(UserContext);
 
   const logoutUser = async () => {
@@ -22,7 +22,7 @@ function LogOutButton() {
       }
       await response.text();
       setIsLoggedIn(false);
-      setLocation(`/`);
+      navigate(`/`);
       return response.ok;
     } catch (e) {
       console.error(e);
