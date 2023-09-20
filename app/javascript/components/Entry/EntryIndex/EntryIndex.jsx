@@ -47,12 +47,10 @@ function EntryIndex() {
           ref={index === 0 ? linkRef : null}
         >
           <h1 className="border-b">{entry[1]}</h1>
-          <p className="text-xs text-gray-400 lg:text-lg">
+          <p className="text-gray-400">
             Created on <time>{entry[3]}</time>
           </p>
-          <article className="pt md:text-md text-sm text-gray-200 lg:text-lg">
-            {entry[2]}
-          </article>
+          <article className="pt text-gray-200">{entry[2]}</article>
         </Link>
       </li>
     );
@@ -65,7 +63,7 @@ function EntryIndex() {
     >
       {entries.length ? (
         <ul
-          className="sm:text-md flex flex-col gap-4  whitespace-pre-line pt-2 text-sm  md:text-lg lg:pr-2 lg:text-xl"
+          className="flex flex-col gap-4  whitespace-pre-line pt-2 lg:pr-2"
           role="list"
         >
           {entryList}

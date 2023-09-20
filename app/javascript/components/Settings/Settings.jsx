@@ -54,7 +54,7 @@ function Settings() {
       onSubmit={updateSettings}
     >
       <div className="flex flex-col gap-4">
-        <h1 className="sm:text-md w-full border-b bg-transparent pb-2 text-sm outline-none md:text-lg lg:text-2xl">
+        <h1 className="w-full border-b bg-transparent pb-2 outline-none">
           Your settings
         </h1>
         <section className="flex flex-col gap-8">

@@ -104,20 +104,18 @@ function Entry({ params }) {
         />
       )}
       <section className="flex items-center justify-between border-b pb-2">
-        <h1 data-cy="entryTitle" className="text-sm lg:text-3xl">
+        <h1 data-cy="entryTitle" className="lg:text-3xl">
           {entry.title}
         </h1>
         <div className="flex items-center gap-4">
           <Link
             href={`/entries/${params.id}/edit`}
             className="min-h flex items-center gap-2 whitespace-nowrap rounded border border-sky-500 
-                      p-[0.450rem_0.450rem_0.4625rem] text-xs italic 
-                      text-sky-500 hover:bg-slate-700 lg:text-lg"
+                      p-[0.450rem_0.450rem_0.4625rem] italic 
+                      text-sky-500 hover:bg-slate-700"
             data-cy="editEntry"
           >
-            <span className="lg:text-md hidden lg:block xl:text-lg">
-              Edit Entry
-            </span>
+            <span className="hidden lg:block">Edit Entry</span>
             <FaEdit />
           </Link>
           <DeleteEntryButton toggleModalActivation={toggleModalActivation} />
@@ -128,7 +126,7 @@ function Entry({ params }) {
         <div className="flex items-end gap-4 pb-2">
           <Link
             href={`/entries/${params.id}/interpretation`}
-            className="text-xs text-sky-500 underline lg:text-lg"
+            className="text-sky-500 underline"
           >
             Go to Interpretation
           </Link>
@@ -141,7 +139,7 @@ function Entry({ params }) {
       </section>
       <Selection.Root>
         <Selection.Trigger className="h-fit overflow-auto">
-          <article onMouseUp={handleMouseUp} className="text-xl">
+          <article onMouseUp={handleMouseUp}>
             <Highlighter
               highlightClassName="text-[#FFBABB] rounded bg-transparent"
               searchWords={dreamSigns}

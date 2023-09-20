@@ -41,29 +41,27 @@ function Interpretation({ params }) {
         />
       )}
       <div className="flex justify-between gap-4 border-b pb-2">
-        <h1 className="text-xs lg:text-3xl">Interpretation</h1>
+        <h1 className="lg:text-3xl">Interpretation</h1>
         <div className="flex flex-col-reverse items-end gap-4 lg:flex-row">
           <Link
             href={`/entries/${params.id}`}
-            className="whitespace-nowrap text-xs text-sky-500 underline lg:text-lg"
+            className="whitespace-nowrap text-sky-500 underline"
           >
             Back to Entry
           </Link>
           <Link
             href={`/entries/${params.id}/interpretation/edit`}
-            className="min-h gap-2 whitespace-nowrap rounded border border-sky-500 p-[0.450rem_0.450rem_0.4625rem] text-xs italic 
+            className="min-h gap-2 whitespace-nowrap rounded border border-sky-500 p-[0.450rem_0.450rem_0.4625rem] italic 
                       text-sky-500 hover:bg-slate-700 lg:flex 
-                      lg:items-center lg:text-lg"
+                      lg:items-center"
           >
-            <span className="lg:text-md hidden lg:block xl:text-lg">
-              Edit Interpretation
-            </span>
+            <span className="hidden lg:block">Edit Interpretation</span>
             <FaEdit />
           </Link>
         </div>
       </div>
       <div className="flex items-center justify-between border-b pb-2">
-        <p className="lg:text-md text-sm text-gray-600">
+        <p className="text-gray-600">
           Created on <time>{new Date().toDateString()}</time>
         </p>
         <div className="flex gap-4 pb-2">

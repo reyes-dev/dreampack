@@ -92,7 +92,7 @@ function NewEntry() {
           Entry Title:
         </label>
         <input
-          className="sm:text-md w-full bg-transparent text-sm  outline-none md:text-2xl lg:text-3xl"
+          className=" w-full bg-transparent outline-none"
           name="entryTitle"
           id="entryTitle"
           data-cy="entryTitle"
@@ -102,9 +102,7 @@ function NewEntry() {
       </div>
 
       <div className="flex items-center justify-between border-b pb-2">
-        <p className="lg:text-md text-sm text-gray-600">
-          Created on {new Date().toDateString()}
-        </p>
+        <p className="text-gray-600">Created on {new Date().toDateString()}</p>
         <div className="flex gap-4 pb-2"></div>
       </div>
 
@@ -138,10 +136,10 @@ function NewEntry() {
       <button
         type="submit"
         className="min-h flex items-center gap-2 self-end whitespace-nowrap rounded border border-sky-500 
-                    p-[0.450rem_0.450rem_0.4625rem] text-xs italic 
-                    text-sky-500 hover:bg-slate-700 lg:text-lg"
+                    p-[0.450rem_0.450rem_0.4625rem]  italic 
+                    text-sky-500 hover:bg-slate-700 "
       >
-        <span className="lg:text-md lg:block xl:text-lg">Save entry</span>
+        <span className="lg:block">Save entry</span>
         <FaRegPaperPlane />
       </button>
     </form>

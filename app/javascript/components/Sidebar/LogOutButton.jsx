@@ -35,7 +35,7 @@ function LogOutButton() {
       className="flex w-min items-center gap-2 whitespace-nowrap rounded border border-white/20 p-3 hover:bg-slate-700 lg:w-full"
     >
       <FaSignOutAlt />
-      <span className="hidden lg:block lg:text-sm 2xl:text-lg">Logout</span>
+      <span className="hidden lg:block">Logout</span>
     </button>
   );
 }

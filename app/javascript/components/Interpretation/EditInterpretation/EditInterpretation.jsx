@@ -79,12 +79,10 @@ function EditInterpretation({ params }) {
         <button
           type="submit"
           className="min-h flex items-center gap-2 whitespace-nowrap rounded border border-sky-500 
-                      p-[0.450rem_0.450rem_0.4625rem] text-sm italic 
+                      p-[0.450rem_0.450rem_0.4625rem] italic 
                       text-sky-500 hover:bg-slate-700"
         >
-          <span className="lg:text-md lg:block xl:text-lg">
-            Update interpretation
-          </span>
+          <span className="lg:block">Update interpretation</span>
           <FaRegPaperPlane />
         </button>
       </div>

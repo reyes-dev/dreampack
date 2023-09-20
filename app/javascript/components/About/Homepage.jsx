@@ -18,7 +18,7 @@ function Homepage() {
             About
           </h1>
         </div>
-        <p className="text-lg text-gray-200">
+        <p className="text-gray-200">
           Dreampack is a dream journaling app that is intended to aid serious
           lucid dreamers and hobbyist dream explorers alike in achieving their
           dream goals. Every night we enter the wilderness of our dreams without
@@ -27,7 +27,7 @@ function Homepage() {
           Dreampack like your bag of magic tools that allows you to thrive in
           the wilderness you used to be lost in.
         </p>
-        <p className="text-lg">
+        <p>
           If you're still lost and don't know what a
           <a
             href="https://en.wikipedia.org/wiki/Dream_diary"
@@ -49,7 +49,7 @@ function Homepage() {
           is, read up on those wikipedia articles!
         </p>
       </article>
-      <article>
+      <article className="flex flex-col gap-2">
         <h1 className="text-3xl">Features</h1>
         <ul className="list-disc">
           <li>Write journal entries</li>

@@ -80,7 +80,7 @@ function EditEntry({ params }) {
           Entry Title:
         </label>
         <input
-          className="flex-1 bg-transparent text-sm outline-none lg:text-3xl"
+          className="flex-1 bg-transparent outline-none"
           name="entryTitle"
           id="entryTitle"
           data-cy="entryTitle"
@@ -91,9 +91,7 @@ function EditEntry({ params }) {
       </div>
 
       <div className="border-b pb-2">
-        <p className="lg:text-md text-sm text-gray-600">
-          Created on {entry.created_at}
-        </p>
+        <p className="text-gray-600">Created on {entry.created_at}</p>
       </div>
       <label
         htmlFor="entryText"
@@ -113,10 +111,10 @@ function EditEntry({ params }) {
       <button
         type="submit"
         className="min-h flex items-center gap-2 self-end whitespace-nowrap rounded border border-sky-500 
-                      p-[0.450rem_0.450rem_0.4625rem] text-xs italic 
-                      text-sky-500 hover:bg-slate-700 lg:text-lg"
+                      p-[0.450rem_0.450rem_0.4625rem] italic 
+                      text-sky-500 hover:bg-slate-700"
       >
-        <span className="lg:text-md  lg:block xl:text-lg">Update entry</span>
+        <span className="lg:block">Update entry</span>
         <FaRegPaperPlane />
       </button>
     </form>
