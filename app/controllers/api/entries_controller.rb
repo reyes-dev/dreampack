@@ -17,17 +17,17 @@ class API::EntriesController < ApplicationController
   end
 
   def show
-    entry = Entry.find(params[:id])
+    entry = current_user.entries.find(params[:id])
     render json: entry, serializer: EntrySerializer
   end
 
   def update
-    entry = Entry.find(params[:id])
+    entry = current_user.entries.find(params[:id])
     entry.update!(entry_params)
   end
 
   def destroy
-    entry = Entry.find(params[:id])
+    entry = current_user.entries.find(params[:id])
     entry.destroy
 
     render json: { message: 'Entry deleted!' }

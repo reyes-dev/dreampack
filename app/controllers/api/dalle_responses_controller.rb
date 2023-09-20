@@ -6,7 +6,7 @@ class API::DalleResponsesController < ApplicationController
   after_action :grab_image, unless: -> { @empty_token || @response.nil? }
 
   def create
-    @entry = Entry.find(params[:entry_id])
+    @entry = current_user.entries.find(params[:entry_id])
     @prompt = params[:_json]
     unless @client.nil?
       @response = @client.images.generate(

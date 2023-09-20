@@ -4,7 +4,7 @@ class API::ChatGPTResponsesController < ApplicationController
   after_action :update_interpretation, unless: -> { @empty_token || @response.nil? }
 
   def create
-    @entry = Entry.find(params[:entry_id])
+    @entry = current_user.entries.find(params[:entry_id])
     prompt = "Without giving a preface or introduction of yourself or your
               capabilities, please interpret the following dream: #{@entry.body}"
     unless @client.nil?

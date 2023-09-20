@@ -2,7 +2,7 @@ class API::InterpretationsController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    interpretation = Entry.find(params[:entry_id]).interpretation
+    interpretation = current_user.entries.find(params[:entry_id]).interpretation
 
     render json: interpretation
   end
@@ -18,7 +18,7 @@ class API::InterpretationsController < ApplicationController
   end
 
   def update
-    interpretation = Entry.find(params[:entry_id]).interpretation
+    interpretation = current_user.entries.find(params[:entry_id]).interpretation
 
     if interpretation
       interpretation.update!(interpretation_params)
