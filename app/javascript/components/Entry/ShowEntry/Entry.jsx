@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import DeleteEntryButton from "./DeleteEntryButton";
 import * as Selection from "selection-popover";
 import DreamSign from "./DreamSign";
@@ -11,13 +11,14 @@ import { PopupMessageContext } from "../../../context/PopupMessageContext";
 import DALLE2 from "./DALLE2";
 
 function Entry({ params }) {
-  const [entry, setEntry] = useState({});
+  const [entry, setEntry] = useState();
   const [body, setBody] = useState("");
   const [selectedText, setSelectedText] = useState();
   const [dreamSigns, setDreamSigns] = useState([]);
   const [dalleUrl, setDalleUrl] = useState("");
   const [modalActivated, setModalActivated] = useState(false);
   const { errorExists } = useContext(PopupMessageContext);
+  const [, navigate] = useLocation();
 
   useEffect(() => {
     getEntry();
@@ -28,7 +29,9 @@ function Entry({ params }) {
     const url = `/api/entries/${params.id}`;
     try {
       const response = await fetch(url);
-      if (!response.ok) {
+      if (response.status === 404) {
+        return navigate("/entries/new");
+      } else if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
@@ -72,6 +75,10 @@ function Entry({ params }) {
     }
   };
 
+  if (entry == undefined) {
+    return <></>;
+  }
+
   const handleMouseUp = () => {
     setSelectedText(window.getSelection().toString());
   };
@@ -86,9 +93,8 @@ function Entry({ params }) {
 
   return (
     <section
-      className={`${
-        modalActivated ? "pointer-events-none" : " "
-      } flex h-full w-full flex-col gap-4 whitespace-pre-line break-words rounded border-2 border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2`}
+      className={`${modalActivated ? "pointer-events-none" : " "
+        } flex h-full w-full flex-col gap-4 whitespace-pre-line break-words rounded border-2 border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2`}
     >
       {errorExists && (
         <PopupMessage
