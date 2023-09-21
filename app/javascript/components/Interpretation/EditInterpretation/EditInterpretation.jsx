@@ -3,7 +3,7 @@ import { useLocation } from "wouter";
 import { FaRegPaperPlane } from "react-icons/fa";
 
 function EditInterpretation({ params }) {
-  const [body, setBody] = useState("");
+  const [interpretation, setInterpretation] = useState();
   const [, navigate] = useLocation();
   // Store state data for CRUD operations
   useEffect(() => {
@@ -18,22 +18,28 @@ function EditInterpretation({ params }) {
     const url = `/api/entries/${params.id}/interpretation`;
     try {
       const response = await fetch(url);
-      if (!response.ok) {
+      if (response.status === 404) {
+        navigate("/entries/new");
+      } else if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-      setBody(data.body);
+      setInterpretation(data.body);
       return data;
     } catch (e) {
       console.error(e);
     }
   };
 
+  if (interpretation === undefined) {
+    return <></>;
+  }
+
   const updateInterpretation = async (event) => {
     event.preventDefault();
     const url = `/api/entries/${params.id}/interpretation`;
     const id = params.id;
-    const body_param = { body, id };
+    const body_param = { body: interpretation, id };
     const token = document.querySelector('meta[name="csrf-token"]').content;
     try {
       const response = await fetch(url, {
@@ -71,9 +77,9 @@ function EditInterpretation({ params }) {
         className="h-full resize-none bg-transparent outline-none"
         name="interpretationBody"
         id="interpretationBody"
-        onChange={(event) => onChange(event, setBody)}
+        onChange={(event) => onChange(event, setInterpretation)}
         placeholder="Interpret the meaning of your dream here..."
-        value={body || ""}
+        value={interpretation || ""}
       />
       <div className="flex justify-end pb-2">
         <button
