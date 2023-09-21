@@ -4,7 +4,7 @@ import { FaRegPaperPlane } from "react-icons/fa";
 import { SidebarEntryContext } from "../../../context/SidebarEntryContext";
 
 function EditEntry({ params }) {
-  const [entry, setEntry] = useState({});
+  const [entry, setEntry] = useState();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [, navigate] = useLocation();
@@ -15,8 +15,10 @@ function EditEntry({ params }) {
   }, []);
 
   useEffect(() => {
-    setTitle(entry.title);
-    setBody(entry.body);
+    if (entry) {
+      setTitle(entry.title);
+      setBody(entry.body);
+    }
   }, [entry]);
 
   const onChange = (event, setFunction) => {
@@ -27,7 +29,9 @@ function EditEntry({ params }) {
     const url = `/api/entries/${params.id}`;
     try {
       const response = await fetch(url);
-      if (!response.ok) {
+      if (response.status === 404) {
+        return navigate("/entries/new");
+      } else if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
@@ -37,6 +41,10 @@ function EditEntry({ params }) {
       console.error(e);
     }
   };
+
+  if (entry === undefined) {
+    return <></>;
+  }
 
   const updateEntry = async (event) => {
     event.preventDefault();
