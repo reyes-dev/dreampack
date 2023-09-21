@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import ChatGPT from "./ChatGPT";
 import { FaEdit } from "react-icons/fa";
 import PopupMessage from "../../Shared/PopupMessage";
 import { PopupMessageContext } from "../../../context/PopupMessageContext";
 
 function Interpretation({ params }) {
-  const [interpretationBody, setInterpretationBody] = useState("");
+  const [interpretation, setInterpretation] = useState();
   const { errorExists } = useContext(PopupMessageContext);
+  const [, navigate] = useLocation();
 
   useEffect(() => {
     getInterpretation();
@@ -17,16 +18,22 @@ function Interpretation({ params }) {
     const url = `/api/entries/${params.id}/interpretation`;
     try {
       const response = await fetch(url);
-      if (!response.ok) {
+      if (response.status === 404) {
+        navigate("/entries/new");
+      } else if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-      setInterpretationBody(data.body);
+      setInterpretation(data.body);
       return data;
     } catch (e) {
       console.error(e);
     }
   };
+
+  if (interpretation === undefined) {
+    return <></>;
+  }
 
   return (
     <section
@@ -65,14 +72,11 @@ function Interpretation({ params }) {
           Created on <time>{new Date().toDateString()}</time>
         </p>
         <div className="flex gap-4 pb-2">
-          <ChatGPT
-            entry_id={params.id}
-            setInterpretationBody={setInterpretationBody}
-          />
+          <ChatGPT entry_id={params.id} setInterpretation={setInterpretation} />
         </div>
       </div>
 
-      <article className="h-fit resize-none">{interpretationBody}</article>
+      <article className="h-fit resize-none">{interpretation}</article>
     </section>
   );
 }
