@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import ZeroEntriesMessage from "./ZeroEntriesMessage";
+import Pagination from "../../Shared/Pagination";
 
 function EntryIndex() {
   const [entries, setEntries] = useState();
@@ -71,6 +72,7 @@ function EntryIndex() {
       ) : (
         <ZeroEntriesMessage />
       )}
+      <Pagination />
     </section>
   );
 }
