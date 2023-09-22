@@ -10,7 +10,7 @@ function EntryIndex() {
 
   useEffect(() => {
     getEntries();
-  }, []);
+  }, [params.page]);
 
   useEffect(() => {
     if (entries && entries.length > 0) {

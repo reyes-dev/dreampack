@@ -56,7 +56,7 @@ function SidebarVisible({ hideSidebar, icon, visible }) {
         </div>
 
         <SidebarLink
-          destination="/entries"
+          destination="/entries/page/0"
           content="All Entries"
           icon={<FaBook />}
         />
