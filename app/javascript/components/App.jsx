@@ -62,7 +62,7 @@ function App() {
                   <Route path="/entries/new" component={NewEntry} />
                   <Route path="/entries/:id/edit" component={EditEntry} />
                   <Route path="/entries/:id" component={Entry} />
-                  <Route path="/entries" component={EntryIndex} />
+                  <Route path="/entries/page/:page" component={EntryIndex} />
                   <Route path="/settings" component={Settings} />
                   <Route
                     path="/entries/:id/interpretation"

@@ -2,7 +2,8 @@ class API::EntriesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    entry = current_user.entries.truncated_entries
+    current_page = params[:page].to_i
+    entry = current_user.entries.truncated_entries(current_page)
     render json: entry.to_json
   end
 

@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "wouter";
+import { Link, useRoute } from "wouter";
 import ZeroEntriesMessage from "./ZeroEntriesMessage";
 import Pagination from "../../Shared/Pagination";
 
 function EntryIndex() {
   const [entries, setEntries] = useState();
+  const [, params] = useRoute("/entries/page/:page");
   const linkRef = useRef(null);
 
   useEffect(() => {
@@ -18,7 +19,7 @@ function EntryIndex() {
   }, [entries]);
 
   const getEntries = async () => {
-    const url = `/api/entries`;
+    const url = `/api/entries/page/${params.page}`;
     try {
       const response = await fetch(url);
       if (!response.ok) {
