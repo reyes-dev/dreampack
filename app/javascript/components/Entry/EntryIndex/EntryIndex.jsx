@@ -5,6 +5,7 @@ import Pagination from "../../Shared/Pagination";
 
 function EntryIndex() {
   const [entries, setEntries] = useState();
+  const [entryCount, setEntryCount] = useState();
   const [, params] = useRoute("/entries/page/:page");
   const linkRef = useRef(null);
 
@@ -17,7 +18,7 @@ function EntryIndex() {
   }, [params.page]);
 
   useEffect(() => {
-    if (entries && entries.length > 0) {
+    if (entries && entryCount > 0) {
       linkRef.current.focus();
     }
   }, [entries]);
@@ -30,8 +31,7 @@ function EntryIndex() {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-      console.log(data);
-      return data;
+      return setEntryCount(data);
     } catch (e) {
       console.error(e);
     }
@@ -83,7 +83,7 @@ function EntryIndex() {
       className="flex h-full w-full flex-col gap-4 overflow-auto rounded 
     border-2 border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2"
     >
-      {entries.length ? (
+      {entryCount ? (
         <ul
           className="flex flex-col gap-4  whitespace-pre-line pt-2 lg:pr-2"
           role="list"
@@ -93,7 +93,7 @@ function EntryIndex() {
       ) : (
         <ZeroEntriesMessage />
       )}
-      <Pagination />
+      <Pagination pageNumber={params.page} entryCount={entryCount} />
     </section>
   );
 }
