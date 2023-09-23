@@ -9,6 +9,10 @@ function EntryIndex() {
   const linkRef = useRef(null);
 
   useEffect(() => {
+    getEntryCount();
+  }, []);
+
+  useEffect(() => {
     getEntries();
   }, [params.page]);
 
@@ -18,6 +22,21 @@ function EntryIndex() {
     }
   }, [entries]);
 
+  const getEntryCount = async () => {
+    const url = `/api/entries/count`;
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log(data);
+      return data;
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   const getEntries = async () => {
     const url = `/api/entries/page/${params.page}`;
     try {
@@ -26,6 +45,7 @@ function EntryIndex() {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
+      console.log(data);
       setEntries(data);
       return data;
     } catch (e) {

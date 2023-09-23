@@ -15,7 +15,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :entries do
-      get '/page/:page', action: :index, on: :collection
+      collection do
+        get '/page/:page', action: :index
+        get '/count', action: :count
+      end
       resource :interpretation do
         resource :chatgpt_response, only: [:create]
       end

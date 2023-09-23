@@ -7,6 +7,11 @@ class API::EntriesController < ApplicationController
     render json: entry.to_json
   end
 
+  def count
+    entry_count = Entry.where(user_id: current_user.id).count
+    render json: entry_count.to_json
+  end
+
   def create
     entry = current_user.entries.create!(entry_params)
 
