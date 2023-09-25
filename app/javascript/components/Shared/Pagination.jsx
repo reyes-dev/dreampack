@@ -1,12 +1,8 @@
-import React, { useMemo, useEffect } from "react";
+import React, { useMemo } from "react";
 import { useLocation } from "wouter";
 
 function Pagination({ pageNumber, entryCount }) {
   const [, navigate] = useLocation();
-
-  useEffect(() => {
-    console.log(pageNumber);
-  }, [pageNumber]);
 
   const pageCount = useMemo(() => {
     return Math.floor(entryCount / 10);
@@ -14,14 +10,21 @@ function Pagination({ pageNumber, entryCount }) {
 
   return (
     <section className="flex gap-4 self-center">
-      {pageNumber === 0 ? null : <button>{"<-"}</button>}
+      {pageNumber === 0 ? null : (
+        <button
+          onClick={() => {
+            navigate(`/entries/page/${pageNumber - 1}`);
+          }}
+        >
+          {"<-"}
+        </button>
+      )}
 
-      {`0...${pageCount}`}
+      {pageNumber}
 
       {pageNumber === pageCount ? null : (
         <button
           onClick={() => {
-            console.log(pageNumber);
             navigate(`/entries/page/${pageNumber + 1}`);
           }}
         >
