@@ -93,7 +93,7 @@ function EntryIndex() {
       ) : (
         <ZeroEntriesMessage />
       )}
-      <Pagination pageNumber={params.page} entryCount={entryCount} />
+      <Pagination pageNumber={+params.page} entryCount={entryCount} />
     </section>
   );
 }
