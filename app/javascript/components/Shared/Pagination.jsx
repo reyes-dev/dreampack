@@ -9,9 +9,10 @@ function Pagination({ pageNumber, entryCount }) {
   }, [entryCount]);
 
   return (
-    <section className="flex gap-4 self-center">
+    <section className="flex gap-8 self-center">
       {pageNumber === 0 ? null : (
         <button
+          className="pb pt rounded border border-white/20 pl-4 pr-4 hover:border-white hover:bg-slate-700"
           onClick={() => {
             navigate(`/entries/page/${pageNumber - 1}`);
           }}
@@ -20,10 +21,11 @@ function Pagination({ pageNumber, entryCount }) {
         </button>
       )}
 
-      {pageNumber}
+      <p className="self-end border-b-2 text-lg">{pageNumber}</p>
 
       {pageNumber === pageCount ? null : (
         <button
+          className="pb pt rounded border border-white/20 pl-4 pr-4 hover:border-white hover:bg-slate-700"
           onClick={() => {
             navigate(`/entries/page/${pageNumber + 1}`);
           }}
