@@ -5,7 +5,10 @@ import { PopupMessageContext } from "../../../context/PopupMessageContext";
 
 function Whisper({ setEntryBodyHandler, setIsLoading }) {
   const { status, startRecording, stopRecording, mediaBlobUrl } =
-    useReactMediaRecorder({ audio: true });
+    useReactMediaRecorder({
+      audio: true,
+      blobPropertyBag: { type: "audio/mp4" },
+    });
   const [transcription, setTranscription] = useState("");
   const { setErrorExists } = useContext(PopupMessageContext);
 
@@ -29,9 +32,10 @@ function Whisper({ setEntryBodyHandler, setIsLoading }) {
     const recordedAudio = await fetch(mediaBlobUrl);
     const recordedAudioBlob = await recordedAudio.blob();
     const formData = new FormData();
-    const file = new File([recordedAudioBlob], "input.wav", {
-      type: "audio/wav",
+    const file = new File([recordedAudioBlob], "input.mp4", {
+      type: "audio/mp4",
     });
+    console.log(file);
     formData.append("audio_data", file);
     return formData;
   };
