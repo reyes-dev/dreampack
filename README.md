@@ -2,7 +2,7 @@
     Dreampack 
 </h1>
 
-Visit (Dreampack, a web-based dream journal application!)[https://dreampack.app/]
+Visit [Dreampack, a web-based dream journal application!](https://dreampack.app/)
 
 ## What is Dreampack?
 
