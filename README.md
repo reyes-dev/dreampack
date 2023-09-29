@@ -1,20 +1,28 @@
-# Dreampack
+<h1 align="center">
+    Dreampack 
+</h1>
 
-Web-based dream journal application with a Ruby on Rails backend and React.js frontend.
+Visit (Dreampack, a web-based dream journal application!)[https://dreampack.app/]
 
-## Purpose
+## What is Dreampack?
 
-Have you heard of [dream journaling](https://en.wikipedia.org/wiki/Dream_diary) or [lucid dreaming](https://en.wikipedia.org/wiki/Lucid_dream)? Dreampack is
-a toolkit for lucid dreamers and casual dream explorers alike, including features to aid your dream journaling, dream recall, reality checks, and dream sign tracking.
+Dreampack is a toolkit for hobbyist dream journalers and lucid dreamers, including several features to aid dream journaling, dream recall, reality checks, and dream sign tracking.
+It is intended to be easy to use and desktop/mobile friendly for users of both preferences. It is free to use, and open source with all of the code available in this repo.
+Dreamers who use the app will find it helps facilitate an improved relationship with their dream journeys in general, provided they use the tools available to them to their
+fully potential.
 
-I hope you find it useful or fun.
+If you're uninformed as to what [dream journaling](https://en.wikipedia.org/wiki/Dream_diary) or [lucid dreaming](https://en.wikipedia.org/wiki/Lucid_dream) are, that
+doesn't mean you can't use the app! Dreampack makes it easy to start recording and paying attention to your dreams over time. If you read some blogs or books
+on the subject, you'll find a lot of the techniques that are taught in them are covered as built-in features Dreampack.
+
+Check out the live site at: https://dreampack.app/
 
 ## Features
 
 - Write, save and edit journal entries
 - Highlight and save dream signs
 - Interpret your dream with AI
-- Audio-to-text to speak your entries to life
+- Audio-to-text transcription to speak your entries to life
 - Generate images for your dreams
 - Responsive, sleek and colorful UI
 
