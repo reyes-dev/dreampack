@@ -24,7 +24,7 @@ Check out the live site at: https://dreampack.app/
 ![New Entry button](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/screenshot-20231005-033514Z-selected.png)
 2. Enter text in the Title and Body fields
 ![Title and Body Fields](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/new_entry_3.png)
-3. Click the save entry button
+3. Click the save entry button <br />
 ![Save Entry button](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/new_entry_2.png)
 
 ### Highlight and save dream signs
