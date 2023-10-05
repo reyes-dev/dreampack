@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { Link, useLocation } from "wouter";
 import DeleteEntryButton from "./DeleteEntryButton";
 import * as Selection from "selection-popover";
@@ -11,19 +11,36 @@ import { PopupMessageContext } from "../../../context/PopupMessageContext";
 import DALLE2 from "./DALLE2";
 
 function Entry({ params }) {
+  const ref = useRef(null);
   const [entry, setEntry] = useState();
   const [body, setBody] = useState("");
   const [selectedText, setSelectedText] = useState();
   const [dreamSigns, setDreamSigns] = useState([]);
   const [dalleUrl, setDalleUrl] = useState("");
   const [modalActivated, setModalActivated] = useState(false);
+  const [imageActivated, setImageActivated] = useState(false);
   const { errorExists } = useContext(PopupMessageContext);
   const [, navigate] = useLocation();
 
   useEffect(() => {
     getEntry();
     getDreamSigns();
+    setImageActivated(false);
   }, [params.id]);
+
+  useEffect(() => {
+    const clickOutside = (event) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        setImageActivated(false);
+      }
+    };
+
+    document.addEventListener("click", clickOutside, true);
+
+    return () => {
+      document.removeEventListener("click", clickOutside, true);
+    };
+  }, [ref]);
 
   const getEntry = async () => {
     const url = `/api/entries/${params.id}`;
@@ -39,6 +56,8 @@ function Entry({ params }) {
       setBody(String(data.body));
       if (data.image != null) {
         setDalleUrl(data.image.url);
+      } else {
+        setDalleUrl("");
       }
       return data;
     } catch (e) {
@@ -66,7 +85,7 @@ function Entry({ params }) {
       }
       const data = await response.json();
       const joinedDreamSigns = data.map(regExpEscape).join("|");
-      dreamSignsRegexPattern = [
+      const dreamSignsRegexPattern = [
         new RegExp("\\b" + joinedDreamSigns + " \\b", "g"),
       ];
       setDreamSigns(dreamSignsRegexPattern);
@@ -93,8 +112,9 @@ function Entry({ params }) {
 
   return (
     <section
-      className={`${modalActivated ? "pointer-events-none" : " "
-        } flex h-full w-full flex-col gap-4 whitespace-pre-line break-words rounded border-2 border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2`}
+      className={`${
+        modalActivated ? "pointer-events-none" : " "
+      } flex h-full w-full flex-col gap-4 whitespace-pre-line break-words rounded border-2 border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2`}
     >
       {errorExists && (
         <PopupMessage
@@ -130,6 +150,20 @@ function Entry({ params }) {
       <section className="flex items-center justify-between border-b pb-2">
         <p className="text-gray-600">Created on {new Date().toDateString()}</p>
         <div className="flex items-end gap-4 pb-2">
+          {dalleUrl.length === 0 ? null : (
+            <button
+              onClick={() => {
+                setImageActivated((imageActivated) => !imageActivated);
+              }}
+            >
+              <img
+                alt="AI generated image of user dream"
+                src={dalleUrl}
+                className="h-10 w-10 rounded border-2"
+              />
+            </button>
+          )}
+
           <Link
             href={`/entries/${params.id}/interpretation`}
             className="text-sky-500 underline"
@@ -180,11 +214,14 @@ function Entry({ params }) {
           </Selection.Content>
         </Selection.Portal>
       </Selection.Root>
-      <img
-        src={dalleUrl}
-        alt="AI generated image of user dream"
-        className="h-20 w-20 rounded border-2 border-sky-100"
-      />
+      {imageActivated ? (
+        <img
+          src={dalleUrl}
+          alt="AI generated image of user dream"
+          className="absolute left-1/2 top-1/2 w-max -translate-x-1/2 -translate-y-1/2 rounded-xl bg-gray-900 shadow-xl"
+          ref={ref}
+        />
+      ) : null}
     </section>
   );
 }

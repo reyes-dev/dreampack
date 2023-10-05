@@ -31,12 +31,12 @@ function Settings() {
         body: JSON.stringify(body_param),
       });
       if (!response.ok) {
-        errors = await response.json();
+        const errors = await response.json();
         setErrorExists(true);
         setErrorContent(errors);
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-      data = await response.json();
+      const data = await response.json();
       setSuccess(true);
       setErrorExists(true);
       setErrorContent([data]);
