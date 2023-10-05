@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 import { FaPalette } from "react-icons/fa";
 import { PopupMessageContext } from "../../../context/PopupMessageContext";
 
-function DALLE2({ entry_id, setDalleUrl, entry_body_text }) {
+function DALLE2({ entry_id, setDalleUrl, entryBodyText }) {
   const { setErrorExists } = useContext(PopupMessageContext);
 
   const generateImage = async () => {
     const url = `/api/entries/${entry_id}/dalle_responses`;
     const token = document.querySelector('meta[name="csrf-token"]').content;
-    const prompt = `Create an image based on the following dream: ${entry_body_text}`;
+    const prompt = `Create an image based on the following dream: ${entryBodyText}`;
     try {
       const response = await fetch(url, {
         method: "POST",

@@ -173,7 +173,7 @@ function Entry({ params }) {
           <DALLE2
             entry_id={params.id}
             setDalleUrl={setDalleUrl}
-            entry_body_text={entry.body}
+            entryBodyText={entry.body}
           />
         </div>
       </section>
