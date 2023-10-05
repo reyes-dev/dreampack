@@ -28,9 +28,9 @@ Check out the live site at: https://dreampack.app/
 ![Save Entry button](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/new_entry_2.png)
 
 ### Highlight and save dream signs
-1. Select the text you wish to turn into a dream sign. Click the popover button that says "Dream Sign" to turn the selected text into a dream sign.
+1. Select the text you wish to turn into a dream sign. Click the popover button that says "Dream Sign" to turn the selected text into a dream sign. <br />
 ![Dream Sign Popover](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/dream_sign_1.png)
-2. The text will now be highlighted pink. Any future text that matches the phrase will also be highlighted for you.
+2. The text will now be highlighted pink. Any future text that matches the phrase will also be highlighted for you. <br />
 ![Dream Sign Highlight](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/dream_sign_2.png)
 - Interpret your dream with AI
 - Audio-to-text transcription to speak your entries to life
