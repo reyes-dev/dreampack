@@ -25,7 +25,7 @@ Check out the live site at: https://dreampack.app/
 2. Enter text in the Title and Body fields
 ![Title and Body Fields](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/new_entry_3.png)
 3. Click the save entry button
-<br>
+<br />
 ![Save Entry button](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/new_entry_2.png)
 - Highlight and save dream signs
 - Interpret your dream with AI
