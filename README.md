@@ -22,7 +22,10 @@ Check out the live site at: https://dreampack.app/
 ### Write, save and edit journal entries
 1. Log in and you will see the new entry form, or else click the "+New Entry" button to navigate to the form.
 ![New Entry button](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/screenshot-20231005-033514Z-selected.png)
-
+2. Enter text in the Title and Body fields
+![Title and Body Fields](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/new_entry_3.png)
+3. Click the save entry button
+![Save Entry button](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/new_entry_2.png)
 - Highlight and save dream signs
 - Interpret your dream with AI
 - Audio-to-text transcription to speak your entries to life
