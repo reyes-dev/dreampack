@@ -20,14 +20,18 @@ Check out the live site at: https://dreampack.app/
 ## Features
 
 ### Write, save and edit journal entries
-1. Log in and you will see the new entry form, or else click the "+New Entry" button to navigate to the form
+1. Log in and you will see the new entry form, or else click the "+New Entry" button to navigate to the form.
 ![New Entry button](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/screenshot-20231005-033514Z-selected.png)
-2. Enter text in the Title and Body fields
+2. Enter text in the Title and Body fields.
 ![Title and Body Fields](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/new_entry_3.png)
-3. Click the save entry button <br />
+3. Click the save entry button. <br />
 ![Save Entry button](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/new_entry_2.png)
 
 ### Highlight and save dream signs
+1. Select the text you wish to turn into a dream sign. Click the popover button that says "Dream Sign" to turn the selected text into a dream sign.
+![Dream Sign Popover](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/dream_sign_1.png)
+2. The text will now be highlighted pink. Any future text that matches the phrase will also be highlighted for you.
+![Dream Sign Highlight](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/dream_sign_2.png)
 - Interpret your dream with AI
 - Audio-to-text transcription to speak your entries to life
 - Generate images for your dreams
