@@ -32,7 +32,13 @@ Check out the live site at: https://dreampack.app/
 ![Dream Sign Popover](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/dream_sign_1.png)
 2. The text will now be highlighted pink. Any future text that matches the phrase will also be highlighted for you. <br />
 ![Dream Sign Highlight](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/dream_sign_2.png)
-- Interpret your dream with AI
+### Interpret your dream with AI
+1. Navigate to your desired entry and click the "Go to Interpretation" link in order to navigate to the Interpretation page <br />
+![Go to Interpretation Button](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/ai_interpretation_1.png)
+2. Click the "Interpet with AI" button <br />
+![Interpret Button](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/ai_interpretation_2.png)
+3. Wait for the interpretation to generate <br />
+![AI Interpretation](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/ai_interpretation_3.png)
 - Audio-to-text transcription to speak your entries to life
 - Generate images for your dreams
 - Responsive, sleek and colorful UI
