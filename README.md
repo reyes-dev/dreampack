@@ -32,6 +32,7 @@ Check out the live site at: https://dreampack.app/
 ![Dream Sign Popover](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/dream_sign_1.png)
 2. The text will now be highlighted pink. Any future text that matches the phrase will also be highlighted for you. <br />
 ![Dream Sign Highlight](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/dream_sign_2.png)
+
 ### Interpret your dream with AI
 1. Navigate to your desired entry and click the "Go to Interpretation" link in order to navigate to the Interpretation page <br />
 ![Go to Interpretation Button](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/ai_interpretation_1.png)
@@ -39,7 +40,17 @@ Check out the live site at: https://dreampack.app/
 ![Interpret Button](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/ai_interpretation_2.png)
 3. Wait for the interpretation to generate <br />
 ![AI Interpretation](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/ai_interpretation_3.png)
-- Audio-to-text transcription to speak your entries to life
+
+### Audio-to-text transcription to speak your entries to life
+1. Prepare your microphone. This can be a phone mic if you're on mobile or a regular computer mic on desktop.
+2. Navigate to the New Entry page and click the "Start Recording" button. Optional: Add a title, which will be generated automatically if left empty. <br />
+![Record Button](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/whisper_1.png)
+3. Speak your entry into the microphone.
+4. Click the "Stop Recording" button when you're finished. <br />
+![Stop Recording button](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/whisper_2.png)
+5. Wait for the transcription to complete, when it's finished your audio will be transcribed into text and the entry automatically saved. <br />
+![Whisper Transcription](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/whisper_3.png)
+
 - Generate images for your dreams
 - Responsive, sleek and colorful UI
 
