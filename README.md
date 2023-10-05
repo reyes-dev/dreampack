@@ -19,7 +19,10 @@ Check out the live site at: https://dreampack.app/
 
 ## Features
 
-- Write, save and edit journal entries
+### Write, save and edit journal entries
+1. Log in and you will see the new entry form, or else click the "+New Entry" button to navigate to the form.
+![New Entry button](https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/screenshot-20231005-033514Z-selected.png)
+
 - Highlight and save dream signs
 - Interpret your dream with AI
 - Audio-to-text transcription to speak your entries to life
