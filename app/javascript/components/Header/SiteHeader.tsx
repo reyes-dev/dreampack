@@ -5,8 +5,17 @@ import { UserContext } from "../../context/UserContext";
 
 function SiteHeader() {
   const { isLoggedIn } = useContext(UserContext);
+
   return (
-    <header className="col-span-2 col-end-auto row-start-1 row-end-auto  flex h-fit w-full justify-end gap-8 p-4 xl:p-8">
+    <header className="col-span-2 col-end-auto row-start-1 row-end-auto flex h-fit w-full items-center justify-between gap-8 p-4 xl:p-8">
+      <div className="flex items-center">
+        <img
+          className="h-28 w-28"
+          src="https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/logo.png"
+          alt="logo"
+        />
+        <h1 className="text-3xl">Dreampack</h1>
+      </div>
       {isLoggedIn ? (
         <NavbarLink
           destination="/"
