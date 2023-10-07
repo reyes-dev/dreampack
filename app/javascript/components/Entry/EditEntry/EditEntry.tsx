@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useLocation } from "wouter";
 import { FaRegPaperPlane } from "react-icons/fa";
-import { SidebarEntryContext } from "../../../context/SidebarEntryContext";
+import { SidebarEntryContext } from "context/SidebarEntryContext";
 
 function EditEntry({ params }) {
   const [entry, setEntry] = useState();

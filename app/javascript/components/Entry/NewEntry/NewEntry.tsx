@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
-import Whisper from "./Whisper";
+import Whisper from "components/Entry/NewEntry/NewEntry";
 import { useLocation } from "wouter";
 import { FaRegPaperPlane } from "react-icons/fa";
-import PopupMessage from "../../Shared/PopupMessage";
-import { PopupMessageContext } from "../../../context/PopupMessageContext";
-import { SidebarEntryContext } from "../../../context/SidebarEntryContext";
+import PopupMessage from "components/Shared/PopupMessage";
+import { PopupMessageContext } from "context/PopupMessageContext";
+import { SidebarEntryContext } from "context/SidebarEntryContext";
 
 function NewEntry() {
   const formRef = useRef(null);

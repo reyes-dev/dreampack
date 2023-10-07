@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
-import SidebarLink from "./SidebarLink";
-import SidebarToggle from "./SidebarToggle";
-import LogOutButton from "./LogOutButton";
+import SidebarLink from "components/Sidebar/SidebarLink";
+import SidebarToggle from "components/Sidebar/SidebarToggle";
+import LogOutButton from "components/Sidebar/LogOutButton";
 import { FaPlus, FaBook, FaCog, FaRegCommentAlt } from "react-icons/fa";
-import { SidebarEntryContext } from "../../context/SidebarEntryContext";
+import { SidebarEntryContext } from "context/SidebarEntryContext";
 
 function SidebarVisible({ hideSidebar, icon, visible }) {
   const [sidebarEntries, setSidebarEntries] = useState([]);

@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { PopupMessageContext } from "../../context/PopupMessageContext";
+import { PopupMessageContext } from "context/PopupMessageContext";
 
 function PopupMessage({ content, success = false }) {
   const { errorExists, setErrorExists } = useContext(PopupMessageContext);

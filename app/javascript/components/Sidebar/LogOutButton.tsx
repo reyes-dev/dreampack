@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useLocation } from "wouter";
 import { FaSignOutAlt } from "react-icons/fa";
-import { UserContext } from "../../context/UserContext";
+import { UserContext } from "context/UserContext";
 
 function LogOutButton() {
   const [, navigate] = useLocation();

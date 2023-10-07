@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useLocation } from "wouter";
-import ChatGPT from "./ChatGPT";
+import ChatGPT from "components/Interpretation/ShowInterpretation/ChatGPT";
 import { FaEdit } from "react-icons/fa";
-import PopupMessage from "../../Shared/PopupMessage";
-import { PopupMessageContext } from "../../../context/PopupMessageContext";
+import PopupMessage from "components/Shared/PopupMessage";
+import { PopupMessageContext } from "context/PopupMessageContext";
 
 function Interpretation({ params }) {
   const [interpretation, setInterpretation] = useState();

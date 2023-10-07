@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import NavbarLink from "./NavbarLink";
-import NavbarDeviseLink from "./NavbarDeviseLink";
-import { UserContext } from "../../context/UserContext";
+import NavbarLink from "components/Header/NavbarLink";
+import NavbarDeviseLink from "components/Header/NavbarDeviseLink";
+import { UserContext } from "context/UserContext";
 
 function SiteHeader() {
   const { isLoggedIn } = useContext(UserContext);

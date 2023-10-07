@@ -1,5 +1,5 @@
 import React from "react";
-import SidebarToggle from "./SidebarToggle";
+import SidebarToggle from "components/Sidebar/SidebarToggle";
 
 function SidebarHidden({ hideSidebar, icon, visible }) {
   return (

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { FaPalette } from "react-icons/fa";
-import { PopupMessageContext } from "../../../context/PopupMessageContext";
+import { PopupMessageContext } from "context/PopupMessageContext";
 
 function DALLE2({ entry_id, setDalleUrl, entryBodyText }) {
   const { setErrorExists } = useContext(PopupMessageContext);

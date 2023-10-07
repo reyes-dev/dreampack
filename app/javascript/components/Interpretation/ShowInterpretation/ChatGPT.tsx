@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { FaRobot } from "react-icons/fa";
-import { PopupMessageContext } from "../../../context/PopupMessageContext";
+import { PopupMessageContext } from "context/PopupMessageContext";
 
 function ChatGPT({ entry_id, setInterpretation }) {
   const { setErrorExists } = useContext(PopupMessageContext);

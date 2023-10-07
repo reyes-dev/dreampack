@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
-import Homepage from "./About/Homepage";
-import SiteHeader from "./Header/SiteHeader";
-import Sidebar from "./Sidebar/Sidebar";
-import Entry from "./Entry/ShowEntry/Entry";
-import EntryIndex from "./Entry/EntryIndex/EntryIndex";
-import NewEntry from "./Entry/NewEntry/NewEntry";
-import EditEntry from "./Entry/EditEntry/EditEntry";
-import Settings from "./Settings/Settings";
+import Homepage from "components/About/Homepage";
+import SiteHeader from "components/Header/SiteHeader";
+import Sidebar from "components/Sidebar/Sidebar";
+import Entry from "components/Entry/ShowEntry/Entry";
+import EntryIndex from "components/Entry/EntryIndex/EntryIndex";
+import NewEntry from "components/Entry/NewEntry/NewEntry";
+import EditEntry from "components/Entry/EditEntry/EditEntry";
+import Settings from "components/Settings/Settings";
+import Interpretation from "components/Interpretation/ShowInterpretation/Interpretation";
+import EditInterpretation from "components/Interpretation/EditInterpretation/EditInterpretation";
 import { Switch, Route, Redirect, useLocation } from "wouter";
-import Interpretation from "./Interpretation/ShowInterpretation/Interpretation";
-import EditInterpretation from "./Interpretation/EditInterpretation/EditInterpretation";
-import { UserContext } from "../context/UserContext";
-import { PopupMessageContext } from "../context/PopupMessageContext";
-import { SidebarEntryContext } from "../context/SidebarEntryContext";
+import { UserContext } from "context/UserContext";
+import { PopupMessageContext } from "context/PopupMessageContext";
+import { SidebarEntryContext } from "context/SidebarEntryContext";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

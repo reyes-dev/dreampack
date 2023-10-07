@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useRoute } from "wouter";
-import ZeroEntriesMessage from "./ZeroEntriesMessage";
-import Pagination from "../../Shared/Pagination";
+import ZeroEntriesMessage from "components/Entry/EntryIndex/ZeroEntriesMessage";
+import Pagination from "components/Shared/Pagination";
 
 function EntryIndex() {
   const [entries, setEntries] = useState();

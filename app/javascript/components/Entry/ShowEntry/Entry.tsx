@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import { Link, useLocation } from "wouter";
-import DeleteEntryButton from "./DeleteEntryButton";
+import DeleteEntryButton from "components/Entry/ShowEntry/DeleteEntryButton";
 import * as Selection from "selection-popover";
-import DreamSign from "./DreamSign";
+import DreamSign from "components/Entry/ShowEntry/DreamSign";
 import Highlighter from "react-highlight-words";
 import { FaEdit } from "react-icons/fa";
-import DeleteEntryModal from "./DeleteEntryModal";
-import PopupMessage from "../../Shared/PopupMessage";
-import { PopupMessageContext } from "../../../context/PopupMessageContext";
-import DALLE2 from "./DALLE2";
+import DeleteEntryModal from "components/Entry/ShowEntry/DeleteEntryModal";
+import PopupMessage from "components/Shared/PopupMessage";
+import { PopupMessageContext } from "context/PopupMessageContext";
+import DALLE2 from "components/Entry/ShowEntry/DALLE2";
 
 function Entry({ params }) {
   const ref = useRef(null);

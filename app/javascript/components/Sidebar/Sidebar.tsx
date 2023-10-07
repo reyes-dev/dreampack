@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import SidebarVisible from "./SidebarVisible";
-import SidebarHidden from "./SidebarHidden";
+import SidebarVisible from "components/Sidebar/SidebarVisible";
+import SidebarHidden from "components/Sidebar/SidebarHidden";
 import { BsLayoutSidebarInsetReverse } from "react-icons/bs";
 import { BsLayoutSidebarInset } from "react-icons/bs";
 

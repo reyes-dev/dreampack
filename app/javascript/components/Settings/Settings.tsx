@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
-import PopupMessage from "../Shared/PopupMessage";
-import { PopupMessageContext } from "../../context/PopupMessageContext";
+import PopupMessage from "components/Shared/PopupMessage";
+import { PopupMessageContext } from "context/PopupMessageContext";
 
 function Settings() {
   const [openai_token, setOpenAIToken] = useState("");

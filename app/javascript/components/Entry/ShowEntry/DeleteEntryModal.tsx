@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useLocation } from "wouter";
-import { SidebarEntryContext } from "../../../context/SidebarEntryContext";
+import { SidebarEntryContext } from "context/SidebarEntryContext";
 
 function DeleteEntryModal({ id, toggleModalActivation }) {
   const [, navigate] = useLocation();
