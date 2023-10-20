@@ -13,13 +13,16 @@ function DALLE2({ entry_id, setDalleUrl, entryBodyText }: DALLE2Props) {
 
   const generateImage = async () => {
     const url = `/api/entries/${entry_id}/dalle_responses`;
-    const token = document.querySelector('meta[name="csrf-token"]').content;
+    const csrfTokenMetaElement = document.querySelector(
+      'meta[name="csrf-token"]',
+    ) as HTMLMetaElement;
+    const csrfTokenMetaElementContent = csrfTokenMetaElement.content;
     const prompt = `Create an image based on the following dream: ${entryBodyText}`;
     try {
       const response = await fetch(url, {
         method: "POST",
         headers: {
-          "X-CSRF-Token": token,
+          "X-CSRF-Token": csrfTokenMetaElementContent,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(prompt),
