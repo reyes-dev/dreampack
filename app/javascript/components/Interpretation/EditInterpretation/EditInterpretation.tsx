@@ -16,7 +16,10 @@ function EditInterpretation({ params }: EditInterpretationProps) {
     getInterpretation();
   }, []);
 
-  const onChange = (event, setFunction) => {
+  const onChange = (
+    event: ChangeEvent<HTMLTextAreaElement>,
+    setFunction: (eventValue: string) => void,
+  ) => {
     setFunction(event.target.value);
   };
 
