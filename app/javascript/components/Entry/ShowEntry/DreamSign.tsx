@@ -1,6 +1,11 @@
 import React from "react";
 
-function DreamSign({ phrase, highlightNewDreamSign }) {
+interface DreamSignProps {
+  phrase: string;
+  highlightNewDreamSign: () => void;
+}
+
+function DreamSign({ phrase, highlightNewDreamSign }: DreamSignProps) {
   // POST entry data to Rails API
   const createDreamSign = async () => {
     if (phrase.length <= 1) return;
