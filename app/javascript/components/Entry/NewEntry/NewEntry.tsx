@@ -24,7 +24,7 @@ function NewEntry() {
   const { setSidebarEntriesUpdateTrigger } = useContext(SidebarEntryContext);
 
   useEffect(() => {
-    if (audioIsReady) {
+    if (audioIsReady && formRef.current !== null) {
       formRef.current.requestSubmit();
     }
   }, [audioIsReady]);
