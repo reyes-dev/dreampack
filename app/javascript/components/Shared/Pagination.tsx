@@ -1,7 +1,12 @@
 import React, { useMemo } from "react";
 import { useLocation } from "wouter";
 
-function Pagination({ pageNumber, entryCount }) {
+interface PaginationProps {
+  pageNumber: number;
+  entryCount: number;
+}
+
+function Pagination({ pageNumber, entryCount }: PaginationProps) {
   const [, navigate] = useLocation();
 
   const pageCount = useMemo(() => {
