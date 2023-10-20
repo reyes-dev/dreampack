@@ -1,3 +1,11 @@
-import { createContext } from "react";
+import { Dispatch, SetStateAction, createContext } from "react";
 
-export const SidebarEntryContext = createContext(false);
+interface ISidebarEntryContext {
+  sidebarEntriesUpdateTrigger: boolean;
+  setSidebarEntriesUpdateTrigger: Dispatch<SetStateAction<boolean>>;
+}
+
+export const SidebarEntryContext = createContext<ISidebarEntryContext>({
+  sidebarEntriesUpdateTrigger: false,
+  setSidebarEntriesUpdateTrigger: () => {},
+});
