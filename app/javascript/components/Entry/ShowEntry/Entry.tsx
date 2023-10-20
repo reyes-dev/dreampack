@@ -10,13 +10,13 @@ import PopupMessage from "components/Shared/PopupMessage";
 import { PopupMessageContext } from "context/PopupMessageContext";
 import DALLE2 from "components/Entry/ShowEntry/DALLE2";
 
-  const ref = useRef(null);
 interface EntryProps {
   params: {
     id: string;
   };
 }
 function Entry({ params }: EntryProps) {
+  const ref = useRef<HTMLImageElement>(null);
   const [entry, setEntry] = useState({ title: "", body: "", created_at: "" });
   const [body, setBody] = useState("");
   const [selectedText, setSelectedText] = useState<string>();
