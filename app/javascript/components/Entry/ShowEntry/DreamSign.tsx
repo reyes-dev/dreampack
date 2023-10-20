@@ -9,12 +9,15 @@ function DreamSign({ phrase, highlightNewDreamSign }: DreamSignProps) {
   // POST entry data to Rails API
   const createDreamSign = async () => {
     if (phrase.length <= 1) return;
-    const token = document.querySelector("meta[name='csrf-token']").content;
+    const csrfTokenMetaElement = document.querySelector(
+      'meta[name="csrf-token"]',
+    ) as HTMLMetaElement;
+    const csrfTokenMetaElementContent = csrfTokenMetaElement.content;
     try {
       const response = await fetch(`/api/dream_signs`, {
         method: "POST",
         headers: {
-          "X-CSRF-Token": token,
+          "X-CSRF-Token": csrfTokenMetaElementContent,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ phrase, description: "" }),
