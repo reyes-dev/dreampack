@@ -4,8 +4,8 @@ import ZeroEntriesMessage from "components/Entry/EntryIndex/ZeroEntriesMessage";
 import Pagination from "components/Shared/Pagination";
 
 function EntryIndex() {
-  const [entries, setEntries] = useState();
-  const [entryCount, setEntryCount] = useState();
+  const [entries, setEntries] = useState([]);
+  const [entryCount, setEntryCount] = useState(0);
   const [, params] = useRoute("/entries/page/:page");
   const linkRef = useRef(null);
 
