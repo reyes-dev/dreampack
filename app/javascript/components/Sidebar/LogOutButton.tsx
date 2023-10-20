@@ -8,12 +8,15 @@ function LogOutButton() {
   const { setIsLoggedIn } = useContext(UserContext);
 
   const logoutUser = async () => {
-    const token = document.querySelector('meta[name="csrf-token"]').content;
+    const csrfTokenMetaElement = document.querySelector(
+      'meta[name="csrf-token"]',
+    ) as HTMLMetaElement;
+    const csrfTokenMetaElementContent = csrfTokenMetaElement.content;
     try {
       const response = await fetch(`/logout`, {
         method: "DELETE",
         headers: {
-          "X-CSRF-Token": token,
+          "X-CSRF-Token": csrfTokenMetaElementContent,
           "Content-Type": "application/json",
         },
       });
