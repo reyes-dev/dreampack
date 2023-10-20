@@ -70,7 +70,7 @@ function Entry({ params }: EntryProps) {
     }
   };
 
-  function regExpEscape(string) {
+  function regExpEscape(string: string) {
     return string.replace(/[^A-Za-z0-9_]/g, "\\$&");
   }
 
