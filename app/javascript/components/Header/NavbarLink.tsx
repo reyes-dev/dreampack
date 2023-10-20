@@ -1,7 +1,19 @@
 import React from "react";
 import { Link } from "wouter";
 
-function NavbarLink({ destination, content, bgColor, bgColorHover }) {
+interface NavbarLinkProps {
+  destination: string;
+  content: string;
+  bgColor: string;
+  bgColorHover: string;
+}
+
+function NavbarLink({
+  destination,
+  content,
+  bgColor,
+  bgColorHover,
+}: NavbarLinkProps) {
   return (
     <Link
       href={destination}
