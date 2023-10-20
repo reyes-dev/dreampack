@@ -3,8 +3,14 @@ import { useLocation } from "wouter";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { SidebarEntryContext } from "context/SidebarEntryContext";
 
-function EditEntry({ params }) {
   const [entry, setEntry] = useState();
+interface EditEntryProps {
+  params: {
+    id: string;
+  };
+}
+
+function EditEntry({ params }: EditEntryProps) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [, navigate] = useLocation();
