@@ -3,7 +3,12 @@ import { useReactMediaRecorder } from "react-media-recorder";
 import { FaMicrophone, FaStopCircle } from "react-icons/fa";
 import { PopupMessageContext } from "context/PopupMessageContext";
 
-function Whisper({ setEntryBodyHandler, setIsLoading }) {
+interface WhisperProps {
+  setEntryBodyHandler: (transcription: string) => void;
+  setIsLoading: (isLoading: boolean) => void;
+}
+
+function Whisper({ setEntryBodyHandler, setIsLoading }: WhisperProps) {
   const { status, startRecording, stopRecording, mediaBlobUrl } =
     useReactMediaRecorder({
       audio: true,
@@ -29,7 +34,7 @@ function Whisper({ setEntryBodyHandler, setIsLoading }) {
   }, [transcription]);
 
   const buildFormData = async () => {
-    const recordedAudio = await fetch(mediaBlobUrl);
+    const recordedAudio = await fetch(mediaBlobUrl as string);
     const recordedAudioBlob = await recordedAudio.blob();
     const formData = new FormData();
     const file = new File([recordedAudioBlob], "input.mp4", {
