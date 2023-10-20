@@ -2,8 +2,14 @@ import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { useLocation } from "wouter";
 import { FaRegPaperPlane } from "react-icons/fa";
 
-function EditInterpretation({ params }) {
   const [interpretation, setInterpretation] = useState();
+interface EditInterpretationProps {
+  params: {
+    id: string;
+  };
+}
+
+function EditInterpretation({ params }: EditInterpretationProps) {
   const [, navigate] = useLocation();
   // Store state data for CRUD operations
   useEffect(() => {
