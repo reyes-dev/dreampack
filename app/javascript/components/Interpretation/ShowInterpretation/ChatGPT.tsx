@@ -2,7 +2,12 @@ import React, { useContext } from "react";
 import { FaRobot } from "react-icons/fa";
 import { PopupMessageContext } from "context/PopupMessageContext";
 
-function ChatGPT({ entry_id, setInterpretation }) {
+interface ChatGPTProps {
+  entry_id: string;
+  setInterpretation: (interpretation: string) => void;
+}
+
+function ChatGPT({ entry_id, setInterpretation }: ChatGPTProps) {
   const { setErrorExists } = useContext(PopupMessageContext);
 
   const createChatGPTResponse = async (event) => {
