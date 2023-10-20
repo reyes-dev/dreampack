@@ -16,12 +16,15 @@ function DeleteEntryModal({
 
   const deleteEntry = async () => {
     const url = `/api/entries/${id}`;
-    const token = document.querySelector('meta[name="csrf-token"]').content;
+    const csrfTokenMetaElement = document.querySelector(
+      'meta[name="csrf-token"]',
+    ) as HTMLMetaElement;
+    const csrfTokenMetaElementContent = csrfTokenMetaElement.content;
     try {
       const response = await fetch(url, {
         method: "DELETE",
         headers: {
-          "X-CSRF-Token": token,
+          "X-CSRF-Token": csrfTokenMetaElementContent,
           "Content-Type": "application/json",
         },
       });
