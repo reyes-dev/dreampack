@@ -1,6 +1,18 @@
 import React from "react";
 
-function NavbarDeviseLink({ destination, content, bgColor, bgColorHover }) {
+interface NavbarDeviseLinkProps {
+  destination: string;
+  content: string;
+  bgColor: string;
+  bgColorHover: string;
+}
+
+function NavbarDeviseLink({
+  destination,
+  content,
+  bgColor,
+  bgColorHover,
+}: NavbarDeviseLinkProps) {
   return (
     <a
       href={destination}
