@@ -76,12 +76,15 @@ function Entry({ params }: EntryProps) {
 
   const getDreamSigns = async () => {
     const url = `/api/dream_signs`;
-    const token = document.querySelector('meta[name="csrf-token"]').content;
+    const csrfTokenMetaElement = document.querySelector(
+      'meta[name="csrf-token"]',
+    ) as HTMLMetaElement;
+    const csrfTokenMetaElementContent = csrfTokenMetaElement.content;
     try {
       const response = await fetch(url, {
         method: "GET",
         headers: {
-          "X-CSRF-Token": token,
+          "X-CSRF-Token": csrfTokenMetaElementContent,
           "Content-Type": "application/json",
         },
       });
