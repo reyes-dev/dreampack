@@ -34,8 +34,8 @@ function Entry({ params }: EntryProps) {
   }, [params.id]);
 
   useEffect(() => {
-    const clickOutside = (event) => {
-      if (ref.current && !ref.current.contains(event.target)) {
+    const clickOutside = (event: Event) => {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
         setImageActivated(false);
       }
     };
