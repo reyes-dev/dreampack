@@ -3,6 +3,7 @@ import React, {
   useEffect,
   useContext,
   ChangeEvent,
+  FormEvent,
 } from "react";
 import { useLocation } from "wouter";
 import { FaRegPaperPlane } from "react-icons/fa";
@@ -60,18 +61,22 @@ function EditEntry({ params }: EditEntryProps) {
     return <></>;
   }
 
-  const updateEntry = async (event) => {
+  const updateEntry = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (title.length == 0 || body.length == 0) return;
     const url = `/api/entries/${params.id}`;
     const id = params.id;
     const body_param = { title, body, id };
-    const token = document.querySelector('meta[name="csrf-token"]').content;
+    const csrfTokenMetaElement = document.querySelector(
+      'meta[name="csrf-token"]',
+    ) as HTMLMetaElement;
+    const csrfTokenMetaElementContent = csrfTokenMetaElement.content;
+
     try {
       const response = await fetch(url, {
         method: "PUT",
         headers: {
-          "X-CSRF-Token": token,
+          "X-CSRF-Token": csrfTokenMetaElementContent,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(body_param),
