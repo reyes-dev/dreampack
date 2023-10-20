@@ -18,7 +18,7 @@ function EntryIndex() {
   }, [params?.page]);
 
   useEffect(() => {
-    if (entries && entryCount > 0) {
+    if (entries && entryCount > 0 && linkRef.current !== null) {
       linkRef.current.focus();
     }
   }, [entries]);
@@ -93,7 +93,10 @@ function EntryIndex() {
       ) : (
         <ZeroEntriesMessage />
       )}
-      <Pagination pageNumber={+params.page} entryCount={entryCount} />
+      <Pagination
+        pageNumber={params === null ? 0 : +params.page}
+        entryCount={entryCount}
+      />
     </section>
   );
 }
