@@ -74,7 +74,7 @@ function NewEntry() {
     }
   };
 
-  const setEntryBodyHandler = (transcription) => {
+  const setEntryBodyHandler = (transcription: string) => {
     setBody(transcription);
     setAudioIsReady(true);
   };
