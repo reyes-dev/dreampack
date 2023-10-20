@@ -2,7 +2,15 @@ import React, { useContext } from "react";
 import { useLocation } from "wouter";
 import { SidebarEntryContext } from "context/SidebarEntryContext";
 
-function DeleteEntryModal({ id, toggleModalActivation }) {
+interface DeleteEntryModalProps {
+  id: string;
+  toggleModalActivation: () => void;
+}
+
+function DeleteEntryModal({
+  id,
+  toggleModalActivation,
+}: DeleteEntryModalProps) {
   const [, navigate] = useLocation();
   const { setSidebarEntriesUpdateTrigger } = useContext(SidebarEntryContext);
 
