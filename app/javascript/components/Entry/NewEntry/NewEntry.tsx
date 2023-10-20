@@ -1,5 +1,12 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
-import Whisper from "components/Entry/NewEntry/NewEntry";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useContext,
+  ChangeEvent,
+  FormEvent,
+} from "react";
+import Whisper from "components/Entry/NewEntry/Whisper";
 import { useLocation } from "wouter";
 import { FaRegPaperPlane } from "react-icons/fa";
 import PopupMessage from "components/Shared/PopupMessage";
