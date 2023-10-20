@@ -1,7 +1,13 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { Link } from "wouter";
 
-function SidebarLink({ destination, content, icon }) {
+interface SidebarLinkProps {
+  destination: string;
+  content: string;
+  icon: ReactElement;
+}
+
+function SidebarLink({ destination, content, icon }: SidebarLinkProps) {
   return (
     <Link
       to={destination}
