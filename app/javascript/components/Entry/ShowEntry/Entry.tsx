@@ -11,16 +11,16 @@ import { PopupMessageContext } from "context/PopupMessageContext";
 import DALLE2 from "components/Entry/ShowEntry/DALLE2";
 
   const ref = useRef(null);
-  const [entry, setEntry] = useState();
 interface EntryProps {
   params: {
     id: string;
   };
 }
 function Entry({ params }: EntryProps) {
+  const [entry, setEntry] = useState({ title: "", body: "", created_at: "" });
   const [body, setBody] = useState("");
-  const [selectedText, setSelectedText] = useState();
-  const [dreamSigns, setDreamSigns] = useState([]);
+  const [selectedText, setSelectedText] = useState<string>();
+  const [dreamSigns, setDreamSigns] = useState<Array<string | RegExp>>([]);
   const [dalleUrl, setDalleUrl] = useState("");
   const [modalActivated, setModalActivated] = useState(false);
   const [imageActivated, setImageActivated] = useState(false);
