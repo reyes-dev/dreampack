@@ -2,7 +2,13 @@ import React, { useContext } from "react";
 import { FaPalette } from "react-icons/fa";
 import { PopupMessageContext } from "context/PopupMessageContext";
 
-function DALLE2({ entry_id, setDalleUrl, entryBodyText }) {
+interface DALLE2Props {
+  entry_id: string;
+  setDalleUrl: (url: string) => void;
+  entryBodyText: string;
+}
+
+function DALLE2({ entry_id, setDalleUrl, entryBodyText }: DALLE2Props) {
   const { setErrorExists } = useContext(PopupMessageContext);
 
   const generateImage = async () => {
