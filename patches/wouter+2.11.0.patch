@@ -1,0 +1,13 @@
+diff --git a/node_modules/wouter/types/ts4.1/index.d.ts b/node_modules/wouter/types/ts4.1/index.d.ts
+index bd65c22..9e9e851 100644
+--- a/node_modules/wouter/types/ts4.1/index.d.ts
++++ b/node_modules/wouter/types/ts4.1/index.d.ts
+@@ -111,7 +111,7 @@ export type NavigationalProps<H extends BaseLocationHook = LocationHook> = (
+ export type LinkProps<H extends BaseLocationHook = LocationHook> = Omit<
+   AnchorHTMLAttributes<HTMLAnchorElement>,
+   "href"
+-> &
++> & { ref?: React.Ref<HTMLAnchorElement>} &
+   NavigationalProps<H>;
+ 
+ export type RedirectProps<H extends BaseLocationHook = LocationHook> =
