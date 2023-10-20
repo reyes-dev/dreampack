@@ -44,17 +44,20 @@ function EditInterpretation({ params }: EditInterpretationProps) {
     return <></>;
   }
 
-  const updateInterpretation = async (event) => {
+  const updateInterpretation = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const url = `/api/entries/${params.id}/interpretation`;
     const id = params.id;
     const body_param = { body: interpretation, id };
-    const token = document.querySelector('meta[name="csrf-token"]').content;
+    const csrfTokenMetaElement = document.querySelector(
+      'meta[name="csrf-token"]',
+    ) as HTMLMetaElement;
+    const csrfTokenMetaElementContent = csrfTokenMetaElement.content;
     try {
       const response = await fetch(url, {
         method: "PUT",
         headers: {
-          "X-CSRF-Token": token,
+          "X-CSRF-Token": csrfTokenMetaElementContent,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(body_param),
