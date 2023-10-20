@@ -10,9 +10,14 @@ import PopupMessage from "components/Shared/PopupMessage";
 import { PopupMessageContext } from "context/PopupMessageContext";
 import DALLE2 from "components/Entry/ShowEntry/DALLE2";
 
-function Entry({ params }) {
   const ref = useRef(null);
   const [entry, setEntry] = useState();
+interface EntryProps {
+  params: {
+    id: string;
+  };
+}
+function Entry({ params }: EntryProps) {
   const [body, setBody] = useState("");
   const [selectedText, setSelectedText] = useState();
   const [dreamSigns, setDreamSigns] = useState([]);
