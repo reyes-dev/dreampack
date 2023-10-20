@@ -29,7 +29,10 @@ function NewEntry() {
     }
   }, [audioIsReady]);
   // Store state data for CRUD operations
-  const onChange = (event, setFunction) => {
+  const onChange = (
+    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>,
+    setFunction: (e: string) => void,
+  ) => {
     setFunction(event.target.value);
   };
   // POST entry data to Rails API
