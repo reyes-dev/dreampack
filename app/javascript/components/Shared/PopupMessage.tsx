@@ -1,7 +1,12 @@
 import React, { useEffect, useContext } from "react";
 import { PopupMessageContext } from "context/PopupMessageContext";
 
-function PopupMessage({ content, success = false }) {
+interface PopupMessage {
+  content: string[];
+  success: boolean;
+}
+
+function PopupMessage({ content, success = false }: PopupMessage) {
   const { errorExists, setErrorExists } = useContext(PopupMessageContext);
 
   useEffect(() => {
@@ -19,7 +24,7 @@ function PopupMessage({ content, success = false }) {
     return <></>;
   }
 
-  const errorList = content.map((error, index) => {
+  const errorList = content.map((error: string, index: number) => {
     return <li key={index}>{error}</li>;
   });
 
