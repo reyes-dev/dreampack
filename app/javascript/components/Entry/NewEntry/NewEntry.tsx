@@ -14,7 +14,7 @@ import { PopupMessageContext } from "context/PopupMessageContext";
 import { SidebarEntryContext } from "context/SidebarEntryContext";
 
 function NewEntry() {
-  const formRef = useRef(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [audioIsReady, setAudioIsReady] = useState(false);
