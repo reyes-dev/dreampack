@@ -1,4 +1,3 @@
-import React, { useState, useEffect, useContext } from "react";
 import React, {
   useState,
   useEffect,
@@ -33,7 +32,6 @@ function EditEntry({ params }: EditEntryProps) {
     }
   }, [entry]);
 
-  const onChange = (event, setFunction) => {
   const onChange = (
     event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>,
     setFunction: (e: string) => void,
