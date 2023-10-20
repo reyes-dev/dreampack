@@ -15,7 +15,7 @@ function Settings() {
     setFunction(event.target.value);
   };
 
-  const updateSettings = async (event) => {
+  const updateSettings = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const url = `/registration`;
     const body_param = {
@@ -23,12 +23,15 @@ function Settings() {
         openai_token,
       },
     };
-    const token = document.querySelector('meta[name="csrf-token"]').content;
+    const csrfTokenMetaElement = document.querySelector(
+      'meta[name="csrf-token"]',
+    ) as HTMLMetaElement;
+    const csrfTokenMetaElementContent = csrfTokenMetaElement.content;
     try {
       const response = await fetch(url, {
         method: "PUT",
         headers: {
-          "X-CSRF-Token": token,
+          "X-CSRF-Token": csrfTokenMetaElementContent,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(body_param),
