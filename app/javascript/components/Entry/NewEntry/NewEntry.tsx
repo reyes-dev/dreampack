@@ -36,9 +36,12 @@ function NewEntry() {
     setFunction(event.target.value);
   };
   // POST entry data to Rails API
-  const createEntry = async (event) => {
+  const createEntry = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const token = document.querySelector('meta[name="csrf-token"]').content;
+    const csrfTokenMetaElement = document.querySelector(
+      'meta[name="csrf-token"]',
+    ) as HTMLMetaElement;
+    const csrfTokenMetaElementContent = csrfTokenMetaElement.content;
     // Validate body
     if (body.length == 0) return;
     let dataBody;
@@ -54,7 +57,7 @@ function NewEntry() {
       const response = await fetch(`/api/entries`, {
         method: "POST",
         headers: {
-          "X-CSRF-Token": token,
+          "X-CSRF-Token": csrfTokenMetaElementContent,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(dataBody),
