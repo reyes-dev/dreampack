@@ -1,4 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
+import React, {
+  useState,
+  useEffect,
+  useContext,
+  ChangeEvent,
+} from "react";
 import { useLocation } from "wouter";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { SidebarEntryContext } from "context/SidebarEntryContext";
@@ -28,6 +34,10 @@ function EditEntry({ params }: EditEntryProps) {
   }, [entry]);
 
   const onChange = (event, setFunction) => {
+  const onChange = (
+    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>,
+    setFunction: (e: string) => void,
+  ) => {
     setFunction(event.target.value);
   };
 
