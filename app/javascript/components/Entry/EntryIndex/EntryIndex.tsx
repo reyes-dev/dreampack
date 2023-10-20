@@ -7,7 +7,7 @@ function EntryIndex() {
   const [entries, setEntries] = useState([]);
   const [entryCount, setEntryCount] = useState(0);
   const [, params] = useRoute("/entries/page/:page");
-  const linkRef = useRef(null);
+  const linkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     getEntryCount();
