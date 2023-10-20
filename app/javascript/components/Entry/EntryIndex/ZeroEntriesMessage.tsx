@@ -2,10 +2,12 @@ import React, { useEffect, useRef } from "react";
 import { Link } from "wouter";
 
 function ZeroEntriesMessage() {
-  const linkRef = useRef(null);
+  const linkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
-    linkRef.current.focus();
+    if (linkRef.current !== null) {
+      linkRef.current.focus();
+    }
   }, []);
 
   return (
