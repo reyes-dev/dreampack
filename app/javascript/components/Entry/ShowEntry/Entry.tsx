@@ -114,7 +114,9 @@ function Entry({ params }: EntryProps) {
   };
 
   const highlightNewDreamSign = () => {
-    setDreamSigns((dreamSigns) => [...dreamSigns, selectedText]);
+    if (selectedText) {
+      setDreamSigns((dreamSigns) => [...dreamSigns, selectedText]);
+    }
   };
 
   const toggleModalActivation = () => {
