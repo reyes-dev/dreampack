@@ -209,7 +209,7 @@ function Entry({ params }: EntryProps) {
           >
             <div className="flex">
               <DreamSign
-                phrase={selectedText}
+                phrase={selectedText ? selectedText : ""}
                 highlightNewDreamSign={highlightNewDreamSign}
               />
             </div>
