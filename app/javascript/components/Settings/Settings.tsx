@@ -4,7 +4,7 @@ import { PopupMessageContext } from "context/PopupMessageContext";
 
 function Settings() {
   const [openai_token, setOpenAIToken] = useState("");
-  const [errorContent, setErrorContent] = useState([]);
+  const [errorContent, setErrorContent] = useState<string[]>([]);
   const [success, setSuccess] = useState(false);
   const { errorExists, setErrorExists } = useContext(PopupMessageContext);
 
