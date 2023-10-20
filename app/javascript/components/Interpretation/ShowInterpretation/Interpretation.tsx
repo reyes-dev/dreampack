@@ -5,8 +5,14 @@ import { FaEdit } from "react-icons/fa";
 import PopupMessage from "components/Shared/PopupMessage";
 import { PopupMessageContext } from "context/PopupMessageContext";
 
-function Interpretation({ params }) {
   const [interpretation, setInterpretation] = useState();
+interface InterpretationProps {
+  params: {
+    id: string;
+  };
+}
+
+function Interpretation({ params }: InterpretationProps) {
   const { errorExists } = useContext(PopupMessageContext);
   const [, navigate] = useLocation();
 
