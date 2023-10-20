@@ -107,7 +107,10 @@ function Entry({ params }: EntryProps) {
   }
 
   const handleMouseUp = () => {
-    setSelectedText(window.getSelection().toString());
+    const windowSelection = window.getSelection();
+    if (windowSelection !== null) {
+      setSelectedText(windowSelection.toString());
+    }
   };
 
   const highlightNewDreamSign = () => {
