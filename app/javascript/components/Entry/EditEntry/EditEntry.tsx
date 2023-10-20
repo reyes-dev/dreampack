@@ -3,7 +3,6 @@ import { useLocation } from "wouter";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { SidebarEntryContext } from "context/SidebarEntryContext";
 
-  const [entry, setEntry] = useState();
 interface EditEntryProps {
   params: {
     id: string;
@@ -11,6 +10,7 @@ interface EditEntryProps {
 }
 
 function EditEntry({ params }: EditEntryProps) {
+  const [entry, setEntry] = useState({ title: "", body: "", created_at: "" });
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [, navigate] = useLocation();
