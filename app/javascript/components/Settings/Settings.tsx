@@ -8,7 +8,10 @@ function Settings() {
   const [success, setSuccess] = useState(false);
   const { errorExists, setErrorExists } = useContext(PopupMessageContext);
 
-  const onChange = (event, setFunction) => {
+  const onChange = (
+    event: ChangeEvent<HTMLInputElement>,
+    setFunction: (openai_token: string) => void,
+  ) => {
     setFunction(event.target.value);
   };
 
