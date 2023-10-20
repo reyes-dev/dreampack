@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { useLocation } from "wouter";
 import { FaRegPaperPlane } from "react-icons/fa";
 
