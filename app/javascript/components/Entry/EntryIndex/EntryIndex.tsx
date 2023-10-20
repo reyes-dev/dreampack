@@ -15,7 +15,7 @@ function EntryIndex() {
 
   useEffect(() => {
     getEntries();
-  }, [params.page]);
+  }, [params?.page]);
 
   useEffect(() => {
     if (entries && entryCount > 0) {
@@ -38,7 +38,7 @@ function EntryIndex() {
   };
 
   const getEntries = async () => {
-    const url = `/api/entries/page/${params.page}`;
+    const url = `/api/entries/page/${params?.page}`;
     try {
       const response = await fetch(url);
       if (!response.ok) {
