@@ -3,7 +3,7 @@ import { PopupMessageContext } from "context/PopupMessageContext";
 
 interface PopupMessage {
   content: string[];
-  success: boolean;
+  success?: boolean;
 }
 
 function PopupMessage({ content, success = false }: PopupMessage) {
