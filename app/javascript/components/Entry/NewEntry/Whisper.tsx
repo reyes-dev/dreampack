@@ -46,13 +46,16 @@ function Whisper({ setEntryBodyHandler, setIsLoading }: WhisperProps) {
 
   const createTranscription = async () => {
     const formData = await buildFormData();
-    const token = document.querySelector("meta[name='csrf-token']").content;
+    const csrfTokenMetaElement = document.querySelector(
+      'meta[name="csrf-token"]',
+    ) as HTMLMetaElement;
+    const csrfTokenMetaElementContent = csrfTokenMetaElement.content;
     try {
       setIsLoading(true);
       const response = await fetch(`/api/whisper_transcriptions`, {
         method: "POST",
         headers: {
-          "X-CSRF-Token": token,
+          "X-CSRF-Token": csrfTokenMetaElementContent,
         },
         body: formData,
       });
