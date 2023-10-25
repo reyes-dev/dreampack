@@ -51,7 +51,7 @@ function App() {
           }}
         >
           {isLoggedIn ? <Sidebar /> : isLoggedIn}
-          <section className="flex h-full w-full flex-col justify-end">
+          <div className="flex h-full w-full flex-col justify-end">
             <SiteHeader />
             <main className="contents h-full flex-col items-center pb-8 pl-8 pr-8 md:flex">
               <PopupMessageContext.Provider
@@ -78,7 +78,7 @@ function App() {
                 </Switch>
               </PopupMessageContext.Provider>
             </main>
-          </section>
+          </div>
         </SidebarEntryContext.Provider>
       </div>
     </UserContext.Provider>
