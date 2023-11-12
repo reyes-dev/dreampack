@@ -10,7 +10,7 @@ function SiteHeader() {
     <header className="col-span-2 col-end-auto row-start-1 row-end-auto flex h-fit w-full items-center justify-between gap-8 p-4 xl:p-8">
       <div className="flex items-center">
         <img
-          className="h-28 w-28"
+          className="hidden h-20 w-20 lg:block"
           src="https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/logo.png"
           alt="logo"
         />
