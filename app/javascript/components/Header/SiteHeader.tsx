@@ -14,7 +14,7 @@ function SiteHeader() {
           src="https://raw.githubusercontent.com/reyes-dev/dreampack-pictures/main/logo.png"
           alt="logo"
         />
-        <h1 className="text-3xl">Dreampack</h1>
+        <h1 className="hidden lg:inline-block">Dreampack</h1>
       </div>
       {isLoggedIn ? (
         <NavbarLink
