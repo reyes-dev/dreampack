@@ -7,7 +7,7 @@ function SiteHeader() {
   const { isLoggedIn } = useContext(UserContext);
 
   return (
-    <header className="col-span-2 col-end-auto row-start-1 row-end-auto flex h-fit w-full items-center justify-between gap-8 p-4 xl:p-8">
+    <header className="col-span-full flex h-fit w-full items-center justify-between gap-8">
       <div className="flex items-center">
         <img
           className="hidden h-20 w-20 lg:block"
@@ -17,14 +17,16 @@ function SiteHeader() {
         <h1 className="hidden lg:inline-block">Dreampack</h1>
       </div>
       {isLoggedIn ? (
-        <NavbarLink
-          destination="/"
-          content="About"
-          bgColor="bg-green-900/20"
-          bgColorHover="hover:bg-green-900"
-        />
+        <section className="col-start-2 flex items-center gap-4 pr-4">
+          <NavbarLink
+            destination="/"
+            content="About"
+            bgColor="bg-green-900/20"
+            bgColorHover="hover:bg-green-900"
+          />
+        </section>
       ) : (
-        <section className="flex items-center gap-4">
+        <section className="col-start-2 flex items-center gap-4 pr-4">
           <NavbarDeviseLink
             destination="/login"
             content="Log In"
