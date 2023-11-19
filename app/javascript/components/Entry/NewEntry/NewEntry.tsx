@@ -82,8 +82,7 @@ function NewEntry() {
   return (
     <form
       ref={formRef}
-      className="flex h-full w-full flex-col gap-4 rounded
-        border-2 border-dashed border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2"
+      className="relative flex h-full w-full flex-col border border-white px-5 py-16 text-center "
       onSubmit={createEntry}
     >
       {errorExists && (
@@ -93,7 +92,7 @@ function NewEntry() {
           ]}
         />
       )}
-      <div className="flex flex-row-reverse justify-between gap-4 border-b pb-2">
+      <div className="flex flex-row-reverse justify-between pb-2">
         <Whisper
           setEntryBodyHandler={setEntryBodyHandler}
           setIsLoading={setIsLoading}
@@ -105,7 +104,7 @@ function NewEntry() {
           Entry Title:
         </label>
         <input
-          className=" w-full bg-transparent outline-none"
+          className="w-full rounded bg-[hsl(237.1,25.9%,19%)] p-2"
           name="entryTitle"
           id="entryTitle"
           data-cy="entryTitle"
@@ -114,7 +113,7 @@ function NewEntry() {
         />
       </div>
 
-      <div className="flex items-center justify-between border-b pb-2">
+      <div className="flex items-center justify-between pb-2">
         <p className="text-gray-600">Created on {new Date().toDateString()}</p>
         <div className="flex gap-4 pb-2"></div>
       </div>
@@ -136,7 +135,7 @@ function NewEntry() {
           <div className="h-36 w-36 flex-[0_0_auto] animate-spin self-center rounded-full border-4 border-[rgba(255,255,255,.3)] border-t-[hsl(133.1,66.1%,76.9%)]"></div>
         ) : (
           <textarea
-            className="h-full resize-none bg-transparent outline-none"
+            className="h-full resize-none rounded bg-[hsl(237.1,25.9%,19%)] p-2 pl-5 pt-5"
             name="entryText"
             id="entryText"
             data-cy="entryText"
@@ -148,9 +147,9 @@ function NewEntry() {
       </div>
       <button
         type="submit"
-        className="min-h flex items-center gap-2 self-end whitespace-nowrap rounded border border-sky-500 
-                    p-[0.450rem_0.450rem_0.4625rem]  italic 
-                    text-sky-500 hover:bg-slate-700 "
+        className="min-h absolute -bottom-[1px] -right-[1px]  flex items-center gap-2 self-end whitespace-nowrap 
+                    border p-[0.450rem_0.450rem_0.4625rem] hover:border-sky-500  
+                    "
       >
         <span className="lg:block">Save entry</span>
         <FaRegPaperPlane />

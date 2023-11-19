@@ -75,10 +75,10 @@ function EditInterpretation({ params }: EditInterpretationProps) {
 
   return (
     <form
-      className="flex h-full w-full flex-col gap-4 rounded border-2 border-dashed border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2"
+      className="relative flex h-full w-full flex-col gap-4 rounded border p-8 pb-16"
       onSubmit={updateInterpretation}
     >
-      <h1 className="border-b">Dream Interpretation</h1>
+      <h1 className="font-bold">Dream Interpretation</h1>
       <label
         htmlFor="interpretationBody"
         className="absolute m-[-1px] h-[1px] w-[1px] overflow-hidden"
@@ -86,19 +86,17 @@ function EditInterpretation({ params }: EditInterpretationProps) {
         Write or Edit Your Dream Interpration:
       </label>
       <textarea
-        className="h-full resize-none bg-transparent outline-none"
+        className="h-full resize-none rounded bg-[hsl(237.1,25.9%,19%)] p-2 pl-5 pt-5"
         name="interpretationBody"
         id="interpretationBody"
         onChange={(event) => onChange(event, setInterpretation)}
         placeholder="Interpret the meaning of your dream here..."
         value={interpretation || ""}
       />
-      <div className="flex justify-end pb-2">
+      <div className="absolute -bottom-[1px] -right-[1px]">
         <button
           type="submit"
-          className="min-h flex items-center gap-2 whitespace-nowrap rounded border border-sky-500 
-                      p-[0.450rem_0.450rem_0.4625rem] italic 
-                      text-sky-500 hover:bg-slate-700"
+          className="min-h flex items-center gap-2 whitespace-nowrap border p-[0.450rem_0.450rem_0.4625rem] hover:border-sky-500"
         >
           <span className="lg:block">Update interpretation</span>
           <FaRegPaperPlane />

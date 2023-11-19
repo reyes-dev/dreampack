@@ -80,9 +80,7 @@ function Whisper({ setEntryBodyHandler, setIsLoading }: WhisperProps) {
         onClick={startRecording}
         className={`${
           status === "recording" ? "hidden" : ""
-        } flex h-min items-center gap-2  whitespace-nowrap rounded border border-lime-500 
-                      p-[0.450rem_0.450rem_0.4625rem] italic 
-                      text-lime-400 hover:bg-slate-700`}
+        } absolute -right-[1px] -top-[1px] flex h-min items-center gap-2 whitespace-nowrap border p-[0.450rem_0.450rem_0.4625rem] hover:border-green-500`}
         autoFocus
       >
         <span className="lg:block">Start Recording</span>
@@ -93,9 +91,7 @@ function Whisper({ setEntryBodyHandler, setIsLoading }: WhisperProps) {
         onClick={stopRecording}
         className={`${
           status === "recording" ? "" : "hidden"
-        } flex h-min items-center gap-2 whitespace-nowrap rounded border border-red-500 p-[0.450rem_0.450rem_0.4625rem] 
-                      italic text-red-400 hover:bg-slate-700 
-                      `}
+        } absolute -right-[1px] -top-[1px] flex h-min items-center gap-2 whitespace-nowrap border p-[0.450rem_0.450rem_0.4625rem] hover:border-red-500`}
       >
         <span className="lg:block">Stop Recording</span>
         <FaStopCircle />

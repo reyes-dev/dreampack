@@ -54,9 +54,7 @@ function Settings() {
 
   return (
     <form
-      className="flex h-full w-full flex-col justify-between gap-4 whitespace-pre-line break-words
-        rounded border-2 border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] 
-        p-8 md:h-[80vh] md:w-1/2"
+      className="flex h-full w-full flex-col justify-between gap-4 whitespace-pre-line break-words  border p-8"
       onSubmit={updateSettings}
     >
       <div className="flex flex-col gap-4">

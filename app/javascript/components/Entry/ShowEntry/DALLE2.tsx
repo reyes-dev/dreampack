@@ -44,9 +44,7 @@ function DALLE2({ entry_id, setDalleUrl, entryBodyText }: DALLE2Props) {
   return (
     <button
       onClick={generateImage}
-      className="min-h flex items-center gap-2 whitespace-nowrap rounded border border-amber-500 
-                      p-[0.450rem_0.450rem_0.4625rem] italic 
-                      text-amber-500 hover:bg-slate-700"
+      className="min-h flex items-center gap-2 whitespace-nowrap border p-[0.450rem_0.450rem_0.4625rem]  hover:border-amber-500"
     >
       <span className="hidden lg:block">Generate Image</span>
       <FaPalette />

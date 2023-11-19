@@ -42,10 +42,7 @@ function Interpretation({ params }: InterpretationProps) {
   }
 
   return (
-    <section
-      className="flex h-full w-full flex-col gap-4 overflow-auto rounded
-         border-2 border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2"
-    >
+    <section className="relative flex h-full w-full flex-col gap-4 border">
       {errorExists && (
         <PopupMessage
           content={[
@@ -53,36 +50,28 @@ function Interpretation({ params }: InterpretationProps) {
           ]}
         />
       )}
-      <div className="flex justify-between gap-4 border-b pb-2">
-        <h1 className="lg:text-3xl">Interpretation</h1>
-        <div className="flex flex-col-reverse items-end gap-4 lg:flex-row">
-          <Link
-            href={`/entries/${params.id}`}
-            className="whitespace-nowrap text-sky-500 underline"
-          >
-            Back to Entry
-          </Link>
-          <Link
-            href={`/entries/${params.id}/interpretation/edit`}
-            className="min-h gap-2 whitespace-nowrap rounded border border-sky-500 p-[0.450rem_0.450rem_0.4625rem] italic 
-                      text-sky-500 hover:bg-slate-700 lg:flex 
-                      lg:items-center"
-          >
-            <span className="hidden lg:block">Edit Interpretation</span>
-            <FaEdit />
-          </Link>
-        </div>
+      <div className="absolute -right-[1px] -top-[1px] flex">
+        <ChatGPT entry_id={params.id} setInterpretation={setInterpretation} />
+        <Link
+          href={`/entries/${params.id}/interpretation/edit`}
+          className="min-h flex items-center gap-2 whitespace-nowrap border p-[0.450rem_0.450rem_0.4625rem] hover:border-sky-500"
+        >
+          <span className="hidden lg:block">Edit Interpretation</span>
+          <FaEdit />
+        </Link>
       </div>
-      <div className="flex items-center justify-between border-b pb-2">
-        <p className="text-gray-600">
-          Created on <time>{new Date().toDateString()}</time>
-        </p>
-        <div className="flex gap-4 pb-2">
-          <ChatGPT entry_id={params.id} setInterpretation={setInterpretation} />
-        </div>
+      <div className="absolute -bottom-[1px] -right-[1px] flex">
+        <Link
+          href={`/entries/${params.id}`}
+          className="min-h flex items-center gap-2 whitespace-nowrap border p-[0.450rem_0.450rem_0.4625rem] hover:border-sky-500"
+        >
+          {`<`} Back to Entry
+        </Link>
       </div>
-
-      <article className="h-fit resize-none">{interpretation}</article>
+      <section className="flex flex-col gap-16 p-8">
+        <h1 className="font-bold">Dream Interpretation</h1>
+        <article className="h-fit resize-none">{interpretation}</article>
+      </section>
     </section>
   );
 }

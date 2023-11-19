@@ -95,11 +95,10 @@ function EditEntry({ params }: EditEntryProps) {
 
   return (
     <form
-      className="flex h-full w-full flex-col gap-4 rounded border-2
-        border-dashed border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2"
+      className="relative flex h-full w-full flex-col gap-4 border px-5 py-16"
       onSubmit={updateEntry}
     >
-      <div className="flex justify-between gap-4 border-b pb-2">
+      <div className="flex justify-between gap-4">
         <label
           htmlFor="entryTitle"
           className="absolute m-[-1px] h-[1px] w-[1px] overflow-hidden"
@@ -107,7 +106,7 @@ function EditEntry({ params }: EditEntryProps) {
           Entry Title:
         </label>
         <input
-          className="flex-1 bg-transparent outline-none"
+          className="w-full rounded bg-[hsl(237.1,25.9%,19%)] p-2"
           name="entryTitle"
           id="entryTitle"
           data-cy="entryTitle"
@@ -116,10 +115,6 @@ function EditEntry({ params }: EditEntryProps) {
           value={title || ""}
         />
       </div>
-
-      <div className="border-b pb-2">
-        <p className="text-gray-600">Created on {entry.created_at}</p>
-      </div>
       <label
         htmlFor="entryText"
         className="absolute m-[-1px] h-[1px] w-[1px] overflow-hidden"
@@ -127,7 +122,7 @@ function EditEntry({ params }: EditEntryProps) {
         Edit Your Dream Journal Entry:
       </label>
       <textarea
-        className="h-full resize-none bg-transparent outline-none"
+        className="h-full resize-none rounded bg-[hsl(237.1,25.9%,19%)] p-2 pl-5 pt-5"
         name="entryText"
         data-cy="entryText"
         onChange={(event) => onChange(event, setBody)}
@@ -137,9 +132,7 @@ function EditEntry({ params }: EditEntryProps) {
 
       <button
         type="submit"
-        className="min-h flex items-center gap-2 self-end whitespace-nowrap rounded border border-sky-500 
-                      p-[0.450rem_0.450rem_0.4625rem] italic 
-                      text-sky-500 hover:bg-slate-700"
+        className="min-h absolute -bottom-[1px] -right-[1px] flex items-center gap-2 whitespace-nowrap border p-[0.450rem_0.450rem_0.4625rem] hover:border-sky-500"
       >
         <span className="lg:block">Update entry</span>
         <FaRegPaperPlane />

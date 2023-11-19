@@ -4,7 +4,7 @@ import { IconContext } from "react-icons";
 
 function Homepage() {
   return (
-    <article className="flex max-w-5xl flex-col gap-8 overflow-auto px-[min(7.8vw,6.25rem)]">
+    <article className="absolute flex max-w-5xl flex-col gap-8 overflow-auto break-normal px-[min(7.8vw,6.25rem)]">
       <section className="flex flex-col gap-2">
         <div className="flex items-center gap-2">
           <h1 className="relative flex text-3xl leading-none text-white">
@@ -28,24 +28,22 @@ function Homepage() {
           the wilderness you used to be lost in.
         </p>
         <p>
-          If you're still lost and don't know what a
+          If you're still lost and don't know what a{" "}
           <a
             href="https://en.wikipedia.org/wiki/Dream_diary"
-            className="text-[#52e3ac]"
+            className="text-[#52e3ac] hover:underline"
             target="_blank"
           >
-            {" "}
-            dream diary{" "}
+            dream diary
           </a>{" "}
-          or
+          or{" "}
           <a
             href="https://en.wikipedia.org/wiki/Lucid_dream"
-            className="text-[#52e3ac]"
+            className="text-[#52e3ac] hover:underline"
             target="_blank"
           >
-            {" "}
-            lucid dreaming{" "}
-          </a>
+            lucid dreaming
+          </a>{" "}
           is, read up on those wikipedia articles!
         </p>
       </section>

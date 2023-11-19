@@ -43,42 +43,40 @@ function App() {
 
   return (
     <UserContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
-      <div className="flex h-screen flex-col-reverse justify-between text-white md:flex-row">
+      <div className="container mx-auto grid min-h-screen grid-cols-[1fr_3fr_1fr] grid-rows-[min-content_1fr] gap-[40px] text-white md:flex-row">
         <SidebarEntryContext.Provider
           value={{
             sidebarEntriesUpdateTrigger,
             setSidebarEntriesUpdateTrigger,
           }}
         >
+          <SiteHeader />
           {isLoggedIn ? <Sidebar /> : isLoggedIn}
-          <div className="flex h-full w-full flex-col justify-end">
-            <SiteHeader />
-            <main className="contents h-full flex-col items-center pb-8 pl-8 pr-8 md:flex">
-              <PopupMessageContext.Provider
-                value={{ errorExists, setErrorExists }}
-              >
-                <Switch>
-                  <Route path="/" component={Homepage} />
-                  <Route path="/entries/new" component={NewEntry} />
-                  <Route path="/entries/:id/edit" component={EditEntry} />
-                  <Route path="/entries/:id" component={Entry} />
-                  <Route path="/entries/page/:page" component={EntryIndex} />
-                  <Route path="/settings" component={Settings} />
-                  <Route
-                    path="/entries/:id/interpretation"
-                    component={Interpretation}
-                  />
-                  <Route
-                    path="/entries/:id/interpretation/edit"
-                    component={EditInterpretation}
-                  />
-                  <Route>
-                    <Redirect to="/" />
-                  </Route>
-                </Switch>
-              </PopupMessageContext.Provider>
-            </main>
-          </div>
+          <main className="break-all pb-8 pl-8 pr-8">
+            <PopupMessageContext.Provider
+              value={{ errorExists, setErrorExists }}
+            >
+              <Switch>
+                <Route path="/" component={Homepage} />
+                <Route path="/entries/new" component={NewEntry} />
+                <Route path="/entries/:id/edit" component={EditEntry} />
+                <Route path="/entries/:id" component={Entry} />
+                <Route path="/entries/page/:page" component={EntryIndex} />
+                <Route path="/settings" component={Settings} />
+                <Route
+                  path="/entries/:id/interpretation"
+                  component={Interpretation}
+                />
+                <Route
+                  path="/entries/:id/interpretation/edit"
+                  component={EditInterpretation}
+                />
+                <Route>
+                  <Redirect to="/" />
+                </Route>
+              </Switch>
+            </PopupMessageContext.Provider>
+          </main>
         </SidebarEntryContext.Provider>
       </div>
     </UserContext.Provider>

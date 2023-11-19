@@ -60,18 +60,15 @@ function EntryIndex() {
   const entryList = entries.map((entry, index) => {
     return (
       <li
-        className="flex cursor-pointer flex-col justify-between gap-2 hover:rounded hover:bg-gray-600"
+        className="flex cursor-pointer flex-col justify-between gap-2 border border-white p-[20px_20px_50px] text-start hover:border-sky-500"
         key={entry[0]}
       >
         <Link
           href={`/entries/${entry[0]}`}
-          className="flex flex-col gap-2"
+          className="gap flex flex-col"
           ref={index === 0 ? linkRef : null}
         >
-          <h1 className="border-b">{entry[1]}</h1>
-          <p className="text-gray-400">
-            Created on <time>{entry[3]}</time>
-          </p>
+          <h1 className="pb-3 font-bold">{entry[1]}</h1>
           <article className="pt text-gray-200">{entry[2]}</article>
         </Link>
       </li>
@@ -79,15 +76,9 @@ function EntryIndex() {
   });
 
   return (
-    <section
-      className="flex h-full w-full flex-col justify-between gap-4 overflow-auto rounded 
-    border-2 border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2"
-    >
+    <section className="relative flex h-full w-full flex-col break-all px-20 pt-4">
       {entryCount ? (
-        <ul
-          className="flex flex-col gap-4  whitespace-pre-line pt-2 lg:pr-2"
-          role="list"
-        >
+        <ul className="flex flex-col gap-4" role="list">
           {entryList}
         </ul>
       ) : (

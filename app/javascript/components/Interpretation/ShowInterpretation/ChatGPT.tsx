@@ -45,9 +45,7 @@ function ChatGPT({ entry_id, setInterpretation }: ChatGPTProps) {
     <button
       type="button"
       onClick={createChatGPTResponse}
-      className="min-h gap-2 whitespace-nowrap rounded border border-violet-500 p-[0.450rem_0.450rem_0.4625rem] 
-                      italic text-violet-500 hover:bg-slate-700 
-                      lg:flex lg:items-center"
+      className="min-h flex items-center gap-2 whitespace-nowrap border p-[0.450rem_0.450rem_0.4625rem] hover:border-violet-500"
     >
       <span className="hidden lg:block">Interpret with AI</span>
       <FaRobot />

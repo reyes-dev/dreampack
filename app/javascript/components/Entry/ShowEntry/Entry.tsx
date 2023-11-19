@@ -15,6 +15,7 @@ interface EntryProps {
     id: string;
   };
 }
+
 function Entry({ params }: EntryProps) {
   const ref = useRef<HTMLImageElement>(null);
   const [entry, setEntry] = useState({ title: "", body: "", created_at: "" });
@@ -126,8 +127,8 @@ function Entry({ params }: EntryProps) {
   return (
     <section
       className={`${
-        modalActivated ? "pointer-events-none" : " "
-      } flex h-full w-full flex-col gap-4 whitespace-pre-line break-words rounded border-2 border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] p-8 lg:h-[80vh] xl:w-1/2`}
+        modalActivated ? "pointer-events-none" : ""
+      } relative h-full w-full whitespace-pre-line break-words border`}
     >
       {errorExists && (
         <PopupMessage
@@ -142,27 +143,24 @@ function Entry({ params }: EntryProps) {
           toggleModalActivation={toggleModalActivation}
         />
       )}
-      <section className="flex items-center justify-between border-b pb-2">
-        <h1 data-cy="entryTitle" className="lg:text-3xl">
-          {entry.title}
-        </h1>
-        <div className="flex items-center gap-4">
+      <section className="flex items-center justify-between">
+        <div className="absolute -right-[1px] -top-[1px] flex">
+          <DALLE2
+            entry_id={params.id}
+            setDalleUrl={setDalleUrl}
+            entryBodyText={entry.body}
+          />
+          <DeleteEntryButton toggleModalActivation={toggleModalActivation} />
           <Link
             href={`/entries/${params.id}/edit`}
-            className="min-h flex items-center gap-2 whitespace-nowrap rounded border border-sky-500 
-                      p-[0.450rem_0.450rem_0.4625rem] italic 
-                      text-sky-500 hover:bg-slate-700"
+            className="min-h flex items-center gap-2 whitespace-nowrap border p-[0.450rem_0.450rem_0.4625rem] hover:border-sky-500"
             data-cy="editEntry"
           >
             <span className="hidden lg:block">Edit Entry</span>
             <FaEdit />
           </Link>
-          <DeleteEntryButton toggleModalActivation={toggleModalActivation} />
         </div>
-      </section>
-      <section className="flex items-center justify-between border-b pb-2">
-        <p className="text-gray-600">Created on {new Date().toDateString()}</p>
-        <div className="flex items-end gap-4 pb-2">
+        <div className="flex items-end gap-4">
           {dalleUrl.length === 0 ? null : (
             <button
               onClick={() => {
@@ -176,23 +174,16 @@ function Entry({ params }: EntryProps) {
               />
             </button>
           )}
-
-          <Link
-            href={`/entries/${params.id}/interpretation`}
-            className="text-sky-500 underline"
-          >
-            Go to Interpretation
-          </Link>
-          <DALLE2
-            entry_id={params.id}
-            setDalleUrl={setDalleUrl}
-            entryBodyText={entry.body}
-          />
         </div>
+      </section>
+      <section className="flex p-8">
+        <h1 data-cy="entryTitle" className="overflow-hidden font-bold">
+          {entry.title}
+        </h1>
       </section>
       <Selection.Root>
         <Selection.Trigger className="h-fit overflow-auto">
-          <article onMouseUp={handleMouseUp}>
+          <article onMouseUp={handleMouseUp} className="p-8">
             <Highlighter
               highlightClassName="text-[#FFBABB] rounded bg-transparent"
               searchWords={dreamSigns}
@@ -235,6 +226,12 @@ function Entry({ params }: EntryProps) {
           ref={ref}
         />
       ) : null}
+      <Link
+        href={`/entries/${params.id}/interpretation`}
+        className="absolute -bottom-[1px] -right-[1px] border p-[0.450rem_0.450rem_0.4625rem] hover:border-violet-500"
+      >
+        Go to Interpretation {`>`}
+      </Link>
     </section>
   );
 }
