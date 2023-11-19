@@ -12,10 +12,10 @@ function Sidebar() {
   };
 
   return (
-    <aside
+    <nav
       className={
         visible
-          ? "flex border-[hsl(133.1,66.1%,76.9%)] bg-[hsla(0,0%,0%,0.15)] md:w-fit md:border-r-2  2xl:w-[15vw]"
+          ? "sticky top-5 col-start-1 inline-block w-fit self-start"
           : "absolute w-[5vw]"
       }
     >
@@ -32,7 +32,7 @@ function Sidebar() {
           visible={visible}
         />
       )}
-    </aside>
+    </nav>
   );
 }
 

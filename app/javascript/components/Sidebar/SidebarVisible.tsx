@@ -46,28 +46,25 @@ function SidebarVisible({ hideSidebar, icon, visible }: SidebarVisibleProps) {
   });
 
   return (
-    <nav className="flex h-full w-full justify-between gap-4 p-2 underline-offset-4 md:flex-col md:p-4">
-      <section className="flex items-center gap-2 md:flex-col 2xl:items-stretch">
-        <div className="flex items-center gap-2 md:flex-col-reverse lg:flex-row">
-          <SidebarLink
-            destination="/entries/new"
-            content="New Entry"
-            icon={<FaPlus />}
-          />
-          <SidebarToggle
-            hideSidebar={hideSidebar}
-            icon={icon}
-            visible={visible}
-          />
+    <nav className="flex h-full justify-between gap-12 p-4 underline-offset-4 md:flex-col">
+      <section className="flex flex-col gap-12">
+        <div className="flex flex-col">
+          <h1 className="w-full font-bold">Dream Journal</h1>
+          <div className="flex flex-col gap-2 pt-4">
+            <SidebarLink
+              destination="/entries/new"
+              content="New Entry"
+              icon={<FaPlus />}
+            />
+            <SidebarLink
+              destination="/entries/page/0"
+              content="All Entries"
+              icon={<FaBook />}
+            />
+          </div>
         </div>
-
-        <SidebarLink
-          destination="/entries/page/0"
-          content="All Entries"
-          icon={<FaBook />}
-        />
-        <section className="hidden flex-col pt-8 md:flex">
-          <h1 className="border-b border-b-white font-bold">Recent Entries</h1>
+        <section className="hidden flex-col md:flex">
+          <h1 className="font-bold">Recent Entries</h1>
           <ul className="hidden flex-col gap-2 pt-4 md:flex" role="list">
             {sidebarEntriesList}
           </ul>
