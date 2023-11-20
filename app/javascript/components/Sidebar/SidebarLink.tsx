@@ -14,7 +14,9 @@ function SidebarLink({ destination, content, icon }: SidebarLinkProps) {
       className="flex w-min items-center gap-2 whitespace-nowrap rounded-xl p-3 hover:bg-slate-700"
     >
       <span>{icon}</span>
-      <span className="w-[150px] overflow-hidden text-ellipsis">{content}</span>
+      <span className="hidden w-[150px] overflow-hidden text-ellipsis sm:block">
+        {content}
+      </span>
     </Link>
   );
 }

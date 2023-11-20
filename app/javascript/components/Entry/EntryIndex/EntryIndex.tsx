@@ -45,7 +45,6 @@ function EntryIndex() {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-      console.log(data);
       setEntries(data);
       return data;
     } catch (e) {
@@ -76,7 +75,7 @@ function EntryIndex() {
   });
 
   return (
-    <section className="relative flex h-full w-full flex-col break-all px-20 pt-4">
+    <section className="relative flex h-full w-full flex-col break-all sm:px-20 sm:pt-4">
       {entryCount ? (
         <ul className="flex flex-col gap-4" role="list">
           {entryList}

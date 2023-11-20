@@ -15,7 +15,7 @@ function Sidebar() {
     <nav
       className={
         visible
-          ? "sticky top-5 col-start-1 inline-block w-fit self-start"
+          ? "sticky top-0 z-[1] col-start-1 inline-block w-full self-start sm:top-5 sm:w-fit"
           : "absolute w-[5vw]"
       }
     >

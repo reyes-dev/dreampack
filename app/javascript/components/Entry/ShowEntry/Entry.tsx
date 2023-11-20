@@ -145,12 +145,12 @@ function Entry({ params }: EntryProps) {
       )}
       <section className="flex items-center justify-between">
         <div className="absolute -right-[1px] -top-[1px] flex">
+          <DeleteEntryButton toggleModalActivation={toggleModalActivation} />
           <DALLE2
             entry_id={params.id}
             setDalleUrl={setDalleUrl}
             entryBodyText={entry.body}
           />
-          <DeleteEntryButton toggleModalActivation={toggleModalActivation} />
           <Link
             href={`/entries/${params.id}/edit`}
             className="min-h flex items-center gap-2 whitespace-nowrap border p-[0.450rem_0.450rem_0.4625rem] hover:border-sky-500"

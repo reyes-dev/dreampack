@@ -8,11 +8,11 @@ interface DeleteEntryButtonProps {
 function DeleteEntryButton({ toggleModalActivation }: DeleteEntryButtonProps) {
   return (
     <button
-      className="flex items-center gap-2 whitespace-nowrap  border p-[0.450rem_0.450rem_0.4625rem] hover:border-rose-700"
+      className="flex items-center gap-2 whitespace-nowrap border p-[0.450rem_0.450rem_0.4625rem] hover:border-rose-700"
       onClick={toggleModalActivation}
       data-cy="deleteEntry"
     >
-      Delete Entry
+      <span className="hidden sm:inline-block">Delete Entry</span>
       <FaTrashAlt />
     </button>
   );

@@ -14,7 +14,7 @@ function Pagination({ pageNumber, entryCount }: PaginationProps) {
   }, [entryCount]);
 
   return (
-    <section className="flex justify-center gap-8 self-center">
+    <section className="flex justify-center gap-8 self-center pt-2 sm:pt-8">
       {pageNumber === 0 ? null : (
         <button
           className="pb pt rounded border border-white/20 pl-4 pr-4 hover:border-white hover:bg-slate-700"

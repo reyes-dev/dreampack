@@ -43,7 +43,7 @@ function App() {
 
   return (
     <UserContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
-      <div className="container mx-auto grid min-h-screen grid-cols-[1fr_3fr_1fr] grid-rows-[min-content_1fr] gap-[40px] text-white md:flex-row">
+      <div className="container mx-auto grid min-h-screen grid-cols-1 grid-rows-[min-content_1fr] justify-items-center text-white sm:grid-cols-[1fr_3fr_1fr] sm:gap-[40px]">
         <SidebarEntryContext.Provider
           value={{
             sidebarEntriesUpdateTrigger,
@@ -52,7 +52,7 @@ function App() {
         >
           <SiteHeader />
           {isLoggedIn ? <Sidebar /> : isLoggedIn}
-          <main className="break-all pb-8 pl-8 pr-8">
+          <main className="w-full break-all px-4 pb-5 sm:px-8 sm:pb-8">
             <PopupMessageContext.Provider
               value={{ errorExists, setErrorExists }}
             >

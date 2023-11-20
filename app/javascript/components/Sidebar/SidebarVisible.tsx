@@ -46,11 +46,11 @@ function SidebarVisible({ hideSidebar, icon, visible }: SidebarVisibleProps) {
   });
 
   return (
-    <nav className="flex h-full justify-between gap-12 p-4 underline-offset-4 md:flex-col">
+    <nav className="flex justify-between gap-32 bg-[hsl(237.1,25.9%,15.9%)] py-4 underline-offset-4 sm:flex-col sm:gap-12 sm:p-4">
       <section className="flex flex-col gap-12">
         <div className="flex flex-col">
-          <h1 className="w-full font-bold">Dream Journal</h1>
-          <div className="flex flex-col gap-2 pt-4">
+          <h1 className="hidden w-full font-bold sm:block">Dream Journal</h1>
+          <div className="flex gap-2 sm:flex-col sm:pt-4">
             <SidebarLink
               destination="/entries/new"
               content="New Entry"
@@ -64,7 +64,7 @@ function SidebarVisible({ hideSidebar, icon, visible }: SidebarVisibleProps) {
           </div>
         </div>
         <section className="hidden flex-col md:flex">
-          <h1 className="font-bold">Recent Entries</h1>
+          <h1 className="hidden font-bold sm:block">Recent Entries</h1>
           <ul className="hidden flex-col gap-2 pt-4 md:flex" role="list">
             {sidebarEntriesList}
           </ul>
