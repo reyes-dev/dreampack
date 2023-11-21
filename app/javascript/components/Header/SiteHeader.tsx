@@ -7,7 +7,11 @@ function SiteHeader() {
   const { isLoggedIn } = useContext(UserContext);
 
   return (
-    <header className="col-span-full row-start-1 hidden h-fit w-full items-center justify-between gap-8 border-b pb-3 pl-4 pt-4 sm:flex">
+    <header
+      className={`${
+        isLoggedIn ? "hidden sm:flex" : ""
+      } sticky top-0 z-[1] col-span-full row-start-1 flex h-fit w-full items-center justify-between gap-8 border-b bg-[hsl(237.1,25.9%,15.9%)] pb-3 pl-4 pt-4`}
+    >
       <h1 className="text-xl">Dreampack</h1>
       {isLoggedIn ? (
         <section className="col-start-2 flex items-center gap-4 pr-4">
