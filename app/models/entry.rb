@@ -1,7 +1,9 @@
 class Entry < ApplicationRecord
   belongs_to :user
   after_create :add_interpretation
+  after_create :add_note
   has_one :interpretation, dependent: :destroy
+  has_one :note, dependent: :destroy
   has_one_attached :image
 
   validates :title, presence: true, length: { in: 1..250 }
@@ -24,5 +26,9 @@ class Entry < ApplicationRecord
 
   def add_interpretation
     create_interpretation(body: '')
+  end
+
+  def add_note
+    create_note(body: '')
   end
 end
