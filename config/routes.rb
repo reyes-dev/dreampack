@@ -23,6 +23,7 @@ Rails.application.routes.draw do
         resource :chatgpt_response, only: [:create]
       end
       resources :dalle_responses, only: [:create]
+      resource :note
     end
     resources :dream_signs
     resources :whisper_transcriptions, only: [:create]
