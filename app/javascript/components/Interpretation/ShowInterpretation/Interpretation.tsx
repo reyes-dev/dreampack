@@ -60,7 +60,7 @@ function Interpretation({ params }: InterpretationProps) {
           <FaEdit />
         </Link>
       </div>
-      <div className="absolute -bottom-[1px] -right-[1px] flex">
+      <div className="absolute -bottom-[1px] -left-[1px] flex">
         <Link
           href={`/entries/${params.id}`}
           className="min-h flex items-center gap-2 whitespace-nowrap border p-[0.450rem_0.450rem_0.4625rem] hover:border-sky-500"
