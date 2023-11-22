@@ -227,6 +227,12 @@ function Entry({ params }: EntryProps) {
         />
       ) : null}
       <Link
+        href={`/entries/${params.id}/note`}
+        className="absolute -bottom-[1px] -left-[1px] border p-[0.450rem_0.450rem_0.4625rem] hover:border-lime-500"
+      >
+        {`<`} Go to Notes
+      </Link>
+      <Link
         href={`/entries/${params.id}/interpretation`}
         className="absolute -bottom-[1px] -right-[1px] border p-[0.450rem_0.450rem_0.4625rem] hover:border-violet-500"
       >
