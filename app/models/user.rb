@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :entries
   has_many :dream_signs
+  has_many :dream_goals
 end
