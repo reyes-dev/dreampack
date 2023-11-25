@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       resource :note
     end
     resources :dream_signs
+    resources :dream_goals
     resources :whisper_transcriptions, only: [:create]
     resources :sidebar_entry_links, only: [:index]
   end
