@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Homepage from "components/About/Homepage";
 import SiteHeader from "components/Header/SiteHeader";
 import Sidebar from "components/Sidebar/Sidebar";
@@ -17,6 +13,7 @@ import EditInterpretation from "components/Interpretation/EditInterpretation/Edi
 import Note from "components/Note/ShowNote/Note";
 import EditNote from "components/Note/EditNote/EditNote";
 import DreamGoals from "components/DreamGoals/ShowDreamGoals/DreamGoals";
+import Footer from "components/Footer";
 import { Switch, Route, Redirect, useLocation } from "wouter";
 import { UserContext } from "context/UserContext";
 import { PopupMessageContext } from "context/PopupMessageContext";
@@ -95,6 +92,7 @@ function App() {
           </SidebarEntryContext.Provider>
         </div>
       </UserContext.Provider>
+      <Footer />
     </QueryClientProvider>
   );
 }
