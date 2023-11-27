@@ -32,7 +32,7 @@ function DeleteEntryModal({
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       setSidebarEntriesUpdateTrigger((v) => !v);
-      navigate("/entries");
+      navigate("/entries/page/0");
       return response.json();
     } catch (e) {
       console.error(e);
