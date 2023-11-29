@@ -5,6 +5,7 @@ import React, {
   ChangeEvent,
   FormEvent,
 } from "react";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { useLocation } from "wouter";
 import { FaRegPaperPlane } from "react-icons/fa";
 import { SidebarEntryContext } from "context/SidebarEntryContext";
@@ -85,18 +86,26 @@ function EditEntry({ params }: EditEntryProps) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       await response.text();
-      setSidebarEntriesUpdateTrigger((v) => !v);
-      navigate(`/entries/${params.id}`);
       return response.ok;
     } catch (e) {
       console.error(e);
     }
   };
 
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: updateEntry,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["sidebarEntries"] });
+      navigate(`/entries/${params.id}`);
+    },
+  });
+
   return (
     <form
       className="relative flex h-full w-full flex-col gap-4 border px-5 py-16"
-      onSubmit={updateEntry}
+      onSubmit={mutation.mutate}
     >
       <div className="flex justify-between gap-4">
         <label

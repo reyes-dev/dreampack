@@ -6,6 +6,7 @@ import React, {
   ChangeEvent,
   FormEvent,
 } from "react";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
 import Whisper from "components/Entry/NewEntry/Whisper";
 import { useLocation } from "wouter";
 import { FaRegPaperPlane } from "react-icons/fa";
@@ -66,8 +67,6 @@ function NewEntry() {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-      setSidebarEntriesUpdateTrigger((v) => !v);
-      navigate(`/entries/${data.id}`);
       return data;
     } catch (e) {
       console.error(e);
@@ -79,11 +78,21 @@ function NewEntry() {
     setAudioIsReady(true);
   };
 
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: createEntry,
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: ["sidebarEntries"] });
+      navigate(`/entries/${data.id}`);
+    },
+  });
+
   return (
     <form
       ref={formRef}
       className="relative flex h-full w-full flex-col border border-white px-5 py-16 text-center "
-      onSubmit={createEntry}
+      onSubmit={mutation.mutate}
     >
       {errorExists && (
         <PopupMessage

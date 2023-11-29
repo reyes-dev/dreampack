@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { useLocation } from "wouter";
 import { SidebarEntryContext } from "context/SidebarEntryContext";
 
@@ -12,7 +13,6 @@ function DeleteEntryModal({
   toggleModalActivation,
 }: DeleteEntryModalProps) {
   const [, navigate] = useLocation();
-  const { setSidebarEntriesUpdateTrigger } = useContext(SidebarEntryContext);
 
   const deleteEntry = async () => {
     const url = `/api/entries/${id}`;
@@ -31,13 +31,21 @@ function DeleteEntryModal({
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-      setSidebarEntriesUpdateTrigger((v) => !v);
-      navigate("/entries/page/0");
       return response.json();
     } catch (e) {
       console.error(e);
     }
   };
+
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: deleteEntry,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["sidebarEntries"] });
+      navigate("/entries/page/0");
+    },
+  });
 
   return (
     <section className="absolute left-1/2 top-1/2 w-max -translate-x-1/2 -translate-y-1/2 rounded-xl bg-gray-900 p-8  shadow-xl">
@@ -53,7 +61,7 @@ function DeleteEntryModal({
         </button>
         <button
           className="pointer-events-auto text-sky-500"
-          onClick={deleteEntry}
+          onClick={() => mutation.mutate()}
         >
           Delete
         </button>

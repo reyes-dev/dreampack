@@ -3,38 +3,45 @@ import SidebarLink from "components/Sidebar/SidebarLink";
 import LogOutButton from "components/Sidebar/LogOutButton";
 import { FaPlus, FaBook, FaCog, FaRegCommentAlt } from "react-icons/fa";
 import { SidebarEntryContext } from "context/SidebarEntryContext";
+import { useQuery } from "@tanstack/react-query";
+
 /* Componentize the three "sections" into separate components */
-/* Use react-query, delete contexts */
+/* delete contexts */
 /* in-place map instead of variable map */
 
 export default function Sidebar() {
-  const [sidebarEntries, setSidebarEntries] = useState([]);
-  const { sidebarEntriesUpdateTrigger } = useContext(SidebarEntryContext);
-
-  useEffect(() => {
-    getSidebarEntries();
-  }, [sidebarEntriesUpdateTrigger]);
-
   const getSidebarEntries = async () => {
-    const url = `/api/sidebar_entry_links`;
     try {
-      const response = await fetch(url);
+      const response = await fetch(`/api/sidebar_entry_links`);
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-      return setSidebarEntries(data);
+      return data;
     } catch (e) {
       console.error(e);
     }
   };
 
-  const sidebarEntriesList = sidebarEntries.map((entrySidebarLink) => {
+  const { isPending, isError, data, error } = useQuery({
+    queryKey: ["sidebarEntries"],
+    queryFn: getSidebarEntries,
+  });
+
+  if (isPending) {
+    return <span>Loading...</span>;
+  }
+
+  if (isError) {
+    return <span>Error: {error.message}</span>;
+  }
+
+  const sidebarEntriesList = data.map((entry: string[]) => {
     return (
-      <li key={entrySidebarLink[0]}>
+      <li key={entry[0]}>
         <SidebarLink
-          destination={`/entries/${entrySidebarLink[0]}`}
-          content={entrySidebarLink[1]}
+          destination={`/entries/${entry[0]}`}
+          content={entry[1]}
           icon={<FaRegCommentAlt />}
         />
       </li>
