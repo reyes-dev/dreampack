@@ -1,9 +1,9 @@
 class CurrentUserController < ApplicationController
   def index
     if current_user
-      render json: { email: current_user.email }, status: :ok
+      render json: { isLoggedIn: true }.to_json, status: :ok
     else
-      render json: {}, status: :no_content
+      render json: { isLoggedIn: false }.to_json, status: :ok
     end
   end
 end

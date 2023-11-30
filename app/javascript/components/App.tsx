@@ -1,5 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import React, { useState } from "react";
+import {
+  useQuery,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
 import Homepage from "components/About/Homepage";
 import SiteHeader from "components/Header/SiteHeader";
 import Sidebar from "components/Sidebar/Sidebar";
@@ -15,86 +19,70 @@ import EditNote from "components/Note/EditNote/EditNote";
 import DreamGoals from "components/DreamGoals/ShowDreamGoals/DreamGoals";
 import Footer from "components/Footer";
 import { Switch, Route, Redirect, useLocation } from "wouter";
-import { UserContext } from "context/UserContext";
 import { PopupMessageContext } from "context/PopupMessageContext";
-import { SidebarEntryContext } from "context/SidebarEntryContext";
 
 // Create a client
 const queryClient = new QueryClient();
 
-function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+export default function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <AppBase />
+    </QueryClientProvider>
+  );
+}
+
+function AppBase() {
   const [errorExists, setErrorExists] = useState(false);
-  const [sidebarEntriesUpdateTrigger, setSidebarEntriesUpdateTrigger] =
-    useState(false);
   const [, navigate] = useLocation();
-  // Check logged in status to conditionally render components
-  // Look into protected routes
-  useEffect(() => {
-    getCurrentUser();
-  }, []);
 
   const getCurrentUser = async () => {
-    const url = `/current_user`;
     try {
-      const response = await fetch(url);
-      if (response.status === 204) {
-        return navigate("/");
-      }
+      const response = await fetch(`/current_user`);
       const data = await response.json();
-      setIsLoggedIn(true);
       return data;
     } catch (e) {
       console.error(e);
     }
   };
 
+  const query = useQuery({
+    queryKey: ["user"],
+    queryFn: getCurrentUser,
+  });
+
   return (
-    <QueryClientProvider client={queryClient}>
-      <UserContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
-        <div className="container mx-auto grid min-h-screen grid-cols-1 grid-rows-[min-content_1fr] justify-items-center text-white sm:grid-cols-[1fr_3fr_1fr] sm:gap-[40px]">
-          <SidebarEntryContext.Provider
-            value={{
-              sidebarEntriesUpdateTrigger,
-              setSidebarEntriesUpdateTrigger,
-            }}
-          >
-            <SiteHeader />
-            {isLoggedIn ? <Sidebar /> : isLoggedIn}
-            <main className="w-full break-all px-4 pb-5 sm:px-8 sm:pb-8">
-              <PopupMessageContext.Provider
-                value={{ errorExists, setErrorExists }}
-              >
-                <Switch>
-                  <Route path="/" component={Homepage} />
-                  <Route path="/entries/new" component={NewEntry} />
-                  <Route path="/entries/:id/edit" component={EditEntry} />
-                  <Route path="/entries/:id" component={Entry} />
-                  <Route path="/entries/page/:page" component={EntryIndex} />
-                  <Route path="/settings" component={Settings} />
-                  <Route
-                    path="/entries/:id/interpretation"
-                    component={Interpretation}
-                  />
-                  <Route
-                    path="/entries/:id/interpretation/edit"
-                    component={EditInterpretation}
-                  />
-                  <Route path="/entries/:id/note" component={Note} />
-                  <Route path="/entries/:id/note/edit" component={EditNote} />
-                  <Route>
-                    <Redirect to="/" />
-                  </Route>
-                </Switch>
-              </PopupMessageContext.Provider>
-            </main>
-            <DreamGoals />
-          </SidebarEntryContext.Provider>
-        </div>
-      </UserContext.Provider>
+    <div className="container mx-auto grid min-h-screen grid-cols-1 grid-rows-[min-content_1fr] justify-items-center text-white sm:grid-cols-[1fr_3fr_1fr] sm:gap-[40px]">
+      <SiteHeader isLoggedIn={query.data?.isLoggedIn} />
+      {query.data?.isLoggedIn ? <Sidebar /> : query.data?.isLoggedIn}
+      <main className="w-full break-all px-4 pb-5 sm:px-8 sm:pb-8">
+        <PopupMessageContext.Provider value={{ errorExists, setErrorExists }}>
+          <Switch>
+            <Route path="/" component={Homepage} />
+            <Route path="/entries/new" component={NewEntry} />
+            <Route path="/entries/:id/edit" component={EditEntry} />
+            <Route path="/entries/:id" component={Entry} />
+            <Route path="/entries/page/:page" component={EntryIndex} />
+            <Route path="/settings" component={Settings} />
+            <Route
+              path="/entries/:id/interpretation"
+              component={Interpretation}
+            />
+            <Route
+              path="/entries/:id/interpretation/edit"
+              component={EditInterpretation}
+            />
+            <Route path="/entries/:id/note" component={Note} />
+            <Route path="/entries/:id/note/edit" component={EditNote} />
+            <Route>
+              <Redirect to="/" />
+            </Route>
+          </Switch>
+        </PopupMessageContext.Provider>
+      </main>
+
+      {query.data?.isLoggedIn ? <DreamGoals /> : query.data?.isLoggedIn}
       <Footer />
-    </QueryClientProvider>
+    </div>
   );
 }
-
-export default App;

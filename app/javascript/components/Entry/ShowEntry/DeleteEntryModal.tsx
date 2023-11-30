@@ -1,7 +1,6 @@
 import React from "react";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { useLocation } from "wouter";
-import { SidebarEntryContext } from "context/SidebarEntryContext";
 
 interface DeleteEntryModalProps {
   id: string;

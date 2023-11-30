@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
+import React from "react";
+import { useQuery } from "@tanstack/react-query";
 import SidebarLink from "components/Sidebar/SidebarLink";
 import LogOutButton from "components/Sidebar/LogOutButton";
 import { FaPlus, FaBook, FaCog, FaRegCommentAlt } from "react-icons/fa";
-import { SidebarEntryContext } from "context/SidebarEntryContext";
-import { useQuery } from "@tanstack/react-query";
 
 /* Componentize the three "sections" into separate components */
-/* delete contexts */
 /* in-place map instead of variable map */
 
 export default function Sidebar() {
