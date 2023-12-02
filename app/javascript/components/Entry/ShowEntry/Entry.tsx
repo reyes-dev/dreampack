@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation } from "wouter";
 import DeleteEntryButton from "components/Entry/ShowEntry/DeleteEntryButton";
 import * as Selection from "selection-popover";
@@ -19,9 +20,7 @@ interface EntryProps {
 function Entry({ params }: EntryProps) {
   const ref = useRef<HTMLImageElement>(null);
   const [entry, setEntry] = useState({ title: "", body: "", created_at: "" });
-  const [body, setBody] = useState("");
   const [selectedText, setSelectedText] = useState<string>();
-  const [dreamSigns, setDreamSigns] = useState<Array<string | RegExp>>([]);
   const [dalleUrl, setDalleUrl] = useState("");
   const [modalActivated, setModalActivated] = useState(false);
   const [imageActivated, setImageActivated] = useState(false);
@@ -30,7 +29,6 @@ function Entry({ params }: EntryProps) {
 
   useEffect(() => {
     getEntry();
-    getDreamSigns();
     setImageActivated(false);
   }, [params.id]);
 
@@ -59,12 +57,12 @@ function Entry({ params }: EntryProps) {
       }
       const data = await response.json();
       setEntry(data);
-      setBody(String(data.body));
       if (data.image != null) {
         setDalleUrl(data.image.url);
       } else {
         setDalleUrl("");
       }
+      console.log(data);
       return data;
     } catch (e) {
       console.error(e);
@@ -93,19 +91,19 @@ function Entry({ params }: EntryProps) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-      const joinedDreamSigns = data.map(regExpEscape).join("|");
-      const dreamSignsRegexPattern = [
-        new RegExp("\\b" + joinedDreamSigns + " \\b", "g"),
-      ];
-      setDreamSigns(dreamSignsRegexPattern);
+      return data;
     } catch (e) {
       console.error(e);
     }
   };
 
-  if (entry == undefined) {
-    return <></>;
-  }
+  const createRegexForDreamSigns = (dreamSigns: string[]) => {
+    const joinedDreamSigns = dreamSigns?.map(regExpEscape).join("|");
+    const dreamSignsRegexPattern = [
+      new RegExp("\\b" + joinedDreamSigns + " \\b", "g"),
+    ];
+    return dreamSignsRegexPattern;
+  };
 
   const handleMouseUp = () => {
     const windowSelection = window.getSelection();
@@ -123,6 +121,16 @@ function Entry({ params }: EntryProps) {
   const toggleModalActivation = () => {
     setModalActivated((currentBooleanState) => !currentBooleanState);
   };
+
+  const entryQuery = useQuery({
+    queryKey: ["entry", params.id],
+    queryFn: getEntry,
+  });
+
+  const dreamSignsQuery = useQuery({
+    queryKey: ["dreamSigns"],
+    queryFn: getDreamSigns,
+  });
 
   return (
     <section
@@ -178,7 +186,7 @@ function Entry({ params }: EntryProps) {
       </section>
       <section className="flex p-8">
         <h1 data-cy="entryTitle" className="overflow-hidden font-bold">
-          {entry.title}
+          {entryQuery.data?.title}
         </h1>
       </section>
       <Selection.Root>
@@ -186,8 +194,8 @@ function Entry({ params }: EntryProps) {
           <article onMouseUp={handleMouseUp} className="p-8">
             <Highlighter
               highlightClassName="text-[#FFBABB] rounded bg-transparent"
-              searchWords={dreamSigns}
-              textToHighlight={body}
+              searchWords={createRegexForDreamSigns(dreamSignsQuery.data)}
+              textToHighlight={entryQuery.data?.body}
               data-cy="entryBody"
               highlightStyle={{ textShadow: "0 0 5px #FFBABB" }}
             />
