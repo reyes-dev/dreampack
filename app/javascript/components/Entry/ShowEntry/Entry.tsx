@@ -1,15 +1,14 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useState, useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useLocation } from "wouter";
-import DeleteEntryButton from "components/Entry/ShowEntry/DeleteEntryButton";
 import * as Selection from "selection-popover";
-import DreamSign from "components/Entry/ShowEntry/DreamSign";
 import Highlighter from "react-highlight-words";
-import { FaEdit } from "react-icons/fa";
+import DeleteEntryButton from "components/Entry/ShowEntry/DeleteEntryButton";
+import DreamSign from "components/Entry/ShowEntry/DreamSign";
 import DeleteEntryModal from "components/Entry/ShowEntry/DeleteEntryModal";
 import PopupMessage from "components/Shared/PopupMessage";
 import { PopupMessageContext } from "context/PopupMessageContext";
-import DALLE2 from "components/Entry/ShowEntry/DALLE2";
+import { FaEdit } from "react-icons/fa";
 
 interface EntryProps {
   params: {
@@ -18,69 +17,63 @@ interface EntryProps {
 }
 
 function Entry({ params }: EntryProps) {
-  const ref = useRef<HTMLImageElement>(null);
-  const [entry, setEntry] = useState({ title: "", body: "", created_at: "" });
   const [selectedText, setSelectedText] = useState<string>();
-  const [dalleUrl, setDalleUrl] = useState("");
   const [modalActivated, setModalActivated] = useState(false);
-  const [imageActivated, setImageActivated] = useState(false);
   const { errorExists } = useContext(PopupMessageContext);
   const [, navigate] = useLocation();
 
-  useEffect(() => {
-    getEntry();
-    setImageActivated(false);
-  }, [params.id]);
+  const _regExpEscape = (string: string) => {
+    return string.replace(/[^A-Za-z0-9_]/g, "\\$&");
+  };
 
-  useEffect(() => {
-    const clickOutside = (event: Event) => {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
-        setImageActivated(false);
-      }
-    };
+  const _createRegexForDreamSigns = (dreamSigns: string[]) => {
+    const joinedDreamSigns = dreamSigns?.map(_regExpEscape).join("|");
+    const dreamSignsRegexPattern = [
+      new RegExp("\\b" + joinedDreamSigns + " \\b", "g"),
+    ];
+    return dreamSignsRegexPattern;
+  };
 
-    document.addEventListener("click", clickOutside, true);
+  const _handleMouseUp = () => {
+    const windowSelection = window.getSelection();
+    if (windowSelection !== null) {
+      setSelectedText(windowSelection.toString());
+    }
+  };
 
-    return () => {
-      document.removeEventListener("click", clickOutside, true);
-    };
-  }, [ref]);
+  const _highlightNewDreamSign = () => {
+    if (selectedText) {
+      setDreamSigns((dreamSigns) => [...dreamSigns, selectedText]);
+    }
+  };
+
+  const _toggleModalActivation = () => {
+    setModalActivated((currentBooleanState) => !currentBooleanState);
+  };
 
   const getEntry = async () => {
-    const url = `/api/entries/${params.id}`;
     try {
-      const response = await fetch(url);
+      const response = await fetch(`/api/entries/${params.id}`);
       if (response.status === 404) {
         return navigate("/entries/new");
       } else if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-      setEntry(data);
-      if (data.image != null) {
-        setDalleUrl(data.image.url);
-      } else {
-        setDalleUrl("");
-      }
-      console.log(data);
       return data;
     } catch (e) {
       console.error(e);
     }
   };
 
-  function regExpEscape(string: string) {
-    return string.replace(/[^A-Za-z0-9_]/g, "\\$&");
-  }
-
   const getDreamSigns = async () => {
-    const url = `/api/dream_signs`;
     const csrfTokenMetaElement = document.querySelector(
       'meta[name="csrf-token"]',
     ) as HTMLMetaElement;
     const csrfTokenMetaElementContent = csrfTokenMetaElement.content;
+
     try {
-      const response = await fetch(url, {
+      const response = await fetch(`/api/dream_signs`, {
         method: "GET",
         headers: {
           "X-CSRF-Token": csrfTokenMetaElementContent,
@@ -95,31 +88,6 @@ function Entry({ params }: EntryProps) {
     } catch (e) {
       console.error(e);
     }
-  };
-
-  const createRegexForDreamSigns = (dreamSigns: string[]) => {
-    const joinedDreamSigns = dreamSigns?.map(regExpEscape).join("|");
-    const dreamSignsRegexPattern = [
-      new RegExp("\\b" + joinedDreamSigns + " \\b", "g"),
-    ];
-    return dreamSignsRegexPattern;
-  };
-
-  const handleMouseUp = () => {
-    const windowSelection = window.getSelection();
-    if (windowSelection !== null) {
-      setSelectedText(windowSelection.toString());
-    }
-  };
-
-  const highlightNewDreamSign = () => {
-    if (selectedText) {
-      setDreamSigns((dreamSigns) => [...dreamSigns, selectedText]);
-    }
-  };
-
-  const toggleModalActivation = () => {
-    setModalActivated((currentBooleanState) => !currentBooleanState);
   };
 
   const entryQuery = useQuery({
@@ -148,17 +116,12 @@ function Entry({ params }: EntryProps) {
       {modalActivated && (
         <DeleteEntryModal
           id={params.id}
-          toggleModalActivation={toggleModalActivation}
+          toggleModalActivation={_toggleModalActivation}
         />
       )}
       <section className="flex items-center justify-between">
         <div className="absolute -right-[1px] -top-[1px] flex">
-          <DeleteEntryButton toggleModalActivation={toggleModalActivation} />
-          <DALLE2
-            entry_id={params.id}
-            setDalleUrl={setDalleUrl}
-            entryBodyText={entry.body}
-          />
+          <DeleteEntryButton toggleModalActivation={_toggleModalActivation} />
           <Link
             href={`/entries/${params.id}/edit`}
             className="min-h flex items-center gap-2 whitespace-nowrap border p-[0.450rem_0.450rem_0.4625rem] hover:border-sky-500"
@@ -168,21 +131,6 @@ function Entry({ params }: EntryProps) {
             <FaEdit />
           </Link>
         </div>
-        <div className="flex items-end gap-4">
-          {dalleUrl.length === 0 ? null : (
-            <button
-              onClick={() => {
-                setImageActivated((imageActivated) => !imageActivated);
-              }}
-            >
-              <img
-                alt="AI generated image of user dream"
-                src={dalleUrl}
-                className="h-10 w-10 rounded border-2"
-              />
-            </button>
-          )}
-        </div>
       </section>
       <section className="flex p-8">
         <h1 data-cy="entryTitle" className="overflow-hidden font-bold">
@@ -191,10 +139,10 @@ function Entry({ params }: EntryProps) {
       </section>
       <Selection.Root>
         <Selection.Trigger className="h-fit overflow-auto">
-          <article onMouseUp={handleMouseUp} className="p-8">
+          <article onMouseUp={_handleMouseUp} className="p-8">
             <Highlighter
               highlightClassName="text-[#FFBABB] rounded bg-transparent"
-              searchWords={createRegexForDreamSigns(dreamSignsQuery.data)}
+              searchWords={_createRegexForDreamSigns(dreamSignsQuery.data)}
               textToHighlight={entryQuery.data?.body}
               data-cy="entryBody"
               highlightStyle={{ textShadow: "0 0 5px #FFBABB" }}
@@ -209,7 +157,7 @@ function Entry({ params }: EntryProps) {
             <div className="flex">
               <DreamSign
                 phrase={selectedText ? selectedText : ""}
-                highlightNewDreamSign={highlightNewDreamSign}
+                highlightNewDreamSign={_highlightNewDreamSign}
               />
             </div>
             <span className="h-0">
@@ -226,14 +174,6 @@ function Entry({ params }: EntryProps) {
           </Selection.Content>
         </Selection.Portal>
       </Selection.Root>
-      {imageActivated ? (
-        <img
-          src={dalleUrl}
-          alt="AI generated image of user dream"
-          className="absolute left-1/2 top-1/2 w-max -translate-x-1/2 -translate-y-1/2 rounded-xl bg-gray-900 shadow-xl"
-          ref={ref}
-        />
-      ) : null}
       <Link
         href={`/entries/${params.id}/note`}
         className="absolute -bottom-[1px] -left-[1px] border p-[0.450rem_0.450rem_0.4625rem] hover:border-lime-500"

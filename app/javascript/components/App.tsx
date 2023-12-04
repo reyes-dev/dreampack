@@ -18,7 +18,7 @@ import Note from "components/Note/ShowNote/Note";
 import EditNote from "components/Note/EditNote/EditNote";
 import DreamGoals from "components/DreamGoals/ShowDreamGoals/DreamGoals";
 import Footer from "components/Footer";
-import { Switch, Route, Redirect, useLocation } from "wouter";
+import { Switch, Route, Redirect } from "wouter";
 import { PopupMessageContext } from "context/PopupMessageContext";
 
 // Create a client
@@ -34,7 +34,6 @@ export default function App() {
 
 function AppBase() {
   const [errorExists, setErrorExists] = useState(false);
-  const [, navigate] = useLocation();
 
   const getCurrentUser = async () => {
     try {

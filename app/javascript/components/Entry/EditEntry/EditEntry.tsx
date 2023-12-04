@@ -1,14 +1,7 @@
-import React, {
-  useState,
-  useEffect,
-  useContext,
-  ChangeEvent,
-  FormEvent,
-} from "react";
+import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { useLocation } from "wouter";
 import { FaRegPaperPlane } from "react-icons/fa";
-import { SidebarEntryContext } from "context/SidebarEntryContext";
 
 interface EditEntryProps {
   params: {
@@ -21,7 +14,6 @@ function EditEntry({ params }: EditEntryProps) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [, navigate] = useLocation();
-  const { setSidebarEntriesUpdateTrigger } = useContext(SidebarEntryContext);
   // Store state data for CRUD operations
   useEffect(() => {
     getEntry();
@@ -57,10 +49,6 @@ function EditEntry({ params }: EditEntryProps) {
       console.error(e);
     }
   };
-
-  if (entry === undefined) {
-    return <></>;
-  }
 
   const updateEntry = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
