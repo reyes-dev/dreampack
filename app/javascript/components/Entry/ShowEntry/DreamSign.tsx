@@ -1,13 +1,12 @@
-import React from "react";
+import React, { FormEvent } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 interface DreamSignProps {
   phrase: string;
-  highlightNewDreamSign: () => void;
 }
 
-function DreamSign({ phrase, highlightNewDreamSign }: DreamSignProps) {
-  // POST entry data to Rails API
-  const createDreamSign = async () => {
+export default function DreamSignButton({ phrase }: DreamSignProps) {
+  const createDreamSign = async (event: FormEvent) => {
     if (phrase.length <= 1) return;
     const csrfTokenMetaElement = document.querySelector(
       'meta[name="csrf-token"]',
@@ -32,17 +31,23 @@ function DreamSign({ phrase, highlightNewDreamSign }: DreamSignProps) {
     }
   };
 
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: createDreamSign,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["dreamSigns"] });
+    },
+  });
+
   return (
-    <button
-      onClick={() => {
-        createDreamSign();
-        highlightNewDreamSign();
-      }}
-      className="p-2 text-[#FFBABB] hover:bg-[hsl(237.1,25.9%,12.9%)]"
-    >
-      Dream Sign
-    </button>
+    <form onSubmit={mutation.mutate}>
+      <button
+        type="submit"
+        className="flex p-2 text-[#FFBABB] hover:bg-[hsl(237.1,25.9%,12.9%)]"
+      >
+        Dream Sign
+      </button>
+    </form>
   );
 }
-
-export default DreamSign;

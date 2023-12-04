@@ -4,7 +4,7 @@ import { Link, useLocation } from "wouter";
 import * as Selection from "selection-popover";
 import Highlighter from "react-highlight-words";
 import DeleteEntryButton from "components/Entry/ShowEntry/DeleteEntryButton";
-import DreamSign from "components/Entry/ShowEntry/DreamSign";
+import DreamSignButton from "components/Entry/ShowEntry/DreamSign";
 import DeleteEntryModal from "components/Entry/ShowEntry/DeleteEntryModal";
 import PopupMessage from "components/Shared/PopupMessage";
 import { PopupMessageContext } from "context/PopupMessageContext";
@@ -38,12 +38,6 @@ function Entry({ params }: EntryProps) {
     const windowSelection = window.getSelection();
     if (windowSelection !== null) {
       setSelectedText(windowSelection.toString());
-    }
-  };
-
-  const _highlightNewDreamSign = () => {
-    if (selectedText) {
-      setDreamSigns((dreamSigns) => [...dreamSigns, selectedText]);
     }
   };
 
@@ -137,7 +131,7 @@ function Entry({ params }: EntryProps) {
           {entryQuery.data?.title}
         </h1>
       </section>
-      <Selection.Root>
+      <Selection.Root whileSelect={true}>
         <Selection.Trigger className="h-fit overflow-auto">
           <article onMouseUp={_handleMouseUp} className="p-8">
             <Highlighter
@@ -154,23 +148,20 @@ function Entry({ params }: EntryProps) {
             side="top"
             className="flex w-full flex-col items-center rounded-md bg-[hsl(237.1,25.9%,15.9%)] px-2.5 shadow-xl"
           >
-            <div className="flex">
-              <DreamSign
-                phrase={selectedText ? selectedText : ""}
-                highlightNewDreamSign={_highlightNewDreamSign}
-              />
+            <div>
+              <DreamSignButton phrase={selectedText ? selectedText : ""} />
+              <span className="h-0">
+                <svg
+                  className="fill-[hsl(237.1,25.9%,15.9%)]"
+                  width="10"
+                  height="5"
+                  viewBox="0 0 30 10"
+                  preserveAspectRatio="none"
+                >
+                  <polygon points="0,0 30,0 15,10"></polygon>
+                </svg>
+              </span>
             </div>
-            <span className="h-0">
-              <svg
-                className="fill-[hsl(237.1,25.9%,15.9%)]"
-                width="10"
-                height="5"
-                viewBox="0 0 30 10"
-                preserveAspectRatio="none"
-              >
-                <polygon points="0,0 30,0 15,10"></polygon>
-              </svg>
-            </span>
           </Selection.Content>
         </Selection.Portal>
       </Selection.Root>
