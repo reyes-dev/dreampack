@@ -1,4 +1,5 @@
 import React, { useState, useContext, ChangeEvent, FormEvent } from "react";
+import { useMutation } from "@tanstack/react-query";
 import PopupMessage from "components/Shared/PopupMessage";
 import { PopupMessageContext } from "context/PopupMessageContext";
 
@@ -17,45 +18,53 @@ function Settings() {
 
   const updateSettings = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const url = `/registration`;
-    const body_param = {
-      user: {
-        openai_token,
-      },
-    };
+
     const csrfTokenMetaElement = document.querySelector(
       'meta[name="csrf-token"]',
     ) as HTMLMetaElement;
     const csrfTokenMetaElementContent = csrfTokenMetaElement.content;
+
     try {
-      const response = await fetch(url, {
+      const response = await fetch(`/registration`, {
         method: "PUT",
         headers: {
           "X-CSRF-Token": csrfTokenMetaElementContent,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(body_param),
+        body: JSON.stringify({
+          user: {
+            openai_token,
+          },
+        }),
       });
+
       if (!response.ok) {
         const errors = await response.json();
         setErrorExists(true);
         setErrorContent(errors);
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
+
       const data = await response.json();
-      setSuccess(true);
-      setErrorExists(true);
-      setErrorContent([data]);
-      return;
+      return data;
     } catch (e) {
       console.error(e);
     }
   };
 
+  const mutation = useMutation({
+    mutationFn: updateSettings,
+    onSuccess: (data) => {
+      setSuccess(true);
+      setErrorExists(true);
+      setErrorContent([data]);
+    },
+  });
+
   return (
     <form
       className="flex h-full w-full flex-col justify-between gap-4 whitespace-pre-line break-words  border p-8"
-      onSubmit={updateSettings}
+      onSubmit={mutation.mutate}
     >
       <div className="flex flex-col gap-4">
         <h1 className="w-full border-b bg-transparent pb-2 outline-none">
