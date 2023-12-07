@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { Link, useLocation } from "wouter";
+import { useQuery } from "@tanstack/react-query";
 import ChatGPT from "components/Interpretation/ShowInterpretation/ChatGPT";
 import { FaEdit } from "react-icons/fa";
 import PopupMessage from "components/Shared/PopupMessage";
@@ -12,15 +13,10 @@ interface InterpretationProps {
 }
 
 function Interpretation({ params }: InterpretationProps) {
-  const [interpretation, setInterpretation] = useState("");
   const { errorExists } = useContext(PopupMessageContext);
   const [, navigate] = useLocation();
 
-  useEffect(() => {
-    getInterpretation();
-  }, []);
-
-  const getInterpretation = async () => {
+  const fetchInterpretation = async () => {
     const url = `/api/entries/${params.id}/interpretation`;
     try {
       const response = await fetch(url);
@@ -30,15 +26,23 @@ function Interpretation({ params }: InterpretationProps) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-      setInterpretation(data.body);
       return data;
     } catch (e) {
       console.error(e);
     }
   };
 
-  if (interpretation === undefined) {
-    return <></>;
+  const { isPending, isError, data, error } = useQuery({
+    queryKey: ["note"],
+    queryFn: fetchInterpretation,
+  });
+
+  if (isPending) {
+    return <span>Loading...</span>;
+  }
+
+  if (isError) {
+    return <span>Error: {error.message}</span>;
   }
 
   return (
@@ -51,7 +55,7 @@ function Interpretation({ params }: InterpretationProps) {
         />
       )}
       <div className="absolute -right-[1px] -top-[1px] flex">
-        <ChatGPT entry_id={params.id} setInterpretation={setInterpretation} />
+        <ChatGPT entry_id={params.id} />
         <Link
           href={`/entries/${params.id}/interpretation/edit`}
           className="min-h flex items-center gap-2 whitespace-nowrap border p-[0.450rem_0.450rem_0.4625rem] hover:border-sky-500"
@@ -70,7 +74,7 @@ function Interpretation({ params }: InterpretationProps) {
       </div>
       <section className="flex flex-col gap-16 p-8">
         <h1 className="font-bold">Dream Interpretation</h1>
-        <article className="h-fit resize-none">{interpretation}</article>
+        <article className="h-fit resize-none">{data.body}</article>
       </section>
     </section>
   );
