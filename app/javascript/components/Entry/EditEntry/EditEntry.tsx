@@ -1,5 +1,5 @@
-import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
-import { useQueryClient, useMutation } from "@tanstack/react-query";
+import React, { useState, ChangeEvent, FormEvent } from "react";
+import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import { useLocation } from "wouter";
 import { FaRegPaperPlane } from "react-icons/fa";
 
@@ -10,21 +10,7 @@ interface EditEntryProps {
 }
 
 function EditEntry({ params }: EditEntryProps) {
-  const [entry, setEntry] = useState({ title: "", body: "", created_at: "" });
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
   const [, navigate] = useLocation();
-  // Store state data for CRUD operations
-  useEffect(() => {
-    getEntry();
-  }, []);
-
-  useEffect(() => {
-    if (entry) {
-      setTitle(entry.title);
-      setBody(entry.body);
-    }
-  }, [entry]);
 
   const onChange = (
     event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>,
@@ -34,16 +20,14 @@ function EditEntry({ params }: EditEntryProps) {
   };
 
   const getEntry = async () => {
-    const url = `/api/entries/${params.id}`;
     try {
-      const response = await fetch(url);
+      const response = await fetch(`/api/entries/${params.id}`);
       if (response.status === 404) {
         return navigate("/entries/new");
       } else if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-      setEntry(data);
       return data;
     } catch (e) {
       console.error(e);
@@ -52,23 +36,22 @@ function EditEntry({ params }: EditEntryProps) {
 
   const updateEntry = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     if (title.length == 0 || body.length == 0) return;
-    const url = `/api/entries/${params.id}`;
-    const id = params.id;
-    const body_param = { title, body, id };
+
     const csrfTokenMetaElement = document.querySelector(
       'meta[name="csrf-token"]',
     ) as HTMLMetaElement;
     const csrfTokenMetaElementContent = csrfTokenMetaElement.content;
 
     try {
-      const response = await fetch(url, {
+      const response = await fetch(`/api/entries/${params.id}`, {
         method: "PUT",
         headers: {
           "X-CSRF-Token": csrfTokenMetaElementContent,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(body_param),
+        body: JSON.stringify({ title, body, id: params.id }),
       });
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -80,6 +63,14 @@ function EditEntry({ params }: EditEntryProps) {
     }
   };
 
+  const entryQuery = useQuery({
+    queryKey: ["entry", params.id],
+    queryFn: getEntry,
+  });
+
+  const [title, setTitle] = useState(entryQuery.data?.title || "");
+  const [body, setBody] = useState(entryQuery.data?.body || "");
+
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
@@ -89,6 +80,14 @@ function EditEntry({ params }: EditEntryProps) {
       navigate(`/entries/${params.id}`);
     },
   });
+
+  if (entryQuery.isPending) {
+    return <span>Loading...</span>;
+  }
+
+  if (entryQuery.isError) {
+    return <span>Error: {entryQuery.error.message}</span>;
+  }
 
   return (
     <form
