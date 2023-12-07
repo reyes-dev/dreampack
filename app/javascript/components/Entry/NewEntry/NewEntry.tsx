@@ -7,12 +7,11 @@ import React, {
   FormEvent,
 } from "react";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
-import Whisper from "components/Entry/NewEntry/Whisper";
 import { useLocation } from "wouter";
-import { FaRegPaperPlane } from "react-icons/fa";
+import Whisper from "components/Entry/NewEntry/Whisper";
 import PopupMessage from "components/Shared/PopupMessage";
 import { PopupMessageContext } from "context/PopupMessageContext";
-import { SidebarEntryContext } from "context/SidebarEntryContext";
+import { FaRegPaperPlane } from "react-icons/fa";
 
 function NewEntry() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -22,7 +21,6 @@ function NewEntry() {
   const [, navigate] = useLocation();
   const { errorExists } = useContext(PopupMessageContext);
   const [isLoading, setIsLoading] = useState(false);
-  const { setSidebarEntriesUpdateTrigger } = useContext(SidebarEntryContext);
 
   useEffect(() => {
     if (audioIsReady && formRef.current !== null) {
