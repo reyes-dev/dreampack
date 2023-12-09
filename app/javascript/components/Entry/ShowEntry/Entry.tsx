@@ -98,7 +98,7 @@ function Entry({ params }: EntryProps) {
     <section
       className={`${
         modalActivated ? "pointer-events-none" : ""
-      } relative h-full w-full whitespace-pre-line break-words border`}
+      } relative h-full w-full whitespace-pre-line border`}
     >
       {errorExists && (
         <PopupMessage

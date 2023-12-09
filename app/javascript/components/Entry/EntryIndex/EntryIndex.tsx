@@ -38,7 +38,7 @@ function EntryIndex() {
   }
 
   return (
-    <section className="relative flex h-full w-full flex-col break-all sm:px-20 sm:pt-4">
+    <section className="relative flex h-full w-full flex-col sm:px-20 sm:pt-4">
       <ul className="flex flex-col gap-4" role="list">
         {data.map((entry: string) => {
           return (

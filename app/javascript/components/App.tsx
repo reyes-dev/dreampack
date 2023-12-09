@@ -54,7 +54,7 @@ function AppBase() {
     <div className="container mx-auto grid min-h-screen grid-cols-1 grid-rows-[min-content_1fr] justify-items-center text-white sm:grid-cols-[1fr_3fr_1fr] sm:gap-[40px]">
       <SiteHeader isLoggedIn={query.data?.isLoggedIn} />
       {query.data?.isLoggedIn ? <Sidebar /> : query.data?.isLoggedIn}
-      <main className="col-start-2 flex w-full justify-center break-all px-4 pb-5 sm:px-8 sm:pb-8">
+      <main className="col-start-2 flex w-full justify-center px-4 pb-5 sm:px-8 sm:pb-8">
         <PopupMessageContext.Provider value={{ errorExists, setErrorExists }}>
           <Switch>
             <Route path="/" component={Homepage} />

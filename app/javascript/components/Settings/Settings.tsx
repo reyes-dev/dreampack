@@ -63,7 +63,7 @@ function Settings() {
 
   return (
     <form
-      className="flex h-full w-full flex-col justify-between gap-4 whitespace-pre-line break-words  border p-8"
+      className="flex h-full w-full flex-col justify-between gap-4 whitespace-pre-line border p-8"
       onSubmit={mutation.mutate}
     >
       <div className="flex flex-col gap-4">
