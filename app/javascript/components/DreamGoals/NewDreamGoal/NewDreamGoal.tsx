@@ -64,6 +64,7 @@ export default function NewDreamGoal() {
         </div>
       ) : (
         <button
+          className="border-dashed border-red-500 hover:border-b"
           onClick={() => {
             setShowInput(true);
           }}

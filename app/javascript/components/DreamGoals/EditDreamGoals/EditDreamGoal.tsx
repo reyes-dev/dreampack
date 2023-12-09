@@ -107,7 +107,7 @@ export default function EditDreamGoal({ dreamGoal }: DreamGoalInterface) {
     </div>
   ) : (
     <button
-      className="border-dashed border-red-500 hover:border-b"
+      className="border-dashed border-red-500 text-start hover:border-b"
       onClick={() => setShowInput(true)}
     >
       {dreamGoal.goal}
