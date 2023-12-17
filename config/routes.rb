@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     resources :dream_goals
     resources :whisper_transcriptions, only: [:create]
     resources :sidebar_entry_links, only: [:index]
+    resources :sidebar_dream_goals, only: [:index]
   end
 
   get '*all', to: 'pages#home', constraints: lambda { |req|

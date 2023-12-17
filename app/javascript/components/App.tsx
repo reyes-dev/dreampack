@@ -16,7 +16,7 @@ import Interpretation from "components/Interpretation/ShowInterpretation/Interpr
 import EditInterpretation from "components/Interpretation/EditInterpretation/EditInterpretation";
 import Note from "components/Note/ShowNote/Note";
 import EditNote from "components/Note/EditNote/EditNote";
-import DreamGoals from "components/DreamGoals/ShowDreamGoals/DreamGoals";
+import DreamGoalsSidebar from "components/DreamGoals/ShowDreamGoals/DreamGoalsSidebar";
 import Footer from "components/Footer";
 import { Switch, Route, Redirect } from "wouter";
 import { PopupMessageContext } from "context/PopupMessageContext";
@@ -80,7 +80,7 @@ function AppBase() {
         </PopupMessageContext.Provider>
       </main>
 
-      {query.data?.isLoggedIn ? <DreamGoals /> : query.data?.isLoggedIn}
+      {query.data?.isLoggedIn ? <DreamGoalsSidebar /> : query.data?.isLoggedIn}
       <Footer />
     </div>
   );
