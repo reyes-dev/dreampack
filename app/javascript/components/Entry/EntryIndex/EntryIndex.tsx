@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { Link, useRoute } from "wouter";
+import Pagination from "components/Shared/Pagination";
 
 function EntryIndex() {
   const [, params] = useRoute("/entries/page/:page");
@@ -53,32 +54,12 @@ function EntryIndex() {
           );
         })}
       </ul>
-      <nav className="flex w-full items-center justify-between self-center pt-8">
-        <button
-          onClick={() => setPage((old) => Math.max(old - 1, 0))}
-          disabled={page === 0}
-          className={`${
-            page === 0 ? "invisible" : ""
-          } rounded-md border p-[10px_20px] hover:border-sky-500 hover:bg-gray-700`}
-        >
-          Previous Page
-        </button>{" "}
-        <span>{page}</span>
-        <button
-          onClick={() => {
-            if (!isPlaceholderData && hasMore) {
-              setPage((old) => old + 1);
-            }
-          }}
-          // Disable the Next Page button until we know a next page is available
-          disabled={isPlaceholderData || !hasMore}
-          className={`${
-            isPlaceholderData || !hasMore ? "invisible" : ""
-          } rounded-md border p-[10px_20px] hover:border-sky-500 hover:bg-gray-700`}
-        >
-          Next Page
-        </button>
-      </nav>
+      <Pagination
+        page={page}
+        setPage={setPage}
+        hasMore={hasMore}
+        isPlaceholderData={isPlaceholderData}
+      />
       {isFetching ? <span> Loading...</span> : null}{" "}
     </section>
   );
