@@ -37,7 +37,7 @@ function EntryIndex() {
   }
 
   return (
-    <section className="relative flex h-full w-full flex-col sm:px-20 sm:pt-4">
+    <section className="relative flex h-full w-full flex-col justify-between sm:px-20 sm:pt-4">
       <ul className="flex flex-col gap-4" role="list">
         {data.map((entry: string) => {
           return (
@@ -53,24 +53,32 @@ function EntryIndex() {
           );
         })}
       </ul>
-      <span>Current Page: {page}</span>
-      <button
-        onClick={() => setPage((old) => Math.max(old - 1, 0))}
-        disabled={page === 0}
-      >
-        Previous Page
-      </button>{" "}
-      <button
-        onClick={() => {
-          if (!isPlaceholderData && hasMore) {
-            setPage((old) => old + 1);
-          }
-        }}
-        // Disable the Next Page button until we know a next page is available
-        disabled={isPlaceholderData || !hasMore}
-      >
-        Next Page
-      </button>
+      <nav className="flex w-full items-center justify-between self-center pt-8">
+        <button
+          onClick={() => setPage((old) => Math.max(old - 1, 0))}
+          disabled={page === 0}
+          className={`${
+            page === 0 ? "invisible" : ""
+          } rounded-md border p-[10px_20px] hover:border-sky-500 hover:bg-gray-700`}
+        >
+          Previous Page
+        </button>{" "}
+        <span>{page}</span>
+        <button
+          onClick={() => {
+            if (!isPlaceholderData && hasMore) {
+              setPage((old) => old + 1);
+            }
+          }}
+          // Disable the Next Page button until we know a next page is available
+          disabled={isPlaceholderData || !hasMore}
+          className={`${
+            isPlaceholderData || !hasMore ? "invisible" : ""
+          } rounded-md border p-[10px_20px] hover:border-sky-500 hover:bg-gray-700`}
+        >
+          Next Page
+        </button>
+      </nav>
       {isFetching ? <span> Loading...</span> : null}{" "}
     </section>
   );
