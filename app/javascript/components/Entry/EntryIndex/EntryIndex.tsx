@@ -13,7 +13,6 @@ function EntryIndex() {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-      console.log(data);
       return data;
     } catch (e) {
       console.error(e);
@@ -64,7 +63,6 @@ function EntryIndex() {
       <button
         onClick={() => {
           if (!isPlaceholderData && hasMore) {
-            console.log("test");
             setPage((old) => old + 1);
           }
         }}
