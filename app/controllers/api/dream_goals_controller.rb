@@ -2,7 +2,7 @@ class API::DreamGoalsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    dream_goals = current_user.dream_goals.where(achieved: false).all
+    dream_goals = current_user.dream_goals.where(achieved: false).order(created_at: :desc).all
     render json: dream_goals.to_json
   end
 

@@ -44,6 +44,7 @@ export default function NewDreamGoal() {
     mutationFn: newDreamGoal,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["goals"] });
+      queryClient.invalidateQueries({ queryKey: ["sidebarGoals"] });
       setShowInput(false);
     },
   });

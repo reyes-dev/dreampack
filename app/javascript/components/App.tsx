@@ -16,6 +16,7 @@ import Interpretation from "components/Interpretation/ShowInterpretation/Interpr
 import EditInterpretation from "components/Interpretation/EditInterpretation/EditInterpretation";
 import Note from "components/Note/ShowNote/Note";
 import EditNote from "components/Note/EditNote/EditNote";
+import DreamGoalsIndex from "components/DreamGoals/ShowDreamGoals/DreamGoalsIndex";
 import DreamGoalsSidebar from "components/DreamGoals/ShowDreamGoals/DreamGoalsSidebar";
 import Footer from "components/Footer";
 import { Switch, Route, Redirect } from "wouter";
@@ -73,6 +74,7 @@ function AppBase() {
             />
             <Route path="/entries/:id/note" component={Note} />
             <Route path="/entries/:id/note/edit" component={EditNote} />
+            <Route path="/goals" component={DreamGoalsIndex} />
             <Route>
               <Redirect to="/" />
             </Route>

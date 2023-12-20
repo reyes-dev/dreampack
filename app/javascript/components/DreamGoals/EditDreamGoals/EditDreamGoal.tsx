@@ -71,6 +71,7 @@ export default function EditDreamGoal({ dreamGoal }: DreamGoalInterface) {
     mutationFn: deleteDreamGoal,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["goals"] });
+      queryClient.invalidateQueries({ queryKey: ["sidebarGoals"] });
     },
   });
 
@@ -78,6 +79,7 @@ export default function EditDreamGoal({ dreamGoal }: DreamGoalInterface) {
     mutationFn: updateDreamGoal,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["goals"] });
+      queryClient.invalidateQueries({ queryKey: ["sidebarGoals"] });
       setShowInput(false);
     },
   });

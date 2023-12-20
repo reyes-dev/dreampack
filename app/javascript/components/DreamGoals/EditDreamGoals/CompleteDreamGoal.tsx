@@ -35,6 +35,7 @@ export default function CompleteDreamGoal({ id }: { id: number }) {
     mutationFn: completeDreamGoal,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["goals"] });
+      queryClient.invalidateQueries({ queryKey: ["sidebarGoals"] });
     },
   });
 

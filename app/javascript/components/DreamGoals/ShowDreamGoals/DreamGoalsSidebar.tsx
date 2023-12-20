@@ -1,5 +1,6 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "wouter";
 import NewDreamGoal from "components/DreamGoals/NewDreamGoal/NewDreamGoal";
 import EditDreamGoal from "components/DreamGoals/EditDreamGoals/EditDreamGoal";
 import CompleteDreamGoal from "components/DreamGoals/EditDreamGoals/CompleteDreamGoal";
@@ -19,7 +20,6 @@ export default function DreamGoalsSidebar() {
       }
 
       const data = await response.json();
-      console.log(data);
       return data;
     } catch (e) {
       console.error(e);
@@ -27,7 +27,7 @@ export default function DreamGoalsSidebar() {
   };
 
   const { isPending, isError, data, error } = useQuery({
-    queryKey: ["goals"],
+    queryKey: ["sidebarGoals"],
     queryFn: fetchDreamGoals,
   });
 
@@ -38,6 +38,7 @@ export default function DreamGoalsSidebar() {
   if (isError) {
     return <span>Error: {error.message}</span>;
   }
+
   return (
     <section className="sticky top-5 z-[1]  col-start-3 hidden h-fit w-full sm:flex sm:flex-col sm:p-4">
       <h1 className="font-bold">Dream Goals</h1>
@@ -54,6 +55,9 @@ export default function DreamGoalsSidebar() {
         </ul>
         <NewDreamGoal />
       </div>
+      <Link to={"/goals"} className="pt-8 hover:underline">
+        All Dream Goals {`>>`}
+      </Link>
     </section>
   );
 }
