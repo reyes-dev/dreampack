@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useState, useEffect } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { useLocation } from "wouter";
 import { FaRegPaperPlane } from "react-icons/fa";
@@ -11,6 +11,7 @@ interface EditNoteProps {
 
 export default function EditNote({ params }: EditNoteProps) {
   const [, navigate] = useLocation();
+  const [noteBody, setNoteBody] = useState("");
 
   const fetchEntryNote = async () => {
     const url = `/api/entries/${params.id}/note`;
@@ -27,6 +28,15 @@ export default function EditNote({ params }: EditNoteProps) {
       console.error(e);
     }
   };
+
+  const { isPending, isError, data, error } = useQuery({
+    queryKey: ["note"],
+    queryFn: fetchEntryNote,
+  });
+
+  useEffect(() => {
+    if (data) setNoteBody(data.body);
+  }, [data]);
 
   const updateNote = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -58,13 +68,6 @@ export default function EditNote({ params }: EditNoteProps) {
     }
   };
 
-  const { isPending, isError, data, error } = useQuery({
-    queryKey: ["note"],
-    queryFn: fetchEntryNote,
-  });
-
-  const [noteBody, setNoteBody] = useState(data.body || "");
-
   const mutation = useMutation({
     mutationFn: updateNote,
   });
@@ -94,7 +97,7 @@ export default function EditNote({ params }: EditNoteProps) {
         name="noteBody"
         onChange={(e) => setNoteBody(e.target.value)}
         id="noteBody"
-        placeholder="Write your journal notes here..."
+        placeholder="Record your dream data: how you felt falling asleep, how often you woke up, how clear your dreams felt, the overall mood of your dreams, etc..."
         value={noteBody}
       ></textarea>
       <div className="absolute -bottom-[1px] -right-[1px]">
