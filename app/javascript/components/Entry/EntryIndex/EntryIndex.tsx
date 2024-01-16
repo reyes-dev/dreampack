@@ -5,9 +5,9 @@ import Pagination from "components/Shared/Pagination";
 
 function EntryIndex() {
   const [, params] = useRoute("/entries/page/:page");
-  const [page, setPage] = useState(+params?.page);
+  const [page, setPage] = useState(params ? +params.page : 0);
 
-  const fetchEntries = async (page = 0) => {
+  const fetchEntries = async (page: number) => {
     try {
       const response = await fetch(`/api/entries/page/` + page);
       if (!response.ok) {

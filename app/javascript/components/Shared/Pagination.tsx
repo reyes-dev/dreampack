@@ -19,7 +19,11 @@ function Pagination({
   return (
     <nav className="flex w-full items-center justify-between self-center pt-8">
       <button
-        onClick={() => setPage((old: number) => Math.max(old - 1, 0))}
+        onClick={() => {
+          setPage((old: number) => Math.max(old - 1, 0));
+
+          navigate(`/entries/page/${page - 1}`);
+        }}
         disabled={page === 0}
         className={`${
           page === 0 ? "invisible" : ""
@@ -32,6 +36,7 @@ function Pagination({
         onClick={() => {
           if (!isPlaceholderData && hasMore) {
             setPage((old) => old + 1);
+            navigate(`/entries/page/${page + 1}`);
           }
         }}
         // Disable the Next Page button until we know a next page is available
